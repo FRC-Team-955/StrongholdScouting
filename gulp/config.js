@@ -1,5 +1,5 @@
 var dest = './build',
-  src = './src',
+  src = './src/public',
   mui = './node_modules/material-ui/src';
 
 module.exports = {
