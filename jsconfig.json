@@ -2,5 +2,10 @@
     "compilerOptions": {
         "target": "ES6",
         "module": "commonjs"
-    }
+    },
+	"files": [
+		"typings/ts.d.ts",
+		"src/public/app/app.jsx",
+		"build/server.js"
+	]
 }
