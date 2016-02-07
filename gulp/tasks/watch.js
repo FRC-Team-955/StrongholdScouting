@@ -7,6 +7,12 @@
 var gulp   = require('gulp');
 var config = require('../config');
 
+gulp.task("moveServ", function () {
+	gulp.src("src/**.*")
+		.pipe(gulp.dest("build/"));
+});
+
 gulp.task('watch', ['setWatch', 'browserSync'], function() {
-  gulp.watch(config.markup.src, ['markup']);
+	gulp.watch(config.markup.src, ['markup']);
+	gulp.watch("src/**", ["moveServ"]);
 });
