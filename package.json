@@ -26,9 +26,13 @@
     "watchify": "^3.6.1"
   },
   "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
     "material-ui": "^0.14.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-tap-event-plugin": "^0.2.1"
+    "react-tap-event-plugin": "^0.2.1",
+    "the-node-alliance": "^1.0.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }
