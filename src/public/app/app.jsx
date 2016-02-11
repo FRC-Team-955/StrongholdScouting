@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './components/navbar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Main from './components/main'; // Our custom react component
+import MatchTable from './components/matchTable';
+import MatchScoring from './components/matchScoring';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
 //Check this repo:
 //https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
+injectTapEventPlugin()
+
+
 
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
-ReactDOM.render(<Main />, document.getElementById('app'));
+ReactDOM.render(<Navbar/>, document.getElementById('navbar'));
+ReactDOM.render(<MatchScoring/>, document.getElementById('matchScoring'));
+ReactDOM.render(<MatchTable/>, document.getElementById('matchTable'));
+

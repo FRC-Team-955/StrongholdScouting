@@ -6,6 +6,7 @@
 	"files": [
 		"typings/ts.d.ts",
 		"src/public/app/app.jsx",
-		"build/server.js"
+		"build/server.js",
+        "src/public/components/**.jsx"
 	]
 }
