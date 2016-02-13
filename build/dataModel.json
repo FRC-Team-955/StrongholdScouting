@@ -29,7 +29,9 @@
                         "roughTerrain" : 0,
                         "ramparts" : 0,
                         "lowBar" : 0
-                    }
+                    },
+					
+					"reachedDefense" : false
                 },
                 
                 "teleop" : {
@@ -62,11 +64,11 @@
                 "spy" : true,
                 "challenge" : true,
                 "scaled" : true,
-                "performedAuto" : false,
+                "performedAuto" : true,
                 "broken" : false,
                 "preformance" : "good",
-                "offensive" : false,
-                "defensive" : true,
+                "offensive" : "good",
+                "defensive" : "meh",
 				"teamComments" : "This is the best robot ever",
 				"matchComments" : "g12"
             },
@@ -93,15 +95,17 @@
                     "defensesCrossed" : 
                     {
                         "portculis" : 0,
-                        "chevalDeFrise" : 2,
-                        "rockWall" : 2,
-                        "moat" : 2,
+                        "chevalDeFrise" : 0,
+                        "rockWall" : 1,
+                        "moat" : 0,
                         "drawBridge" : 0,
                         "sallyPort" : 0,
-                        "roughTerain" : 2,
-                        "ramparts" : 2,
+                        "roughTerain" : 0,
+                        "ramparts" : 0,
                         "lowBar" : 0
-                    }	
+					},
+					
+					"reachedDefense" : false
                 },
                 
                 "teleop" : {
@@ -117,28 +121,30 @@
 					
                     "defensesCrossed" : {
                         "portculis" : 0,
-                        "chevalDeFrise" : 0,
-                        "rockWall" : 1,
-                        "moat" : 0,
+                        "chevalDeFrise" : 2,
+                        "rockWall" : 2,
+                        "moat" : 2,
                         "drawBridge" : 0,
                         "sallyPort" : 0,
-                        "roughTerain" : 0,
-                        "ramparts" : 0,
-                        "lowBar" : 0
+                        "roughTerain" : 2,
+                        "ramparts" : 2,
+                        "lowBar" : 0,
+						"total" : 1
                     }
                 },
-                
+ 
                 "breach" : true,
                 "capture" : true,
                 "spy" : true,
                 "challenge" : true,
                 "scaled" : true,
-                "performedAuto" : false,
+                "performedAuto" : true,
                 "broken" : false,
+				"humanPlayer" : false,
                 "preformance" : "good",
-                "offensive" : true,
-                "defensive" : false,
-				"teamComments" : "This is the best robot ever",
+                "offensive" : "good",
+                "defensive" : "meh",
+				"teamComments" : "This robot is basically Warren",
 				"matchComments" : ""
             }
         ],
@@ -160,16 +166,16 @@
 				},
 				
 				"defensesCrossed" : {
-                        "portculis" : 0,
-                        "chevalDeFrise" : 2,
-                        "rockWall" : 2,
-                        "moat" : 2,
-                        "drawBridge" : 0,
-                        "sallyPort" : 0,
-                        "roughTerain" : 2,
-                        "ramparts" : 2,
-                        "lowBar" : 0
-                    }	
+                 	"portculis" : 0,
+                    "chevalDeFrise" : 2,
+                    "rockWall" : 2,
+                    "moat" : 2,
+                    "drawBridge" : 0,
+                    "sallyPort" : 0,
+                    "roughTerain" : 2,
+                    "ramparts" : 2,
+                    "lowBar" : 0
+				}	
 			},
 			
 			"auto" : {
@@ -197,12 +203,18 @@
                     "roughTerain" : 0,
                     "ramparts" : 0,
                     "lowBar" : 0	
-				}
+				}				
 			},
 			
 			"match" :
 			{
 				"blocks" : 0,
+				
+				"scale" : {
+					"successes" : 2,
+					"failes" : 0,
+					"successPercentage" : 100 
+				},
 				
 				"highGoal" : 
 				{
@@ -229,6 +241,15 @@
                     "ramparts" : 2,
                     "lowBar" : 0	
 				}
+			},
+			
+			"attributes" : 
+			{
+				"totalBroken" : 0,
+				"totalPreformedAuto" : 2,
+				"totalSpy" : 1,
+				"totalChallenge" : 0,
+				"totalHumanPlayer" : 0
 			}
         },
         
@@ -253,6 +274,6 @@
 			"tall" : false
         },
 		
-		"comments" : ["This is the best robot ever"]
+		"comments" : ["This is the best robot ever","This robot is basically Warren"]
     }	
 ]
