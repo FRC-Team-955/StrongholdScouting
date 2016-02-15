@@ -5,6 +5,7 @@ import ChevronLeft from 'material-ui/lib/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/lib/svg-icons/navigation/chevron-right';
 import Colors from 'material-ui/lib/styles/colors';
 import TextField from 'material-ui/lib/text-field';
+import ScoreUnit from './scoreUnit';
 
 const scoringContainer = {
     width: "100%",
@@ -53,30 +54,26 @@ const rightStyleLow = {
 
 const labelStyle = {
     width: 100
-}
+} 
 
 const highGoal = (
     <div>
-        <div> 
-            <RaisedButton children = {<ChevronLeft/>} style = {leftStyleHigh}/>
-            <TextField style = {textStyleHigh} floatingLabelText = "High Goal" floatingLabelStyle = {labelStyle}/>
-            <RaisedButton children = {<ChevronRight/>} style = {rightStyleHigh}/>
-        </div>
-        <div> 
-            <RaisedButton children = {<ChevronLeft/>} style = {leftStyleHigh}/>
-            <TextField style = {textStyleHigh} floatingLabelText = "Failed High" floatingLabelStyle = {labelStyle}/>
-            <RaisedButton children = {<ChevronRight/>} style = {rightStyleHigh}/>
-        </div>
-        <div>
-            <RaisedButton children = {<ChevronLeft/>} style = {leftStyleLow}/>
-            <TextField style = {textStyleLow} floatingLabelText = "Low Goal" floatingLabelStyle = {labelStyle}/>
-            <RaisedButton children = {<ChevronRight/>} style = {rightStyleLow}/>
-        </div>
-        <div>
-            <RaisedButton children = {<ChevronLeft/>} style = {leftStyleLow}/>
-            <TextField style = {textStyleLow} floatingLabelText = "Failed Low" floatingLabelStyle = {labelStyle}/>
-            <RaisedButton children = {<ChevronRight/>} style = {rightStyleLow}/>
-        </div>
+        <ScoreUnit
+			floatingLabelText="High Goal"
+		/>
+		
+        <ScoreUnit
+			floatingLabelText="High Failed"
+		/>
+		
+        <ScoreUnit
+			floatingLabelText="Low Goal"
+		/>
+		
+        <ScoreUnit
+			floatingLabelText="Low Failed"
+		/>
+		
     </div>
 )
 

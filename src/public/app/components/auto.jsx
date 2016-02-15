@@ -4,7 +4,8 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import ChevronLeft from 'material-ui/lib/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/lib/svg-icons/navigation/chevron-right';
 import TextField from 'material-ui/lib/text-field';
-import Checkbox from 'material-ui/lib/checkbox'; 
+import Checkbox from 'material-ui/lib/checkbox';
+import ScoreUnit from './scoreUnit';
 
 const highDiv = {
     width: "100%",
@@ -44,17 +45,15 @@ const autoToggle = {
 }
 
 const autoScore = (
-    <div>
-        <div> 
-            <RaisedButton children = {<ChevronLeft/>} style = {leftStyleHigh}/>
-            <TextField style = {textStyleHigh} floatingLabelText = "Auto High" floatingLabelStyle = {labelStyle}/>
-            <RaisedButton children = {<ChevronRight/>} style = {rightStyleHigh}/>
-        </div>
-        <div> 
-            <RaisedButton children = {<ChevronLeft/>} style = {leftStyleHigh}/>
-            <TextField style = {textStyleHigh} floatingLabelText = "Auto Low" floatingLabelStyle = {labelStyle}/>
-            <RaisedButton children = {<ChevronRight/>} style = {rightStyleHigh}/>
-        </div>
+	<div>
+		<ScoreUnit
+			floatingLabelText="Auto High"
+		/>
+			
+		<ScoreUnit
+			floatingLabelText="Auto Low"
+		/>
+		
         <div>
            <Checkbox label = "Reach Defense" style = {autoToggle}/>
         </div>
