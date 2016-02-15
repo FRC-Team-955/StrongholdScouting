@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MatchTable from './components/matchTable';
 import MatchScoring from './components/matchScoring';
+import AnalysisPreview from './components/analysisPreview';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -18,4 +19,5 @@ injectTapEventPlugin()
 ReactDOM.render(<Navbar/>, document.getElementById('navbar'));
 ReactDOM.render(<MatchScoring/>, document.getElementById('matchScoring'));
 ReactDOM.render(<MatchTable/>, document.getElementById('matchTable'));
+ReactDOM.render(<AnalysisPreview/>, document.getElementById('analysisPreview'));
 

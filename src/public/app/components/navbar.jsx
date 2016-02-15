@@ -74,13 +74,22 @@ const Navbar = React.createClass({
     switchToMatchScoring: function(){
         document.getElementById('matchScoring').style.display = "block";
         document.getElementById('matchTable').style.display = "none";
+		document.getElementById('analysisPreview').style.display = "none";
         this.setState({open: false})
     },
     switchToMatchTable: function(){
         document.getElementById('matchScoring').style.display = "none";
         document.getElementById('matchTable').style.display = "block";
+		document.getElementById('analysisPreview').style.display = "none";
         this.setState({open: false})
     },
+	
+	switchToAnalysisPreview: function(){
+		document.getElementById('matchScoring').style.display = "none";
+        document.getElementById('matchTable').style.display = "none";
+		document.getElementById('analysisPreview').style.display = "block";
+        this.setState({open: false})
+	},
     
     toggle: function(){
         this.setState({
@@ -108,7 +117,7 @@ const Navbar = React.createClass({
                   onRequestChange={ this.toggle }>
                   <MenuItem onTouchTap = {this.switchToMatchScoring}>Home</MenuItem>
                   <MenuItem onTouchTap = {this.switchToMatchTable}>Match List</MenuItem>
-                  <MenuItem onTouchTap = {this.handleClose}>Team Archive</MenuItem>
+                  <MenuItem onTouchTap = {this.switchToAnalysisPreview}>Team Archive</MenuItem>
                   <MenuItem onTouchTap = {this.handleClose}>Pit Scouting</MenuItem>
                   <MenuItem>
                         <AutoComplete
