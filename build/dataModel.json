@@ -1,0 +1,279 @@
+
+[
+    {
+        "team": 955,
+        "matches": [
+            {
+                "match": 1,
+                "allianceMembers" : [254,1114],
+                "isWin" : true,
+				"blocks" : 0,
+                "auto" : {
+                    "highGoal" : {
+						"successes" : 0,
+						"attempts" : 1
+					},
+					
+					"lowGoal" : {
+						"successes" : 0,
+						"attempts" : 0
+					},
+					
+                    "defensesCrossed" : {
+                        "portcullis" : 0,
+                        "chevalDeFrise" : 0,
+                        "rockWall" : 1,
+                        "moat" : 0,
+                        "drawBridge" : 0,
+                        "sallyPort" : 0,
+                        "roughTerrain" : 0,
+                        "ramparts" : 0,
+                        "lowBar" : 0
+                    },
+					
+					"reachedDefense" : false
+                },
+                
+                "teleop" : {
+                    "highGoal" : {
+						"successes" : 4,
+						"attempts" : 5
+					},
+
+					"lowGoal" : {
+						"successes" : 0,
+						"attempts" : 0
+					},
+					
+					"blocks" : 0,
+                    "defensesCrossed" : {
+                        "portcullis" : 0,
+                        "chevalDeFrise" : 1,
+                        "rockWall" : 1,
+                        "moat" : 1,
+                        "drawBridge" : 0,
+                        "sallyPort" : 0,
+                        "roughTerrain" : 1,
+                        "ramparts" : 1,
+                        "lowBar" : 0
+                    }
+                },
+                
+                "breach" : true,
+                "capture" : true,
+                "spy" : true,
+                "challenge" : true,
+                "scaled" : true,
+                "performedAuto" : true,
+                "broken" : false,
+                "preformance" : "good",
+                "offensive" : "good",
+                "defensive" : "meh",
+				"teamComments" : "This is the best robot ever",
+				"matchComments" : "g12"
+            },
+            
+            {
+                "match": 2,
+                "allianceMembers" : [4488,973],
+                "isWin" : false,
+				"blockes" : 0,
+                "auto" : 
+                {
+                    "highGoal" : 
+					{
+						"successes" : 1,
+						"attemptes" : 1
+					},
+					
+					"lowGoal" : 
+					{
+						"successes" : 0,
+						"attemptes" : 0
+					},
+					
+                    "defensesCrossed" : 
+                    {
+                        "portculis" : 0,
+                        "chevalDeFrise" : 0,
+                        "rockWall" : 1,
+                        "moat" : 0,
+                        "drawBridge" : 0,
+                        "sallyPort" : 0,
+                        "roughTerain" : 0,
+                        "ramparts" : 0,
+                        "lowBar" : 0
+					},
+					
+					"reachedDefense" : false
+                },
+                
+                "teleop" : {
+                    "highGoal" : {
+						"successes" : 4,
+						"attemptes" : 5
+					},
+
+					"lowGoal" : {
+						"successes" : 0,
+						"attemptes" : 0
+					},
+					
+                    "defensesCrossed" : {
+                        "portculis" : 0,
+                        "chevalDeFrise" : 2,
+                        "rockWall" : 2,
+                        "moat" : 2,
+                        "drawBridge" : 0,
+                        "sallyPort" : 0,
+                        "roughTerain" : 2,
+                        "ramparts" : 2,
+                        "lowBar" : 0,
+						"total" : 1
+                    }
+                },
+ 
+                "breach" : true,
+                "capture" : true,
+                "spy" : true,
+                "challenge" : true,
+                "scaled" : true,
+                "performedAuto" : true,
+                "broken" : false,
+				"humanPlayer" : false,
+                "preformance" : "good",
+                "offensive" : "good",
+                "defensive" : "meh",
+				"teamComments" : "This robot is basically Warren",
+				"matchComments" : ""
+            }
+        ],
+        
+        "stats": {
+			"teleop": {
+				"blocks" : 0,
+				
+				"highGoal" : {
+					"successes" : 8,
+					"attemptes" : 10,
+					"shotPercentage" : 0.8
+				},
+				
+				"lowGoal" : {
+					"successes" : 0,
+					"attemptes" : 0,
+					"shotPercentage" : 0
+				},
+				
+				"defensesCrossed" : {
+                 	"portculis" : 0,
+                    "chevalDeFrise" : 2,
+                    "rockWall" : 2,
+                    "moat" : 2,
+                    "drawBridge" : 0,
+                    "sallyPort" : 0,
+                    "roughTerain" : 2,
+                    "ramparts" : 2,
+                    "lowBar" : 0
+				}	
+			},
+			
+			"auto" : {
+				"blocks" : 0,
+				
+				"highGoal" : {
+					"successes" : 1,
+					"attemptes" : 2,
+					"shotPercentage" : 0.5
+				},
+				
+				"lowGoal" : {
+					"successes" : 0,
+					"attemptes" : 0,
+					"shotPercentage" : 0
+				},
+				
+				"defensesCrossed" : {
+					"portculis" : 0,
+                    "chevalDeFrise" : 0,
+                    "rockWall" : 2,
+                    "moat" : 0,
+                    "drawBridge" : 0,
+                    "sallyPort" : 0,
+                    "roughTerain" : 0,
+                    "ramparts" : 0,
+                    "lowBar" : 0	
+				}				
+			},
+			
+			"match" :
+			{
+				"blocks" : 0,
+				
+				"scale" : {
+					"successes" : 2,
+					"failes" : 0,
+					"successPercentage" : 100 
+				},
+				
+				"highGoal" : 
+				{
+					"successes" : 9,
+					"attempts" : 12,
+					"shotPercentage" : 0.75
+				},
+				
+				"lowGoal" : 
+				{
+					"successes" : 0,
+					"attemptes" : 0,
+					"shotPercentage" : 0
+				},
+				
+				"defensesCrossed" : {
+					"portcullis" : 0,
+                    "chevalDeFrise" : 2,
+                    "rockWall" : 4,
+                    "moat" : 2,
+                    "drawBridge" : 0,
+                    "sallyPort" : 0,
+                    "roughTerain" : 2,
+                    "ramparts" : 2,
+                    "lowBar" : 0	
+				}
+			},
+			
+			"attributes" : 
+			{
+				"totalBroken" : 0,
+				"totalPreformedAuto" : 2,
+				"totalSpy" : 1,
+				"totalChallenge" : 0,
+				"totalHumanPlayer" : 0
+			}
+        },
+        
+        "attributes" : {
+            "hasAuto" : true,
+            "hasScale" : true,
+            "hasVision" : true,
+            "hasHighShooter" : true,
+            "defenses" : {
+                "portculis" : false,
+                "chevalDeFrise" : true,
+                "rockWall" : true,
+                "moat" : true,
+                "drawBridge" : false,
+                "sallyPort" : false,
+                "roughTerain" : true,
+                "ramparts" : true,
+                "lowBar" : false
+            },
+			
+			"canBlockShot" : false,
+			"tall" : false
+        },
+		
+		"comments" : ["This is the best robot ever","This robot is basically Warren"]
+    }	
+]
