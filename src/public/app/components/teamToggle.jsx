@@ -11,7 +11,7 @@ const style = {
         padding: 0
     },
     box: {
-        marginTop: 30,
+        marginTop: 50,
         paddingLeft: 5
     }
 }
@@ -24,14 +24,6 @@ const toggle = (
             </div>
             <div className = "col-md-6" style = {style.boxContainer}>
                 <Checkbox label = "Challenge" style = {style.box}/>
-            </div>
-        </div>
-        <div className = "row">
-            <div className = "col-md-6" style = {style.boxContainer}>
-                <Checkbox label = "Scale Success" style = {style.box}/>
-            </div>
-            <div className = "col-md-6" style = {style.boxContainer}>
-                <Checkbox label = "Scale Fail" style = {style.box}/>
             </div>
         </div>
         <div className = "row">
