@@ -66,7 +66,7 @@
                 "scaled" : true,
                 "performedAuto" : true,
                 "broken" : false,
-                "preformance" : "good",
+                "performance" : "good",
                 "offensive" : "good",
                 "defensive" : "meh",
 				"teamComments" : "This is the best robot ever",
@@ -77,30 +77,30 @@
                 "match": 2,
                 "allianceMembers" : [4488,973],
                 "isWin" : false,
-				"blockes" : 0,
+				"blocks" : 0,
                 "auto" : 
                 {
                     "highGoal" : 
 					{
 						"successes" : 1,
-						"attemptes" : 1
+						"attempts" : 1
 					},
 					
 					"lowGoal" : 
 					{
 						"successes" : 0,
-						"attemptes" : 0
+						"attempts" : 0
 					},
 					
                     "defensesCrossed" : 
                     {
-                        "portculis" : 0,
+                        "portcullis" : 0,
                         "chevalDeFrise" : 0,
                         "rockWall" : 1,
                         "moat" : 0,
                         "drawBridge" : 0,
                         "sallyPort" : 0,
-                        "roughTerain" : 0,
+                        "roughTerrain" : 0,
                         "ramparts" : 0,
                         "lowBar" : 0
 					},
@@ -111,22 +111,22 @@
                 "teleop" : {
                     "highGoal" : {
 						"successes" : 4,
-						"attemptes" : 5
+						"attempts" : 5
 					},
 
 					"lowGoal" : {
 						"successes" : 0,
-						"attemptes" : 0
+						"attempts" : 0
 					},
 					
                     "defensesCrossed" : {
-                        "portculis" : 0,
+                        "portcullis" : 0,
                         "chevalDeFrise" : 2,
                         "rockWall" : 2,
                         "moat" : 2,
                         "drawBridge" : 0,
                         "sallyPort" : 0,
-                        "roughTerain" : 2,
+                        "roughTerrain" : 2,
                         "ramparts" : 2,
                         "lowBar" : 0,
 						"total" : 1
@@ -141,7 +141,7 @@
                 "performedAuto" : true,
                 "broken" : false,
 				"humanPlayer" : false,
-                "preformance" : "good",
+                "performance" : "good",
                 "offensive" : "good",
                 "defensive" : "meh",
 				"teamComments" : "This robot is basically Warren",
@@ -155,24 +155,24 @@
 				
 				"highGoal" : {
 					"successes" : 8,
-					"attemptes" : 10,
+					"attempts" : 10,
 					"shotPercentage" : 0.8
 				},
 				
 				"lowGoal" : {
 					"successes" : 0,
-					"attemptes" : 0,
+					"attempts" : 0,
 					"shotPercentage" : 0
 				},
 				
 				"defensesCrossed" : {
-                 	"portculis" : 0,
+                 	"portcullis" : 0,
                     "chevalDeFrise" : 2,
                     "rockWall" : 2,
                     "moat" : 2,
                     "drawBridge" : 0,
                     "sallyPort" : 0,
-                    "roughTerain" : 2,
+                    "roughTerrain" : 2,
                     "ramparts" : 2,
                     "lowBar" : 0
 				}	
@@ -183,24 +183,24 @@
 				
 				"highGoal" : {
 					"successes" : 1,
-					"attemptes" : 2,
+					"attempts" : 2,
 					"shotPercentage" : 0.5
 				},
 				
 				"lowGoal" : {
 					"successes" : 0,
-					"attemptes" : 0,
+					"attempts" : 0,
 					"shotPercentage" : 0
 				},
 				
 				"defensesCrossed" : {
-					"portculis" : 0,
+					"portcullis" : 0,
                     "chevalDeFrise" : 0,
                     "rockWall" : 2,
                     "moat" : 0,
                     "drawBridge" : 0,
                     "sallyPort" : 0,
-                    "roughTerain" : 0,
+                    "roughTerrain" : 0,
                     "ramparts" : 0,
                     "lowBar" : 0	
 				}				
@@ -212,7 +212,7 @@
 				
 				"scale" : {
 					"successes" : 2,
-					"failes" : 0,
+					"fails" : 0,
 					"successPercentage" : 100 
 				},
 				
@@ -226,7 +226,7 @@
 				"lowGoal" : 
 				{
 					"successes" : 0,
-					"attemptes" : 0,
+					"attempts" : 0,
 					"shotPercentage" : 0
 				},
 				
@@ -237,7 +237,7 @@
                     "moat" : 2,
                     "drawBridge" : 0,
                     "sallyPort" : 0,
-                    "roughTerain" : 2,
+                    "roughTerrain" : 2,
                     "ramparts" : 2,
                     "lowBar" : 0	
 				}
@@ -259,13 +259,13 @@
             "hasVision" : true,
             "hasHighShooter" : true,
             "defenses" : {
-                "portculis" : false,
+                "portcullis" : false,
                 "chevalDeFrise" : true,
                 "rockWall" : true,
                 "moat" : true,
                 "drawBridge" : false,
                 "sallyPort" : false,
-                "roughTerain" : true,
+                "roughTerrain" : true,
                 "ramparts" : true,
                 "lowBar" : false
             },

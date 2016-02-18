@@ -1,6 +1,8 @@
 import React from 'react';
 import Paper from 'material-ui/lib/paper';
 import Checkbox from 'material-ui/lib/checkbox'; 
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 
 const matchToggleContainer = {
     width: "100%",
@@ -14,26 +16,66 @@ const style = {
     },
     text: {
         fontSize: 20
-    }
+    },
+	cap: {
+		marginBottom: 30,
+		fontSize: 20
+	},
+	scaleSelect: {
+		width: 200
+	}
 }
 
-const capture = (
-    <div style = {style.match}>
-        <Checkbox label = "Capture" style = {style.text}/>
-    </div>
-)
 
-const breach = (
-    <div style = {style.match}>
+
+const toggle = (
+    <div>
+	<div style = {style.match}>
+        <Checkbox label = "Capture" style = {style.cap}/>
+    </div>
+	<div style = {style.match}>
         <Checkbox label = "Breach" style = {style.text}/>
     </div>
-)   
-
-const MatchToggle = () => (
-    <div className = "col-md-3 spacing">
-        <Paper style = {matchToggleContainer} children = {breach}/>
-        <Paper style = {matchToggleContainer} children = {capture}/>
-    </div>
+	</div>
 )
+
+
+
+const MatchToggle = React.createClass ({
+   
+   getInitialState: function(){
+        return{
+            value: false,
+			checked: false,
+			enable: true
+        }
+    }, 
+   
+   change: function(event, index, value) {
+	   this.setState({value})
+   },
+   
+   disableToggle: function(){
+	   this.setState({checked: !this.state.checked})
+	   this.setState({enable: !this.state.enable})
+   },
+   
+	render(){
+		return(
+			<div className = "col-md-3 spacing">
+        		<Paper style = {matchToggleContainer} children = {
+					<div>
+						<Checkbox label = "Scale Success?" checked = {this.state.checked} onCheck = {this.disableToggle}/>
+							<SelectField style = {style.scaleSelect} value = {this.state.value} onChange = {this.change} disabled = {this.state.enable}>
+       							<MenuItem value={true} primaryText="High"/>
+        						<MenuItem value={false} primaryText="Low"/>
+      						</SelectField>
+					</div>
+				}/>
+				<Paper style = {matchToggleContainer} children = {toggle}/>
+    		</div>
+		)
+	}
+})
 
 export default MatchToggle;

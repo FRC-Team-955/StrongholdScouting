@@ -8,13 +8,15 @@ import AppBar from 'material-ui/lib/app-bar';
 import Toggle from 'material-ui/lib/toggle';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
-import SelectField from 'material-ui/lib/select-field';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 import LeftNav from 'material-ui/lib/left-nav';
 import RaisedButton from 'material-ui/lib/raised-button'; 
 import AutoComplete from 'material-ui/lib/auto-complete';
 import MatchTable from './matchTable';
 import MatchScoring from './matchScoring';
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import MatchSelect from './matchSelect';
+
 
 
 
@@ -35,13 +37,13 @@ const tabsStyle = {
     width: "100%"
 }
 
-const selectStyle = {
-    width: "100%",
-}
-
 const teamData = [
     'Apple'
 ]
+
+const selectStyle = {
+	width: "100%"
+}
 
 
 const teams = (
@@ -64,7 +66,8 @@ const teams = (
                 label = {<Toggle iconStyle = {toggleStyle} />}
             />
             <Tab
-                label = {<SelectField style = {selectStyle}><MenuItem  primaryText = "#1"/><MenuItem  primaryText = "#2"/></SelectField>} 
+                label = {<MatchSelect/>
+				} 
             />
         </Tabs>
     </div>
