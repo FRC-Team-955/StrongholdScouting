@@ -50,11 +50,11 @@ const autoToggle = {
 
 const autoScore = (
 	<div>
-		<ScoreUnitComponent
+		<ScoreUnit
 			floatingLabelText="Auto High"
 		/>
 			
-		<ScoreUnitComponent
+		<ScoreUnit
 			floatingLabelText="Auto Low"
 		/>
 		

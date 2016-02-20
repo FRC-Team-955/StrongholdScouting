@@ -7,23 +7,23 @@ import AutoComponent from './AutoComponent';
 import TeleopComponent from './TeleopComponent';
 import DefensesComponent from './DefensesComponent';
 import PerformanceComponent from './PerformanceComponent';
-import TeamCommentsComponent from './TeamCommentsComponent';
-import MatchCommentsComponents from './MatchCommentsComponent';
-import MatchAttributesComponents from './MatchAttributesComponent';
+import MatchAttributesComponent from './MatchAttributesComponent';
 import TeamAttributesComponent from './TeamAttributesComponent';
+import CommentsComponent from './CommentsComponent';
+
+require('styles//scoring/ScoringMain.css');
 
 const ScoringMainComponent = () => (
     <div>
         <div className = "row">
             <AutoComponent/>
-            <TeleopComponent/>
-            <DefensesComponent/>
-            <PerformanceComponent/>         
+			<DefensesComponent/>	
+            <TeleopComponent/>        
         </div>
         <div className = "row">
-            <TeamCommentsComponent/>
-            <MatchCommentsComponents/>
-            <MatchAttributesComponents/>
+            <PerformanceComponent/>
+            <CommentsComponent/>
+            <MatchAttributesComponent/>
             <TeamAttributesComponent/>
         </div>
     </div>

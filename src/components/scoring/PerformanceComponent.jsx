@@ -23,7 +23,7 @@ const ratingContainer = {
     paddingLeft: 20,
     paddingRight: 20,
     paddingTop: 5,
-    height: 100
+    height: 85
 }
 
 
