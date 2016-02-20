@@ -16,6 +16,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import AutoComplete from 'material-ui/lib/auto-complete';
 import ScheduleComponent from './match/ScheduleComponent';
 import ScoringMainComponent from './scoring/ScoringMainComponent';
+import MatchSelectComponent from './scoring/MatchSelectComponent';
 
 require('styles//Navbar.css');
 
@@ -29,7 +30,7 @@ const toggleContainer = {
 }
 
 const tabContainer = {
-    width: 1050,
+    width: 1050
 }
 
 const tabsStyle = {
@@ -65,7 +66,7 @@ const teams = (
                 label = {<Toggle iconStyle = {toggleStyle} />}
             />
             <Tab
-                label = {<MatchSelect/>
+                label = {<MatchSelectComponent/>
 				} 
             />
         </Tabs>

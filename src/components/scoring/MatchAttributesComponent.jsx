@@ -3,6 +3,8 @@
 import React from 'react';
 import Paper from 'material-ui/lib/paper';
 import Checkbox from 'material-ui/lib/checkbox'; 
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 
 require('styles//scoring/MatchAttributes.css');
 
@@ -30,16 +32,16 @@ const style = {
 
 const toggle = (
     <div>
-	<div style = {style.match}>
-        <Checkbox label = "Capture" style = {style.cap}/>
-    </div>
-	<div style = {style.match}>
-        <Checkbox label = "Breach" style = {style.text}/>
-    </div>
+		<div style = {style.match}>
+        	<Checkbox label = "Capture" style = {style.cap}/>
+    	</div>
+		<div style = {style.match}>
+        	<Checkbox label = "Breach" style = {style.text}/>
+    	</div>
 	</div>
 )
 
-const MatchAttributesComponent = React.createClass ({
+const MatchAttributesComponent = React.createClass({
     
 	getInitialState: function(){
         return{
@@ -54,7 +56,7 @@ const MatchAttributesComponent = React.createClass ({
    },
    
    disableToggle: function(){
-	   this.setState({checked: !this.state.checked})
+	   this.setState({checked:!this.state.checked})
 	   this.setState({enable: !this.state.enable})
    },
    

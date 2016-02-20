@@ -20,7 +20,7 @@ const scoringContainer = {
 }
 
 const highDiv = {
-    width: "100%",
+    width: "100%"
 }
 const leftStyleHigh = {
     width: 20,
@@ -36,7 +36,7 @@ const textStyleHigh = {
 }
 
 const rightStyleHigh = {
-    width: 20,
+    width: 20
 }
 
 const leftStyleLow = {
@@ -60,7 +60,7 @@ const labelStyle = {
     width: 100
 } 
 
-const highGoal = (
+const scoring = (
     <div>
         <ScoreUnitComponent
 			floatingLabelText="High Goal"
@@ -81,10 +81,10 @@ const highGoal = (
     </div>
 )
 
-const ScoringMainComponent = () => (
+const TeleopComponent = () => (
     <div className = "col-md-3 spacing">
-        <Paper children = {highGoal} style = {scoringContainer}/>
+        <Paper children = {scoring} style = {scoringContainer}/>
     </div>
 )
 
-export default ScoringMainComponent;
+export default TeleopComponent;

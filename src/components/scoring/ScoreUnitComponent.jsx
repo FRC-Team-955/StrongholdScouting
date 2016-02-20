@@ -1,21 +1,16 @@
 'use strict';
 
 import React from 'react';
-import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
 import ChevronLeft from 'material-ui/lib/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/lib/svg-icons/navigation/chevron-right';
 import TextField from 'material-ui/lib/text-field';
-import Checkbox from 'material-ui/lib/checkbox';
 
 require('styles//scoring/Scoreunit.css');
 
-const highDiv = {
-    width: "100%",
-}
 const leftStyle = {
     width: 20,
-    cssFloat: "left",
+    cssFloat: 'left',
     marginLeft: 10
     
 }
@@ -27,7 +22,7 @@ const textStyle = {
 }
 
 const rightStyle = {
-    width: 20,
+    width: 20
 }
 
 const floatingLabelStyle = {

@@ -12,7 +12,7 @@ import ScoreUnitComponent from './ScoreUnitComponent';
 require('styles//scoring/Auto.css');
 
 const highDiv = {
-    width: "100%",
+    width: "100%"
 }
 const leftStyleHigh = {
     width: 20,
@@ -28,7 +28,7 @@ const textStyleHigh = {
 }
 
 const rightStyleHigh = {
-    width: 20,
+    width: 20
 }
 
 const labelStyle = {
@@ -50,11 +50,11 @@ const autoToggle = {
 
 const autoScore = (
 	<div>
-		<ScoreUnit
+		<ScoreUnitComponent
 			floatingLabelText="Auto High"
 		/>
 			
-		<ScoreUnit
+		<ScoreUnitComponent
 			floatingLabelText="Auto Low"
 		/>
 		
