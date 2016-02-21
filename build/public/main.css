@@ -9,6 +9,7 @@ body {
 
 #navbar {
     padding: 0px;
+	overflow: hidden;
 }
 
 .spacing {
@@ -20,4 +21,6 @@ body {
 #matchTable {display: none;}
 
 #analysisPreview {display: none;}
+
+#allianceSelection {display: none;}
 

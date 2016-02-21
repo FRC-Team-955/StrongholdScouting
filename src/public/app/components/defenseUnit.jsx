@@ -60,7 +60,6 @@ const DefenseUnit = React.createClass({
 				<TextField style = {textStyle} errorText = {this.props.floatingLabelText} value = {this.state.value}/>
 				<RaisedButton children = {<ChevronLeft/>} style = {buttonStyle} onTouchTap = {this.decrement}/>
 				<RaisedButton children = {<ChevronRight/>} style = {buttonStyle} onTouchTap = {this.increment}/>
-				
 			</div>
 		)
 	}
