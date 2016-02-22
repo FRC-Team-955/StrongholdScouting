@@ -1,21 +1,29 @@
 var alt = require('../alt');
 
 class AutoActions{
-	updateReachDefense(isReachDefense){
-		this.dispatch(isReachDefense);
+	updateReachDefense(team,match){
+		this.dispatch(team,match);
 	}
 	
 	
-	updateCrossDefense(isCrossDefense){
-		this.dispatch(isCrossDefense);
+	updateCrossDefense(isCrossDefense,team,match){
+		this.dispatch(isCrossDefense,team,match);
 	}
 	
-	updateHighGoals(highGoals){
-		this.dispatch(highGoals);
+	updateIncrementHighGoals(team,match){
+		this.dispatch(team,match);
 	}
 	
-	updateLowGoals(lowGoals){
-		this.dispatch(lowGoals);
+	updateDecrementHighGoals(team,match){
+		this.dispatch(team,match);
+	}
+	
+	updateIncrementLowGoals(team,match){
+		this.dispatch(team,match);
+	}
+	
+	updateDecrementLowGoals(team,match){
+		this.dispatch(team,match);
 	}
 }
 

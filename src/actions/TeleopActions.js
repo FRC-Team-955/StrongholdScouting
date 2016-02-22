@@ -1,20 +1,36 @@
 var alt = require('../alt');
 
 class TeleopActions{
-	updateHighGoalsMade(amount){
-		this.dispatch(amount);
+	updateIncrementHighGoalsMade(team,match){
+		this.dispatch(team,match);
 	}
 	
-	updateHighGoalsAttempted(amount){
-		this.dispatch(amount);
+	updateIncrementHighGoalsAttempted(team,match){
+		this.dispatch(team,match);
 	}
 	
-	updateLowGoalsMade(amount){
-		this.dispatch(amount);
+	updateIncrementLowGoalsMade(team,match){
+		this.dispatch(team,match);
 	}
 	
-	updateLowGoalsAttempted(amount){
-		this.dispatch(amount);
+	updateIncrementLowGoalsAttempted(team,match){
+		this.dispatch(team,match);
+	}
+	
+	updateDecrementHighGoalsMade(team,match){
+		this.dispatch(team,match);
+	}
+	
+	updateDecrementHighGoalsAttempted(team,match){
+		this.dispatch(team,match);
+	}
+	
+	updateDecrementLowGoalsMade(team,match){
+		this.dispatch(team,match);
+	}
+	
+	updateDecrementLowGoalsAttempted(team,match){
+		this.dispatch(team,match);
 	}
 }
 

@@ -1,20 +1,20 @@
 var alt = require('../alt');
 
 class MatchAttributesActions{
-	updateScale(isScale){
-		this.dispatch(isScale);
+	updateScale(team,match){
+		this.dispatch(team,match);
 	}
 	
-	updateScaleHeight(scaleHeight){
-		this.dispatch(scaleHeight);
+	updateScaleHeight(scaleHeight,team,match){
+		this.dispatch(scaleHeight,team,match);
 	}
 	
-	updateBreach(isBreach){
-		this.dispatch(isBreach);
+	updateBreach(team,match){
+		this.dispatch(team,match);
 	}
 	
-	updateCapture(isCapture){
-		this.dispatch(isCapture);
+	updateCapture(team,match){
+		this.dispatch(team,match);
 	}
 }
 

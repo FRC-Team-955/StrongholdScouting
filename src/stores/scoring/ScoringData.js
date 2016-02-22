@@ -7,26 +7,18 @@ module.exports = {
 					"isWin" : false,
 					"blocks" : 0,
 					"auto" : {
-						"highGoal" : {
-							"successes" : 0,
-							"attempts" : 0
-						},
-						
-						"lowGoal" : {
-							"successes" : 0,
-							"attempts" : 0
-						},
-						
+						"highGoal" : 0,
+						"lowGoal" : 0,
 						"defensesCrossed" : {
-							"portcullis" : 0,
-							"chevalDeFrise" : 0,
-							"rockWall" : 0,
-							"moat" : 0,
-							"drawBridge" : 0,
-							"sallyPort" : 0,
-							"roughTerrain" : 0,
-							"ramparts" : 0,
-							"lowBar" : 0
+							"portcullis" : false,
+							"chevalDeFrise" : false,
+							"rockWall" : false,
+							"moat" : false,
+							"drawBridge" : false,
+							"sallyPort" : false,
+							"roughTerrain" : false,
+							"ramparts" : false,
+							"lowBar" : false
 						},
 						
 						"reachedDefense" : false
@@ -102,20 +94,9 @@ module.exports = {
 				},
 				
 				"auto" : {
-					"blocks" : 0,
-					
-					"highGoal" : {
-						"successes" : 0,
-						"attempts" : 0,
-						"shotPercentage" : 0
-					},
-					
-					"lowGoal" : {
-						"successes" : 0,
-						"attempts" : 0,
-						"shotPercentage" : 0
-					},
-					
+					"blocks" : 0,		
+					"highGoal" : 0,
+					"lowGoal" : 0,
 					"defensesCrossed" : {
 						"portcullis" : 0,
 						"chevalDeFrise" : 0,
@@ -125,10 +106,11 @@ module.exports = {
 						"sallyPort" : 0,
 						"roughTerrain" : 0,
 						"ramparts" : 0,
-						"lowBar" : 0	
+						"lowBar" : 0,
+						"total" : 0
 					},
 					
-					"defensesReached" : 0
+					"defensesReached" : 0,
 				},
 				
 				"match" :
