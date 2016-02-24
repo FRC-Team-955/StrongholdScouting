@@ -2,7 +2,7 @@ module.exports = {
 			"team": 0,
 			"matches": [
 				{
-					"match": 0,
+					"match": 1,
 					"allianceMembers" : [0,0],
 					"isWin" : false,
 					"blocks" : 0,
@@ -54,6 +54,8 @@ module.exports = {
 					"spy" : false,
 					"challenge" : false,
 					"scaled" : false,
+					"scaledHigh" : false,
+					"scaledLow" : false,
 					"performedAuto" : false,
 					"broken" : false,
 					"performance" : "",
