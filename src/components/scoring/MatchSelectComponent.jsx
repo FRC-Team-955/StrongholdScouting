@@ -11,16 +11,15 @@ const selectStyle = {
 }
 
 const MatchSelectComponent = React.createClass({
-  
-  getInitialState: function(){
-        return{
-            value: 1
-        }
-    }, 
+	getInitialState: function(){
+		return{
+			value: 1
+		}
+	}, 
    
-   change: function(event, index, value) {
-	   this.setState({value})
-   },
+	change: function(event, index, value) {
+		this.setState({value})
+	},
    
 	render(){
 		return(

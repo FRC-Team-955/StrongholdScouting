@@ -30,20 +30,24 @@ const style = {
 	}
 }
 
+
+
 const toggle = (
     <div>
-		<div style = {style.match}>
-        	<Checkbox label = "Capture" style = {style.cap}/>
-    	</div>
-		<div style = {style.match}>
-        	<Checkbox label = "Breach" style = {style.text}/>
-    	</div>
+	<div style = {style.match}>
+        <Checkbox label = "Capture" style = {style.cap}/>
+    </div>
+	<div style = {style.match}>
+        <Checkbox label = "Breach" style = {style.text}/>
+    </div>
 	</div>
 )
 
-const MatchAttributesComponent = React.createClass({
-    
-	getInitialState: function(){
+
+
+const MatchAttributesComponent = React.createClass ({
+   
+   getInitialState: function(){
         return{
             value: false,
 			checked: false,
@@ -56,7 +60,7 @@ const MatchAttributesComponent = React.createClass({
    },
    
    disableToggle: function(){
-	   this.setState({checked:!this.state.checked})
+	   this.setState({checked: !this.state.checked})
 	   this.setState({enable: !this.state.enable})
    },
    

@@ -16,17 +16,16 @@ require('styles//scoring/ScoringMain.css');
 const ScoringMainComponent = () => (
     <div>
         <div className = "row">
-            <AutoComponent/>     
+            <AutoComponent/>  
+			<DefensesComponent/>   
 			<TeleopComponent/>
-			<DefensesComponent/>
         </div>
 		<div className = "row">
             <PerformanceComponent/>
-			<MatchAttributesComponent/>
 			<CommentsComponent/>
+			<MatchAttributesComponent/>
 			<TeamAttributesComponent/>
-        </div>
-        
+        </div>   
     </div>
 )
 
@@ -34,16 +33,15 @@ export default ScoringMainComponent;
 
 /*
 
-<div className = "row">
-            <PerformanceComponent/>
-            <CommentsComponent/>
-            <MatchAttributesComponent/>
-            <TeamAttributesComponent/>
+ <div className = "row">
+            <AutoComponent/>  
+			<DefensesComponent/>   
+			<TeleopComponent/>
         </div>
-		
 		<div className = "row">
-            <AutoComponent/>
-			<DefensesComponent/>	
-            <TeleopComponent/>        
+            <PerformanceComponent/>
+			<CommentsComponent/>
+			<MatchAttributesComponent/>
+			<TeamAttributesComponent/>
         </div>
 		*/

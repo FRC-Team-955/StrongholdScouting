@@ -1,6 +1,6 @@
-var alt = require('../alt');
+import alt from '../../alt.js';
 
-class TeleopActions{
+class TeleopActions {
 	updateIncrementHighGoalsMade(team,match){
 		this.dispatch(team,match);
 	}

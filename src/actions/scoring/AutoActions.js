@@ -1,10 +1,9 @@
-var alt = require('../alt');
+import alt from '../../alt.js';
 
-class AutoActions{
+class AutoActions {
 	updateReachDefense(team,match){
 		this.dispatch(team,match);
 	}
-	
 	
 	updateCrossDefense(isCrossDefense,team,match){
 		this.dispatch(isCrossDefense,team,match);
@@ -27,4 +26,4 @@ class AutoActions{
 	}
 }
 
-module.exports = alt.createActions(AutoActions);
+export default alt.createActions(AutoActions);

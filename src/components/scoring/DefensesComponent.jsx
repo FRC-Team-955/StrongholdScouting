@@ -2,21 +2,42 @@
 
 import React from 'react';
 import Paper from 'material-ui/lib/paper';
+import RaisedButton from 'material-ui/lib/raised-button'; 
+import TextField from 'material-ui/lib/text-field';
 import DefensesUnitComponent from './DefensesUnitComponent';
 
 require('styles//scoring/Defenses.css');
 
 const defenseContainer = {
-    width: '100%',
+    width: "100%",
     height: 300,
     paddingTop: 10,
     marginLeft: 0
 }
 
 const defenseStyle = {
-    height: 90
+    height: 90,
 	//marginTop: 5
 }
+
+const topDefense = {
+    //marginTop: 20
+}
+
+const totalStyle = {
+    padding: 15,
+    fontSize: 14
+}
+
+const totalText = {
+    fontSize: 25,
+    width: "100%"
+}
+
+const buttonStyle = {
+	width: "50%"
+}
+
 
 const defenseButtons = (
     <div className = "container-fluid">
@@ -56,10 +77,10 @@ const defenseButtons = (
     </div>
 )
 
-const DefensesComponents = () => (
+const DefensesComponent = () => (
     <div className = "col-md-6 spacing">  
         <Paper style = {defenseContainer} children = {defenseButtons}/>
     </div>
 )
 
-export default DefensesComponents;
+export default DefensesComponent;

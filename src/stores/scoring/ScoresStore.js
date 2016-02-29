@@ -122,7 +122,7 @@ export class ScoresStore {
 		this.scores[indexes[0]].comments.push(teamComments);
 	}
 	
-	handleUpdateMatchComments(matchComments,match){
+	handleUpdateMatchComments(matchComments,team,match){
 		var indexes = this.getIndexes(team,match);
 		this.scores[indexes[0]].matches[indexes[1]].matchComments = matchComments;
 	}
@@ -143,9 +143,188 @@ export class ScoresStore {
 			this.scores[indexes[0]].matches[indexes[1]].scaledHigh = false;
 			this.scores[indexes[0]].matches[indexes[1]].scaledLow = true;
 		}
-	}					
+	}
+	
+	handleUpdateBreach(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].breach = !this.scores[indexes[0]].matches[indexes[1]].breach;
+	}
+	
+	handleUpdateCapture(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].capture = !this.scores[indexes[0]].matches[indexes[1]].capture;
+	}
+	
+	handleUpdatePerformance(performanceRating,team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].performanceRating = performanceRating;
+	}
+	
+	handleUpdateOffense(offenseRating,team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].offensiveRating = offenseRating;
+	}
+	
+	handleUpdateDefense(defenseRating,team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].defensiveRating = defenseRating;
+	}
+	
+	handleUpdateAuto(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].performedAuto = !this.scores[indexes[0]].matches[indexes[1]].performedAuto;
+	}
+	
+	handleUpdateChallenge(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].challenge = !this.scores[indexes[0]].matches[indexes[1]].challenge;
+	}
+	
+	handleUpdateSpy(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].spy = !this.scores[indexes[0]].matches[indexes[1]].spy;
+	}
+	
+	handleUpdateHumanPlayer(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].humanPlayer = !this.scores[indexes[0]].matches[indexes[1]].humanPlayer;
+	}
+	
+	handleUpdateVision(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].vision = !this.scores[indexes[0]].matches[indexes[1]].vision;
+	}
+	
+	handleUpdateBroken(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].broken = !this.scores[indexes[0]].matches[indexes[1]].broken;
+	}
+	
+	handleUpdateIncrementPortcullis(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.portcullis += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.portcullis += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.portcullis += 1;
+	}
+	
+	handleUpdateDecrementPortcullis(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.portcullis -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.portcullis -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.portcullis -= 1;
+	}
+	
+	handleUpdateIncrementChevalDeFrise(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.chevalDeFrise += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.chevalDeFrise += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.chevalDeFrise += 1;
+	}
+	
+	handleUpdateDecrementChevalDeFrise(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.chevalDeFrise -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.chevalDeFrise -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.chevalDeFrise -= 1;
+	}
+	
+	handleUpdateIncrementMoat(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.moat += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.moat += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.moat += 1;
+	}
+	
+	handleUpdateDecrementMoat(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.moat -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.moat -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.moat -= 1;
+	}
+	
+	handleUpdateIncrementRamparts(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.ramparts += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.ramparts += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.ramparts += 1;
+	}
+	
+	handleUpdateDecrementRamparts(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.ramparts -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.ramparts -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.ramparts -= 1;
+	}
+	
+	handleUpdateIncrementDrawbridge(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.drawbridge += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.drawbridge += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.drawbridge += 1;
+	}
+	
+	handleUpdateDecrementDrawbridge(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.drawbridge -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.drawbridge -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.drawbridge -= 1;
+	}
+	
+	handleUpdateIncrementSallyPort(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.sallyPort += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.sallyPort += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.sallyPort += 1;
+	}
+	
+	handleUpdateDecrementSallyPort(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.sallyPort -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.sallyPort -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.sallyPort -= 1;
+	}
+	
+	handleUpdateIncrementRockWall(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.rockWall += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.rockWall += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.rockWall += 1;
+	}
+	
+	handleUpdateDecrementRockWall(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.rockWall -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.rockWall -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.rockWall -= 1;
+	}
+	
+	handleUpdateIncrementRoughTerrain(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.roughTerrain += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.roughTerrain += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.roughTerrain += 1;
+	}
+	
+	handleUpdateDecrementRoughTerrain(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.roughTerrain -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.roughTerrain -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.roughTerrain -= 1;
+	}
+	
+	handleUpdateIncrementLowBar(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.lowBar += 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.lowBar += 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.lowBar += 1;
+	}
+	
+	handleUpdateDecrementLowBar(team,match){
+		var indexes = this.getIndexes(team,match);
+		this.scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.lowBar -= 1;
+		this.scores[indexes[0]].stats.teleop.defensesCrossed.lowBar -= 1;
+		this.scores[indexes[0]].stats.match.defensesCrossed.lowBar -= 1;
+	}
 }
-
-
 
 export default alt.createStore(ScoresStore, 'ScoresStore');

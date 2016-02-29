@@ -1,6 +1,6 @@
-var alt = require('../alt');
+import alt from '../../alt.js';
 
-class MatchAttributesActions{
+class MatchAttributesActions {
 	updateScale(team,match){
 		this.dispatch(team,match);
 	}
@@ -18,4 +18,4 @@ class MatchAttributesActions{
 	}
 }
 
-module.exports = alt.createActions(MatchAttributesActions);
+export default alt.createActions(MatchAttributesActions);

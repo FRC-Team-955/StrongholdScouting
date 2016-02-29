@@ -1,10 +1,12 @@
 'use strict';
 
 import React from 'react';
+import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
 import ChevronLeft from 'material-ui/lib/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/lib/svg-icons/navigation/chevron-right';
 import TextField from 'material-ui/lib/text-field';
+import Checkbox from 'material-ui/lib/checkbox';
 
 require('styles//scoring/Scoreunit.css');
 
@@ -52,9 +54,9 @@ const ScoreUnitComponent = React.createClass({
 	render() {
 		return (
 			<div>
-				<RaisedButton children = {<ChevronLeft/>} style = {leftStyle} onTouchTap = {this.props.decrementAction}/>
+				<RaisedButton children = {<ChevronLeft/>} style = {leftStyle} onTouchTap = {this.decrement}/>
 				<TextField style = {textStyle} floatingLabelText = {this.props.floatingLabelText} floatingLabelStyle = {floatingLabelStyle} value = {this.state.value}/>
-				<RaisedButton children = {<ChevronRight/>} style = {rightStyle} onTouchTap = {this.props.incrementAction}/>
+				<RaisedButton children = {<ChevronRight/>} style = {rightStyle} onTouchTap = {this.increment}/>
 			</div>
 		)
 	}
