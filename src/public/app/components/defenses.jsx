@@ -39,35 +39,35 @@ const defenseButtons = (
     <div className = "container-fluid">
         <div className = "row">
             <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "A1"/>}/>
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "A1: Portcullis"/>}/>
             </div>
             <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "A2"/>}/>
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "A2: Chival De Frise"/>}/>
             </div>
             <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "B1"/>}/>
-            </div>
-        </div>
-        <div className = "row">
-            <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "B2"/>}/>
-            </div>
-            <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "C1"/>}/>
-            </div>
-            <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "C2"/>}/>
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "B1: Moat"/>}/>
             </div>
         </div>
         <div className = "row">
             <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "D1"/>}/>
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "B2: Ramparts"/>}/>
             </div>
             <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "D2"/>}/>
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "C1: Drawbridge"/>}/>
             </div>
             <div className = "col-md-4">
-                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "E1"/>}/>
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "C2: Sally Port"/>}/>
+            </div>
+        </div>
+        <div className = "row">
+            <div className = "col-md-4">
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "D1: Rock Wall"/>}/>
+            </div>
+            <div className = "col-md-4">
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "D2: Rough Terrain"/>}/>
+            </div>
+            <div className = "col-md-4">
+                <Paper style = {defenseStyle} fullWidth=  {true} children = {<DefenseUnit floatingLabelText = "E1: Low Wall"/>}/>
             </div>
         </div>
     </div>

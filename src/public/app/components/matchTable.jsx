@@ -12,8 +12,8 @@ import TextField from 'material-ui/lib/text-field';
 
 const style = {
     action: {
-        marginTop: 250,
-        marginLeft: 1275
+        marginTop: 5,
+        marginLeft: 1225
     }
 }
 
@@ -68,6 +68,28 @@ const MatchTable = () => (
         <TableRowColumn>100</TableRowColumn>
       </TableRow>
       <TableRow>
+        <TableRowColumn>4</TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn>100</TableRowColumn>
+        <TableRowColumn>100</TableRowColumn>
+      </TableRow>
+	  <TableRow>
+        <TableRowColumn>4</TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn><TextField/></TableRowColumn>
+        <TableRowColumn>100</TableRowColumn>
+        <TableRowColumn>100</TableRowColumn>
+      </TableRow>
+	  <TableRow>
         <TableRowColumn>4</TableRowColumn>
         <TableRowColumn><TextField/></TableRowColumn>
         <TableRowColumn><TextField/></TableRowColumn>

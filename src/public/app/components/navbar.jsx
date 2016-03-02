@@ -28,7 +28,7 @@ const toggleStyle = {
 
 const toggleContainer = {
     width: "100%",
-	paddingTop: 20
+	paddingTop: 0
 }
 
 const tabContainer = {
@@ -47,7 +47,9 @@ const selectStyle = {
 	width: "100%"
 }
 
-
+const navStyle = {
+	position: "fixed"
+}
 
 const teams = (
     <div style = {tabContainer}>
@@ -128,6 +130,8 @@ const Navbar = React.createClass({
                   title="Scouting App v1.0"
                   iconElementRight = {teams}
                   onLeftIconButtonTouchTap = {this.toggle}
+				  style = {navStyle}
+				  
               />
               <LeftNav
                   docked={false}

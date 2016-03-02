@@ -16,11 +16,11 @@ body {
     margin-top: 15px;
 }
 
-#matchScoring, #matchTable {margin: 0; height: 100%; overflow: hidden}
+#matchScoring, #matchTable {margin: 0; height: 100%; overflow: hidden; padding-top: 60px;}
 
 #matchTable {display: none;}
 
-#analysisPreview {display: none;}
+#analysisPreview {display: none; padding-top: 60px;}
 
-#allianceSelection {display: none;}
+#allianceSelection {display: none; padding-top: 60px;}
 
