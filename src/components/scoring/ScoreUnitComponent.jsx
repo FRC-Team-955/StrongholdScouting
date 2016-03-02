@@ -60,6 +60,6 @@ const ScoreUnitComponent = React.createClass({
 			</div>
 		)
 	}
-})
+});
 
 export default ScoreUnitComponent;

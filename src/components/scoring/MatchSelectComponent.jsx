@@ -26,6 +26,6 @@ const MatchSelectComponent = React.createClass({
 			<SelectField style = {selectStyle} value = {this.state.value} onChange = {this.change}><MenuItem  primaryText = "#1" value = {1}/><MenuItem  primaryText = "#2" value = {2}/></SelectField>
 		)
 	}
-})
+});
 
 export default MatchSelectComponent;

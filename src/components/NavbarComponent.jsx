@@ -17,34 +17,35 @@ import AutoComplete from 'material-ui/lib/auto-complete';
 import ScheduleComponent from './match/ScheduleComponent';
 import ScoringMainComponent from './scoring/ScoringMainComponent';
 import MatchSelectComponent from './scoring/MatchSelectComponent';
+import SaveButtonComponent from './SaveButtonComponent';
 
 require('styles//Navbar.css');
 
 const toggleStyle = {
     marginLeft: 100,
-    marginRight: 175
+    marginRight: 175,
 }
 
 const toggleContainer = {
-    width: "100%"
+    width: "100%",
+	paddingTop: 20
 }
 
 const tabContainer = {
-    width: 1050
+    width: 1050,
 }
 
 const tabsStyle = {
     width: "100%"
 }
 
-const selectStyle = {
-	width: "100%"
-}
-
 const teamData = [
     'Apple'
 ]
 
+const selectStyle = {
+	width: "100%"
+}
 
 const teams = (
     <div style = {tabContainer}>
@@ -69,6 +70,7 @@ const teams = (
                 label = {<MatchSelectComponent/>
 				} 
             />
+			<SaveButtonComponent/>
         </Tabs>
     </div>
   )
@@ -78,12 +80,14 @@ const NavbarComponent = React.createClass({
         document.getElementById('matchScoring').style.display = "block";
         document.getElementById('matchTable').style.display = "none";
 		document.getElementById('analysisPreview').style.display = "none";
+		// document.getElementById('allianceSelection').style.display = "none";
         this.setState({open: false})
     },
     switchToMatchTable: function(){
         document.getElementById('matchScoring').style.display = "none";
         document.getElementById('matchTable').style.display = "block";
 		document.getElementById('analysisPreview').style.display = "none";
+		// document.getElementById('allianceSelection').style.display = "none";
         this.setState({open: false})
     },
 	
@@ -91,9 +95,10 @@ const NavbarComponent = React.createClass({
 		document.getElementById('matchScoring').style.display = "none";
         document.getElementById('matchTable').style.display = "none";
 		document.getElementById('analysisPreview').style.display = "block";
+		// document.getElementById('allianceSelection').style.display = "none";
         this.setState({open: false})
 	},
-    
+	
     toggle: function(){
         this.setState({
             open: !this.state.open
@@ -121,7 +126,7 @@ const NavbarComponent = React.createClass({
                   <MenuItem onTouchTap = {this.switchToMatchScoring}>Home</MenuItem>
                   <MenuItem onTouchTap = {this.switchToMatchTable}>Match List</MenuItem>
                   <MenuItem onTouchTap = {this.switchToAnalysisPreview}>Team Archive</MenuItem>
-                  <MenuItem onTouchTap = {this.handleClose}>Pit Scouting</MenuItem>
+                //   <MenuItem onTouchTap = {this.switchToAllianceSelection}>Alliance Selection</MenuItem>
                   <MenuItem>
                         <AutoComplete
                             floatingLabelText = "Search for teams"
@@ -132,7 +137,7 @@ const NavbarComponent = React.createClass({
               </LeftNav>
           </div>
       );
-	}
+  }
 });
 
 export default NavbarComponent;

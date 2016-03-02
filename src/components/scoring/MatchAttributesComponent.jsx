@@ -80,6 +80,6 @@ const MatchAttributesComponent = React.createClass ({
     		</div>
 		)
 	}
-})
+});
 
 export default MatchAttributesComponent;

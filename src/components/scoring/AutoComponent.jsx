@@ -111,6 +111,6 @@ const AutoComponent = React.createClass ({
     		</div>
 		)
 	}
-})
+});
 
 export default AutoComponent;

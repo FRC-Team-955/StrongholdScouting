@@ -67,6 +67,6 @@ const DefensesUnitComponent = React.createClass({
 			</div>
 		)
 	}
-})
+});
 
 export default DefensesUnitComponent;
