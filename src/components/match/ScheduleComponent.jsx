@@ -11,6 +11,8 @@ import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import TextField from 'material-ui/lib/text-field';
 
+var ScheduleComponent = require('../actions/ScheduleComponent');
+
 require('styles//match/Schedule.css');
 
 const style = {
@@ -83,7 +85,7 @@ const ScheduleComponent = () => (
       </TableRow>
     </TableBody>
   </Table>
-  <FloatingActionButton style = {style.action}>
+  <FloatingActionButton style = {style.action} onTouchEnd = {ScheduleComponent.updateSchedule}>
     <ContentAdd/>
     </FloatingActionButton>
     </div>
