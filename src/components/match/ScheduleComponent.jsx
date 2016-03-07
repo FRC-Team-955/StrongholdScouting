@@ -10,8 +10,9 @@ import TableBody from 'material-ui/lib/table/table-body';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import TextField from 'material-ui/lib/text-field';
+import MatchStore from '../../stores/match/MatchStore';
+import ScheduleActions from '../../actions/match/ScheduleActions';
 
-var ScheduleComponent = require('../actions/ScheduleComponent');
 
 require('styles//match/Schedule.css');
 
@@ -22,70 +23,61 @@ const style = {
     }
 }
 
-const ScheduleComponent = () => (
+var matchTable = [];
+
+const tableRow = (rowColumn,blueAlliance,redAlliance,blueScore,redScore) =>{
+	return(
+		<div>
+			<TableRow>
+        		<TableRowColumn>{rowColumn}</TableRowColumn>
+        		<TableRowColumn><TextField value = {blueAlliance[0]}/></TableRowColumn>
+        		<TableRowColumn><TextField value = {blueAlliance[1]}/></TableRowColumn>
+        		<TableRowColumn><TextField value = {blueAlliance[2]}/></TableRowColumn>
+        		<TableRowColumn><TextField value = {redAlliance[0]}/></TableRowColumn>
+        		<TableRowColumn><TextField value = {redAlliance[1]}/></TableRowColumn>
+        		<TableRowColumn><TextField value = {redAlliance[2]}/></TableRowColumn>
+        		<TableRowColumn>{blueScore}</TableRowColumn>
+        		<TableRowColumn>{redScore}</TableRowColumn>
+      		</TableRow>
+		</div>
+	)
+}
+
+const updateTable = () =>{
+	matchTable = [];
+	for(var i = 0; i < MatchStore.matches.length; i++){
+		matchTable.push(tableRow(i+1,
+								MatchStore.matches[i].matchTeams.alliance.blue,
+								MatchStore.matches[i].matchTeams.alliance.red,
+								MatchStore.matches[i].matchScore.alliance.blue,
+								MatchStore.matches[i].matchScore.alliance.red
+								));
+	}
+	
+	return matchTable;
+}
+
+const ScheduleComponent = () =>(
     <div className = "col-md-12 spacing">
     <Table selectable = {false}>
     <TableHeader displaySelectAll = {false}>
       <TableRow>
         <TableHeaderColumn>#</TableHeaderColumn>
-        <TableHeaderColumn>Red 1</TableHeaderColumn>
-        <TableHeaderColumn>Red 2</TableHeaderColumn>
-        <TableHeaderColumn>Red 3</TableHeaderColumn>
         <TableHeaderColumn>Blue 1</TableHeaderColumn>
         <TableHeaderColumn>Blue 2</TableHeaderColumn>
         <TableHeaderColumn>Blue 3</TableHeaderColumn>
-        <TableHeaderColumn>Red Score</TableHeaderColumn>
+        <TableHeaderColumn>Red 1</TableHeaderColumn>
+        <TableHeaderColumn>Red 2</TableHeaderColumn>
+        <TableHeaderColumn>Red 3</TableHeaderColumn>
         <TableHeaderColumn>Blue Score</TableHeaderColumn>
+        <TableHeaderColumn>Red Score</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody displayRowCheckbox = {false}>
-      <TableRow>
-        <TableRowColumn>1</TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-      </TableRow>
-      <TableRow>
-        <TableRowColumn>2</TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-      </TableRow>
-      <TableRow>
-        <TableRowColumn>3</TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-      </TableRow>
-      <TableRow>
-        <TableRowColumn>4</TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn><TextField/></TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-        <TableRowColumn>100</TableRowColumn>
-      </TableRow>
+    	{matchTable}
     </TableBody>
   </Table>
-  <FloatingActionButton style = {style.action} onTouchEnd = {ScheduleComponent.updateSchedule}>
+  <FloatingActionButton style = {style.action} onTouchEnd = {ScheduleActions.updateSchedule}>
     <ContentAdd/>
     </FloatingActionButton>
     </div>

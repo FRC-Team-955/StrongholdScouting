@@ -7,5 +7,10 @@ module.exports =
 				"red" : [997,1671,1]
 			}
 		},
-	"matchScore" : 0
+	"matchScore" : {
+		"alliance" : {
+			"blue" : 0,
+			"red" : 0
+		}
+	}
 };

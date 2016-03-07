@@ -133,7 +133,6 @@ if(teamList.length < 3){
 			))
 		}
 }
-		
 
 const TeamListComponent = () => (
 		<div>{teamArchive}</div>
