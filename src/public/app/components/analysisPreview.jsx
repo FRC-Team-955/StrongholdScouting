@@ -7,6 +7,11 @@ import CardMedia from 'material-ui/lib/card/card-media';
 import CardTitle from 'material-ui/lib/card/card-title';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import Tabs from 'material-ui/lib/tabs/tabs';
+import Tab from 'material-ui/lib/tabs/tab';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import ModalThemeComponent from './ModalThemeComponent';
+import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
 const dialogText = {
 	width: "60%",
@@ -15,132 +20,312 @@ const dialogText = {
 	maxHeight: 'none'
 }
 
-
+const textRow = {
+	marginTop: 15
+}
 
 const statText = {
 	fontSize: 15,
-	color: "white"
+	color: "white",
+	padding: 0
 }
+
 
 const statSpacing = {
 	marginTop: 20
 }
 
+const modal = {
+	overflow: "scroll"
+}
+
 const stats = (
-	<div className = "container-fluid" style = {statText}>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
+	<Tabs>
+		<Tab label = "General">
+			<div className = "container-fluid">
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Performance Rating Average:
+					</div>
+					<div className = "col-md-4">
+						2.2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Offense Rating Average:
+					</div>
+					<div className = "col-md-4">
+						2.2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Defense Rating Average:
+					</div>
+					<div className = "col-md-4">
+						2.2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Offense Rank:
+					</div>
+					<div className = "col-md-4">
+						#4
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Defense Rank:
+					</div>
+					<div className = "col-md-4">
+						#1
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						W/L:
+					</div>
+					<div className = "col-md-4">
+						0/88
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Breach Percentage:
+					</div>
+					<div className = "col-md-4">
+						2%
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Capture Percentage:
+					</div>
+					<div className = "col-md-4">
+						99%
+					</div>
+				</div>
 			</div>
-			<div className = "col-md-4">
-				5
+		</Tab>
+		<Tab label = "Auto">
+			<div className = "container-fluid">
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Defense Crossed:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total High Goals:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Low Goals:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Defense Reached:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Best Auto Defense:
+					</div>
+					<div className = "col-md-4">
+						Portcullis
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						How Many Defenses:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
 			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
+		</Tab>
+		<Tab label = "Goals">
+			<div className = "container-fluid">
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						High Goal Ratio:
+					</div>
+					<div className = "col-md-4">
+						6:100
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						High Goal Percentage:
+					</div>
+					<div className = "col-md-4">
+						6%
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Low Goal Ratio:
+					</div>
+					<div className = "col-md-4">
+						2:100
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Low Goal Percentage:
+					</div>
+					<div className = "col-md-4">
+						2%
+					</div>
+				</div>
 			</div>
-			<div className = "col-md-4">
-				5
+		</Tab>
+		<Tab label = "Defense">
+			<div className = "container-fluid">
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Portcullis:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Chival De Frise:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Moat:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Ramparts:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Drawbridge:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Sally Port:
+					</div>
+					<div className = "col-md-4">
+						0
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Rock Wall:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Rough Terrain:
+					</div>
+					<div className = "col-md-4">
+						99
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Low Wall:
+					</div>
+					<div className = "col-md-4">
+						99
+					</div>
+				</div>
 			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
+		</Tab>
+		<Tab label = "Attributes">
+			<div className = "container-fluid">
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Vision:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Broken:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Spy:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Human Player:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Challenge:
+					</div>
+					<div className = "col-md-4">
+						2
+					</div>
+				</div>
+				<div className = "row" style = {textRow}>
+					<div className = "col-md-8">
+						Total Auto:
+					</div>
+					<div className = "col-md-4">
+						0
+					</div>
+				</div>
 			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				High Accuracy:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				Low Accuracy:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				Total Defenses Crossed:
-			</div>
-			<div className = "col-md-4">
-				5
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				Worst A Defense:
-			</div>
-			<div className = "col-md-4">
-				Portcullis
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				Worst B Defense:
-			</div>
-			<div className = "col-md-4">
-				Moat
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				Worst C Defense:
-			</div>
-			<div className = "col-md-4">
-				Sally Port
-			</div>
-		</div>
-		<div className = "row" style = {statSpacing}>
-			<div className = "col-md-8">
-				Worst D Defense:
-			</div>
-			<div className = "col-md-4">
-				Rough Terrain
-			</div>
-		</div>
-	</div>
+		</Tab>
+	</Tabs>
 )
 
 const image = (
@@ -162,6 +347,15 @@ const actionStyle = {
 const teamList = [955];
 var numbRows = (teamList.length-(teamList.length % 3))/3;
 const AnalysisPreview = React.createClass({
+childContextTypes: {
+    	muiTheme: React.PropTypes.object
+  	},
+
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(ModalThemeComponent),
+    };
+  },
 getInitialState: function(){
 		return {
 			open: false,
@@ -198,7 +392,7 @@ render(){
 						  children = {
 								<div style = {statText}>
 											<Card>
-												<CardMedia overlay={<CardTitle title = {teamList[0+(3 *team)]} children={stats} />} overlayContentStyle = {overlayHeight}>
+												<CardMedia overlay={<CardTitle children={stats} />} overlayContentStyle = {overlayHeight}>
 													<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 												</CardMedia>
 											</Card>
@@ -243,7 +437,7 @@ render(){
 						  children = {
 								<div style = {statText}>
 											<Card>
-												<CardMedia overlay={<CardTitle title = {teamList[0+(3 *team)]} children={stats} />} overlayContentStyle = {overlayHeight}>
+												<CardMedia style = {modal} overlay={<CardTitle title = {teamList[0+(3 *team)]} children={stats} />} overlayContentStyle = {overlayHeight}>
 													<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 												</CardMedia>
 											</Card>

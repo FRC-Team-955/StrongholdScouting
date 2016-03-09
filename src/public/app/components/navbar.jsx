@@ -1,7 +1,6 @@
 /** In this file, we create a React component which incorporates components provided by material-ui */
 
 import React from 'react';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import LightRawTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme';
 import Colors from 'material-ui/lib/styles/colors';
 import AppBar from 'material-ui/lib/app-bar';
@@ -17,6 +16,9 @@ import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import MatchSelect from './matchSelect';
 import Save from './SaveButtonComponent';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import ModalThemeComponent from './ModalThemeComponent';
+import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
 
 
@@ -80,7 +82,16 @@ const teams = (
   )
 
 const Navbar = React.createClass({
-    switchToMatchScoring: function(){
+    childContextTypes: {
+    	muiTheme: React.PropTypes.object
+  	},
+
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(ModalThemeComponent),
+    };
+  },
+  switchToMatchScoring: function(){
         document.getElementById('matchScoring').style.display = "block";
         document.getElementById('matchTable').style.display = "none";
 		document.getElementById('analysisPreview').style.display = "none";
