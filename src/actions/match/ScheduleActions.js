@@ -1,10 +1,10 @@
-import alt from '../../alt.js';
+var alt = require('../../components/Dispatcher');
 
 class ScheduleActions {
 	updateSchedule(){
 		console.log("dispatched");
-		this.dispatch();
+		return 5;
 	}
 }
 
-export default alt.createActions(ScheduleActions);
+module.exports = alt.createActions(ScheduleActions);

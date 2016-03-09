@@ -4,7 +4,7 @@
 'use strict';
 
 import alt from 'components/Dispatcher';
-import { MatchStore } from 'stores/match/MatchStore';
+import { MatchStore } from 'stores//match/MatchStore';
 import AltTestingUtils from 'alt-utils/lib/AltTestingUtils';
 
 describe('MatchStore', () => {

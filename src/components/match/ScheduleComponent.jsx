@@ -43,44 +43,72 @@ const tableRow = (rowColumn,blueAlliance,redAlliance,blueScore,redScore) =>{
 	)
 }
 
-const updateTable = () =>{
-	matchTable = [];
-	for(var i = 0; i < MatchStore.matches.length; i++){
-		matchTable.push(tableRow(i+1,
-								MatchStore.matches[i].matchTeams.alliance.blue,
-								MatchStore.matches[i].matchTeams.alliance.red,
-								MatchStore.matches[i].matchScore.alliance.blue,
-								MatchStore.matches[i].matchScore.alliance.red
-								));
-	}
+const ScheduleComponent = React.createClass({
 	
-	return matchTable;
-}
-
-const ScheduleComponent = () =>(
-    <div className = "col-md-12 spacing">
-    <Table selectable = {false}>
-    <TableHeader displaySelectAll = {false}>
-      <TableRow>
-        <TableHeaderColumn>#</TableHeaderColumn>
-        <TableHeaderColumn>Blue 1</TableHeaderColumn>
-        <TableHeaderColumn>Blue 2</TableHeaderColumn>
-        <TableHeaderColumn>Blue 3</TableHeaderColumn>
-        <TableHeaderColumn>Red 1</TableHeaderColumn>
-        <TableHeaderColumn>Red 2</TableHeaderColumn>
-        <TableHeaderColumn>Red 3</TableHeaderColumn>
-        <TableHeaderColumn>Blue Score</TableHeaderColumn>
-        <TableHeaderColumn>Red Score</TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody displayRowCheckbox = {false}>
-    	{matchTable}
-    </TableBody>
-  </Table>
-  <FloatingActionButton style = {style.action} onTouchEnd = {ScheduleActions.updateSchedule}>
-    <ContentAdd/>
-    </FloatingActionButton>
-    </div>
-)
+	updateTable(){
+		matchTable = [];
+		for(var i = 0; i < MatchStore.matches.length; i++){
+			matchTable.push(this.getTableRow(i+1,
+									MatchStore.matches[i].matchTeams.alliance.blue,
+									MatchStore.matches[i].matchTeams.alliance.red,
+									MatchStore.matches[i].matchScore.alliance.blue,
+									MatchStore.matches[i].matchScore.alliance.red
+									));
+		}
+		
+		return matchTable;
+	},
+	
+	onTap(){
+		ScheduleActions.updateSchedule();
+	},
+	
+	getTableRow(rowColumn,blueAlliance,redAlliance,blueScore,redScore){
+		return(
+			<div>
+				<TableRow>
+					<TableRowColumn>{rowColumn}</TableRowColumn>
+					<TableRowColumn><TextField value = {blueAlliance[0]}/></TableRowColumn>
+					<TableRowColumn><TextField value = {blueAlliance[1]}/></TableRowColumn>
+					<TableRowColumn><TextField value = {blueAlliance[2]}/></TableRowColumn>
+					<TableRowColumn><TextField value = {redAlliance[0]}/></TableRowColumn>
+					<TableRowColumn><TextField value = {redAlliance[1]}/></TableRowColumn>
+					<TableRowColumn><TextField value = {redAlliance[2]}/></TableRowColumn>
+					<TableRowColumn>{blueScore}</TableRowColumn>
+					<TableRowColumn>{redScore}</TableRowColumn>
+				</TableRow>
+			</div>
+		)
+	},
+	
+	render(){
+		return(
+			<div className = "col-md-12 spacing">
+				<Table selectable = {false}>
+					<TableHeader displaySelectAll = {false}>
+						<TableRow>
+							<TableHeaderColumn>#</TableHeaderColumn>
+							<TableHeaderColumn>Blue 1</TableHeaderColumn>
+							<TableHeaderColumn>Blue 2</TableHeaderColumn>
+							<TableHeaderColumn>Blue 3</TableHeaderColumn>
+							<TableHeaderColumn>Red 1</TableHeaderColumn>
+							<TableHeaderColumn>Red 2</TableHeaderColumn>
+							<TableHeaderColumn>Red 3</TableHeaderColumn>
+							<TableHeaderColumn>Blue Score</TableHeaderColumn>
+							<TableHeaderColumn>Red Score</TableHeaderColumn>
+						</TableRow>
+					</TableHeader>
+					<TableBody displayRowCheckbox = {false}>
+						{matchTable}
+					</TableBody>
+				</Table>
+				
+				<FloatingActionButton style = {style.action} onTouchTap = {this.onTap}>
+					<ContentAdd/>
+				</FloatingActionButton>
+			</div>
+		)
+	}
+});
 
 export default ScheduleComponent;
