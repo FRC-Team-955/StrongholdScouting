@@ -333,7 +333,8 @@ const image = (
 )
 
 const overlayHeight = {
-	height: "100%"
+	height: "100%",
+	padding: 0
 }
 
 const dark = {
@@ -342,6 +343,10 @@ const dark = {
 
 const actionStyle = {
 	margin: 0
+}
+
+const pad = {
+	padding: 0
 }
 
 const teamList = [955];
@@ -392,14 +397,12 @@ render(){
 						  children = {
 								<div style = {statText}>
 											<Card>
-												<CardMedia overlay={<CardTitle children={stats} />} overlayContentStyle = {overlayHeight}>
+												<CardMedia overlay={<CardTitle children={stats} style = {pad}/>} style = {pad} overlayContentStyle = {overlayHeight}>
 													<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 												</CardMedia>
 											</Card>
 								</div>
 						  }
-						  overlay = {image}
-						  overlayStyle = {dark}
 						  actionsContainerStyle = {actionStyle}
     	    			>
     	    			  

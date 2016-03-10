@@ -17,16 +17,10 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import MatchSelect from './matchSelect';
 import Save from './SaveButtonComponent';
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import ModalThemeComponent from './ModalThemeComponent';
+import RedAllianceThemeComponent from './RedAllianceThemeComponent';
+import BlueAllianceThemeComponent from './BlueAllianceThemeComponent';
 import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
-
-
-
-const toggleStyle = {
-    marginLeft: 100,
-    marginRight: 175,
-}
 
 const toggleContainer = {
     width: "100%",
@@ -37,59 +31,58 @@ const tabContainer = {
     width: 1050,
 }
 
+const tab = {
+	width: 175,
+	padding: 0
+}
+
 const tabsStyle = {
-    width: "100%"
+    width: "100%",
+	marginTop: 0,
+	height: "100%"
 }
 
 const teamData = [
     'Apple'
 ]
 
+const toggleStyle = {
+    marginLeft: 50,
+    marginRight: 175, 
+	marginTop: 15
+}
+
+const tabStyle = {
+	paddingBottom: 20
+}
+
 const selectStyle = {
 	width: "100%"
 }
 
 const navStyle = {
-	position: "fixed"
+	position: "fixed",
+	paddingTop: 0,
+	paddingRight: 0
 }
 
-const teams = (
-    <div style = {tabContainer}>
-        <Tabs style = {tabsStyle}>
-            <Tab 
-                label = "Team 1"
-                // style = {tabStyle}
-            />
-            <Tab 
-                label = "Team 2"
-                // style = {tabStyle}
-            />
-            <Tab 
-                label = "Team 3"
-                // style = {tabStyle}
-            />
-            <Tab 
-                selected = {false}
-                label = {<Toggle iconStyle = {toggleStyle} />}
-            />
-            <Tab
-                label = {<MatchSelect/>
-				} 
-            />
-			<Save/>
-        </Tabs>
-    </div>
-  )
+const navMargin = {
+	margin: 0
+}
+
 
 const Navbar = React.createClass({
-    childContextTypes: {
+	childContextTypes: {
     	muiTheme: React.PropTypes.object
   	},
 
-  getChildContext: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(ModalThemeComponent),
-    };
+  	getChildContext: function() {
+      if(this.state.theme){
+	  	return{muiTheme: ThemeManager.getMuiTheme(RedAllianceThemeComponent)}
+	  }
+	  else{
+		return{muiTheme: ThemeManager.getMuiTheme(BlueAllianceThemeComponent)}
+	  }
   },
   switchToMatchScoring: function(){
         document.getElementById('matchScoring').style.display = "block";
@@ -131,17 +124,45 @@ const Navbar = React.createClass({
     handleClose: function(){ this.setState({open: false})},
     getInitialState: function(){
         return{
-            open: false
+            open: false,
+			theme: true
         }
     },
+	handleTheme: function(){
+		this.setState({theme: !this.state.theme});
+	},
     render: function(){
       return (
           <div>
               <AppBar
                   title="Scouting App v1.0"
-                  iconElementRight = {teams}
+                  iconElementRight = {
+					  <div style = {tabContainer}>
+        				<Tabs style = {tabsStyle}>
+        				    <Tab 
+        				        label = "Team 1"
+        				    />
+        				    <Tab 
+        				        label = "Team 2"
+        				        // style = {tabStyle}
+        				    />
+        				    <Tab 
+        				        label = "Team 3"
+        				        // style = {tabStyle}
+        				    />
+        				   <Tab  style = {tab} label={<div>
+								<Toggle style = {toggleStyle} onToggle = {this.handleTheme}/>					
+							</div>}/>
+        				    <Tab
+        				        label = {<MatchSelect/>
+								} 
+        				    />
+							<Save/>
+        				</Tabs>
+    				</div>}
                   onLeftIconButtonTouchTap = {this.toggle}
 				  style = {navStyle}
+				  iconStyleRight = {navMargin}
 				  
               />
               <LeftNav
