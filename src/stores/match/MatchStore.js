@@ -1,4 +1,5 @@
 var ScheduleActions = require('../../actions/match/ScheduleActions');
+var TextFieldActions = require('../../actions/match/TextFieldActions');
 
 var MatchData = require('./MatchData');
 
@@ -12,7 +13,8 @@ export class MatchStore {
  	constructor() {
 	  this.matches = [];
 	  this.bindListeners({
-		  handleUpdateSchedule : ScheduleActions.UPDATE_SCHEDULE
+		  handleUpdateSchedule : ScheduleActions.UPDATE_SCHEDULE,
+          handleUpdateValue : TextFieldActions.UPDATE_VALUE
 	  })
  	}
 	
@@ -68,38 +70,85 @@ export class MatchStore {
 		})
 	} 
   
- 	handleUpdateSchedule(){
-		var tbaMatches = this.getTBAMatches();
-		tbaMatches.then((tba) =>{
-			var tbaResponse = JSON.parse("[" + tba + "]");
-			console.log(tbaResponse.length);
-			for(var i = 1; i < tbaResponse.length; i++){
-				console.log(i + "i");
-				for(var element in tbaResponse){
-					console.log(element);
-					if(element.comp_level === "qm" && element.match_number === i){
-						var data = MatchData;
-						this.getTeamNum(element.alliances.blue,element.alliances.red).then((teamNums) =>{
-							data.matchTeams.alliance.blue = teamNums[0];
-							data.matchTeams.alliance.red = teamNums[1];
-							this.matches.push(data);
-							console.log(this.matches+ " first");
-						},
+ 	// handleUpdateSchedule(){
+	// 	var tbaMatches = this.getTBAMatches();
+	// 	tbaMatches.then((tba) =>{
+	// 		var tbaResponse = JSON.parse("[" + tba + "]");
+	// 		console.log(tbaResponse.length);
+	// 		for(var i = 1; i < tbaResponse.length; i++){
+	// 			console.log(i + "i");
+	// 			for(var element in tbaResponse){
+	// 				console.log(element);
+	// 				if(element.comp_level === "qm" && element.match_number === i){
+	// 					var data = MatchData;
+	// 					this.getTeamNum(element.alliances.blue,element.alliances.red).then((teamNums) =>{
+	// 						data.matchTeams.alliance.blue = teamNums[0];
+	// 						data.matchTeams.alliance.red = teamNums[1];
+	// 						this.matches.push(data);
+	// 						console.log(this.matches+ " first");
+	// 					},
 						
-						(error) =>{
-							console.log("error");
-						})
-					}
-				}
-			}
-		},
+	// 					(error) =>{
+	// 						console.log("error");
+	// 					})
+	// 				}
+	// 			}
+	// 		}
+	// 	},
 		
-		(error) =>{
-			console.log("error");
-		})
+	// 	(error) =>{
+	// 		console.log("error");
+	// 	})
 		
-		console.log(this.matches + " last");
-	}
+	// 	console.log(this.matches + " last");
+	// }
+    
+    handleUpdateSchedule(matchNum){
+        this.matches.push(MatchData);
+        // console.log(this.matches.length);
+        // for(var i = 0; i < this.matches.length; i++){
+            // console.log(JSON.stringify(this.matches[i]) + " Matches");
+        // }
+    }
+    
+    handleUpdateValue(data){
+        console.log("reached store");
+        console.log(data[0] + " match");
+        console.log(data[1] + " key");
+        console.log(data[0] + " value");
+        
+        if(data[1] === "b1"){
+            this.matches[data[0]-1].matchTeams.alliance.blue[0] = data[2];
+        }
+        
+        else if(data[1] === "b2"){
+            this.matches[data[0]-1].matchTeams.alliance.blue[1] = data[2];
+        }
+        
+        else if(data[1] === "b3"){
+            this.matches[data[0]-1].matchTeams.alliance.blue[2] = data[2];
+        }
+        
+        else if(data[1] === "r1"){
+            this.matches[data[0]-1].matchTeams.alliance.red[0] = data[2];
+        }
+        
+        else if(data[1] === "r2"){
+            this.matches[data[0]-1].matchTeams.alliance.red[1] = data[2];
+        }
+        
+        else if(data[1] === "r3"){
+            this.matches[data[0]-1].matchTeams.alliance.red[2] = data[2];
+        }
+            
+        else if(data[1] === "bs"){
+            this.matches[data[0]-1].matchScore.alliance.blue = data[2];
+        }
+        
+        else if(data[1] === "rs"){
+            this.matches[data[0]-1].matchScore.alliance.red = data[2];
+        }
+    }
 }
 
 export default alt.createStore(MatchStore, 'MatchStore');

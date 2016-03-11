@@ -12,6 +12,7 @@ import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import TextField from 'material-ui/lib/text-field';
 import MatchStore from '../../stores/match/MatchStore';
 import ScheduleActions from '../../actions/match/ScheduleActions';
+import TextFieldComponent from './TextFieldComponent';
 
 
 require('styles//match/Schedule.css');
@@ -45,22 +46,42 @@ const tableRow = (rowColumn,blueAlliance,redAlliance,blueScore,redScore) =>{
 
 const ScheduleComponent = React.createClass({
 	
-	updateTable(){
-		matchTable = [];
-		for(var i = 0; i < MatchStore.matches.length; i++){
-			matchTable.push(this.getTableRow(i+1,
-									MatchStore.matches[i].matchTeams.alliance.blue,
-									MatchStore.matches[i].matchTeams.alliance.red,
-									MatchStore.matches[i].matchScore.alliance.blue,
-									MatchStore.matches[i].matchScore.alliance.red
-									));
+    getInitialState() {
+		return {
+			table : []
 		}
-		
-		return matchTable;
 	},
-	
-	onTap(){
-		ScheduleActions.updateSchedule();
+    
+    handleChange(event){
+        this.setState({
+            value: event.target.value
+        });
+    },
+    
+	updateTable(){     
+        var matchNumber = this.state.table.length +1;
+        
+        matchTable.push(
+            <TableRow>
+					<TableRowColumn><TextFieldComponent textValue = {matchNumber}/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b1"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b2"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b3"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r1"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r2"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r3"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "bs"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "rs"/></TableRowColumn>
+           </TableRow>
+         );
+        
+        ScheduleActions.updateSchedule();
+        
+		this.setState({
+			table: matchTable
+		})
+        
+        // console.log(this.state.table[0].length);
 	},
 	
 	getTableRow(rowColumn,blueAlliance,redAlliance,blueScore,redScore){
@@ -99,11 +120,11 @@ const ScheduleComponent = React.createClass({
 						</TableRow>
 					</TableHeader>
 					<TableBody displayRowCheckbox = {false}>
-						{matchTable}
+						{this.state.table}
 					</TableBody>
 				</Table>
 				
-				<FloatingActionButton style = {style.action} onTouchTap = {this.onTap}>
+				<FloatingActionButton style = {style.action} onTouchTap = {this.updateTable}>
 					<ContentAdd/>
 				</FloatingActionButton>
 			</div>
