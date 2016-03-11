@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="main.css">
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="chartist.min.css">
 </head>
 
 <body>
@@ -27,6 +28,9 @@
     <div class = "container-fluid" id = "analysisPreview">
         
     </div>
+	
+	<div class = "ct-chart ct-perfect-fourth" id = "graphDisplay">
+	</div>
 	
 	<div class = "container-fluid" id = "allianceSelection">
 		
@@ -49,6 +53,28 @@
     })();
   </script>
   <script src="app.js"></script>
+  <script src="chartist.min.js"></script>
+  <script>
+       new Chartist.Bar('.ct-chart', {
+		  labels: ['Team #1', 'Team #2', 'Team #3', 'Team #4'],
+		  series: [
+		    [800000, 1200000, 1400000, 1300000],
+		    [200000, 400000, 500000, 300000],
+		    [100000, 200000, 400000, 600000]
+		  ]
+		}, {
+		  stackBars: true,
+		  horizontalBars: true,
+		}).on('draw', function(data) {
+		  if(data.type === 'bar') {
+		    data.element.attr({
+		      style: 'stroke-width: 30px'
+		    });
+		  }
+		});
+
+
+     </script>
 </body>
 
 </html>

@@ -89,6 +89,7 @@ const Navbar = React.createClass({
         document.getElementById('matchTable').style.display = "none";
 		document.getElementById('analysisPreview').style.display = "none";
 		document.getElementById('allianceSelection').style.display = "none";
+		document.getElementById('graphDisplay').style.display = "none";
         this.setState({open: false})
     },
     switchToMatchTable: function(){
@@ -96,6 +97,7 @@ const Navbar = React.createClass({
         document.getElementById('matchTable').style.display = "block";
 		document.getElementById('analysisPreview').style.display = "none";
 		document.getElementById('allianceSelection').style.display = "none";
+		document.getElementById('graphDisplay').style.display = "none";
         this.setState({open: false})
     },
 	
@@ -104,6 +106,7 @@ const Navbar = React.createClass({
         document.getElementById('matchTable').style.display = "none";
 		document.getElementById('analysisPreview').style.display = "block";
 		document.getElementById('allianceSelection').style.display = "none";
+		document.getElementById('graphDisplay').style.display = "none";
         this.setState({open: false})
 	},
 	
@@ -112,7 +115,16 @@ const Navbar = React.createClass({
         document.getElementById('matchTable').style.display = "none";
 		document.getElementById('analysisPreview').style.display = "none";
 		document.getElementById('allianceSelection').style.display = "block";
-		
+		document.getElementById('graphDisplay').style.display = "none";
+        this.setState({open: false})
+	},
+	
+	switchToGraphs: function(){
+		document.getElementById('matchScoring').style.display = "none";
+        document.getElementById('matchTable').style.display = "none";
+		document.getElementById('analysisPreview').style.display = "none";
+		document.getElementById('allianceSelection').style.display = "none";
+		document.getElementById('graphDisplay').style.display = "block";
         this.setState({open: false})
 	},
 	
@@ -173,6 +185,7 @@ const Navbar = React.createClass({
                   <MenuItem onTouchTap = {this.switchToMatchScoring}>Home</MenuItem>
                   <MenuItem onTouchTap = {this.switchToMatchTable}>Match List</MenuItem>
                   <MenuItem onTouchTap = {this.switchToAnalysisPreview}>Team Archive</MenuItem>
+				  <MenuItem onTouchTap = {this.switchToGraphs}>Stat Analytics</MenuItem>
                   <MenuItem onTouchTap = {this.switchToAllianceSelection}>Alliance Selection</MenuItem>
                   <MenuItem>
                         <AutoComplete
