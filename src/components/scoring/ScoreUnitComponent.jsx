@@ -31,26 +31,28 @@ const floatingLabelStyle = {
     width: 100
 }
 
-const ScoreUnitComponent = React.createClass({
-	getInitialState() {
-		return {
+class ScoreUnitComponent extends React.Component{
+	constructor(props){
+		super(props);
+		this.decrement = this.decrement.bind(this);
+		this.increment = this.increment.bind(this);
+		this.state = {
 			value : 0
-		}
-	},
+		};
+	}
 		
 	decrement() {
 		this.setState({
-			value: this.state.value > 0 ? this.state.value -= 1 : this.state.value
-		})
-	},
+			value : this.state.value > 0 ? this.state.value -= 1 : this.state.value
+		});
+	}
 	
 	increment() {
 		this.setState({
 			value : this.state.value += 1
-		})
-	},
+		});
+	}
 
-	
 	render() {
 		return (
 			<div>
@@ -60,6 +62,6 @@ const ScoreUnitComponent = React.createClass({
 			</div>
 		)
 	}
-});
+}
 
 export default ScoreUnitComponent;

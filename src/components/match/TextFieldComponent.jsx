@@ -3,6 +3,9 @@
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import TextFieldActions from '../../actions/match/TextFieldActions'
+import TableRowColumn from 'material-ui/lib/table/table-row-column';
+import TableRow from 'material-ui/lib/table/table-row';
+import ScheduleComponent from './ScheduleComponent';
 
 require('styles//match/TextField.css');
 
@@ -10,21 +13,18 @@ const TextFieldComponent = React.createClass({
     
     getInitialState(){
       return {
-        value: this.props.textValue,
-        key : this.props.key,
-        matchNum : this.props.matchNum
+        matchNum : this.props.matchNum,
+		textID : this.props.textID
       }
   },
 
   handleChange(event){
     var textVal = event.target.value
-    console.log(textVal + " value comp");
-    console.log(this.state.key + " key comp");
-    console.log(this.state.match + " match comp");
-    TextFieldActions.updateValue(this.state.matchNum,this.state.key,textVal);
     this.setState({
       value: textVal,
     });
+	
+	TextFieldActions.updateValue(this.state.matchNum,this.state.textID,textVal);
   },
 
   render(){

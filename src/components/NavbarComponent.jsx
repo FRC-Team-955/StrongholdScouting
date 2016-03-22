@@ -18,6 +18,7 @@ import ScheduleComponent from './match/ScheduleComponent';
 import ScoringMainComponent from './scoring/ScoringMainComponent';
 import MatchSelectComponent from './scoring/MatchSelectComponent';
 import SaveButtonComponent from './SaveButtonComponent';
+import MatchStore from '../stores/match/MatchStore';
 
 require('styles//Navbar.css');
 

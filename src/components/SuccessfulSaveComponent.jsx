@@ -6,20 +6,23 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 require('styles//SuccessfulSaveComponent.css');
 
-const SuccessfulSaveComponent = React.createClass({
-	getInitialState: function(){
-		return{
+class SuccessfulSaveComponent extends React.Component{
+	constructor(props){
+		super(props);
+		this.handleOpen = this.handleOpen.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+		this.state = {
 			open: false
 		}
-	},
+	}
 	
-	handleOpen: function(){
+	handleOpen() {
 		this.setState({open: true});
-	},
+	}
 	
-	handleClose: function(){
+	handleClose() {
 		this.setState({open: false});
-	},
+	}
 	
 	render() {
 		return(
@@ -33,6 +36,6 @@ const SuccessfulSaveComponent = React.createClass({
       	</div>
 		)
 	}
-});
+};
 
 export default SuccessfulSaveComponent;

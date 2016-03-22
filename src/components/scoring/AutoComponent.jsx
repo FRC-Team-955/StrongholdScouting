@@ -70,23 +70,26 @@ const autoScore = (
     </div>
 )
 
-const AutoComponent = React.createClass ({
-	getInitialState: function(){
-        return{
-            value: 1,
+class AutoComponent extends React.Component {
+	constructor(props){
+        super(props);
+		this.change = this.change.bind(this)
+		this.disableToggle = this.disableToggle.bind(this)
+		this.state = {
+			value: 1,
 			checked: false,
-			enable: true
-        }
-    }, 
+			disable: true
+		}
+	}
    
-   change: function(event, index, value) {
+   change(event, index, value) {
 	   this.setState({value})
-   },
+   }
    
-   disableToggle: function(){
+   disableToggle(){
 	   this.setState({checked: !this.state.checked})
-	   this.setState({enable: !this.state.enable})
-   },
+	   this.setState({disable: !this.state.disable})
+   }
    
 	render(){
 		return(
@@ -95,7 +98,7 @@ const AutoComponent = React.createClass ({
 					<div>
 						{autoScore}
 						<Checkbox label = "Defense Crossed" checked = {this.state.checked} onCheck = {this.disableToggle} style = {autoToggle}/>
-							<SelectField maxHeight = {75} style = {autoDrop} value = {this.state.value} onChange = {this.change} disabled = {this.state.enable}>
+							<SelectField maxHeight = {75} hintText = "Select Defense" style = {autoDrop} value = {this.state.value} onChange = {this.change} disabled = {this.state.disable}>
        							<MenuItem value={1} primaryText="A1"/>
         						<MenuItem value={2} primaryText="A2"/>
 								<MenuItem value={3} primaryText="B1"/>
@@ -111,6 +114,6 @@ const AutoComponent = React.createClass ({
     		</div>
 		)
 	}
-});
+};
 
 export default AutoComponent;

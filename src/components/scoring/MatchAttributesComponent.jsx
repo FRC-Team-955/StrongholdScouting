@@ -45,26 +45,29 @@ const toggle = (
 
 
 
-const MatchAttributesComponent = React.createClass ({
+class MatchAttributesComponent extends React.Component {
    
-   getInitialState: function(){
-        return{
+   constructor(props){
+	   super(props);
+	   this.change = this.change.bind(this);
+	   this.disableToggle = this.disableToggle.bind(this);
+        this.state = {
             value: false,
 			checked: false,
 			enable: true
         }
-    }, 
+    }
    
-   change: function(event, index, value) {
+   change(event, index, value) {
 	   this.setState({value})
-   },
+   }
    
-   disableToggle: function(){
+   disableToggle() {
 	   this.setState({checked: !this.state.checked})
 	   this.setState({enable: !this.state.enable})
-   },
+   }
    
-	render(){
+	render() {
 		return(
 			<div className = "col-md-3 spacing">
         		<Paper style = {matchToggleContainer} children = {
@@ -80,6 +83,6 @@ const MatchAttributesComponent = React.createClass ({
     		</div>
 		)
 	}
-});
+};
 
 export default MatchAttributesComponent;

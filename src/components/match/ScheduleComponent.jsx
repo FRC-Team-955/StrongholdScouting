@@ -13,6 +13,7 @@ import TextField from 'material-ui/lib/text-field';
 import MatchStore from '../../stores/match/MatchStore';
 import ScheduleActions from '../../actions/match/ScheduleActions';
 import TextFieldComponent from './TextFieldComponent';
+import TextFieldActions from '../../actions/match/TextFieldActions';
 
 
 require('styles//match/Schedule.css');
@@ -57,21 +58,26 @@ const ScheduleComponent = React.createClass({
             value: event.target.value
         });
     },
+	
+	updateBlueOne(value){
+		TextFieldActions.updateTeamBlueOne(this.state.table.length +1,value);	
+	},
     
 	updateTable(){     
         var matchNumber = this.state.table.length +1;
-        
+		console.log
+		
         matchTable.push(
             <TableRow>
-					<TableRowColumn><TextFieldComponent textValue = {matchNumber}/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b1"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b2"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b3"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r1"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r2"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r3"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "bs"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "rs"/></TableRowColumn>
+					<TableRowColumn>{matchNumber}</TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "b1"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "b2"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "b3"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "r1"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "r2"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "r3"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "bs"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "rs"/></TableRowColumn>
            </TableRow>
          );
         
@@ -82,24 +88,6 @@ const ScheduleComponent = React.createClass({
 		})
         
         // console.log(this.state.table[0].length);
-	},
-	
-	getTableRow(rowColumn,blueAlliance,redAlliance,blueScore,redScore){
-		return(
-			<div>
-				<TableRow>
-					<TableRowColumn>{rowColumn}</TableRowColumn>
-					<TableRowColumn><TextField value = {blueAlliance[0]}/></TableRowColumn>
-					<TableRowColumn><TextField value = {blueAlliance[1]}/></TableRowColumn>
-					<TableRowColumn><TextField value = {blueAlliance[2]}/></TableRowColumn>
-					<TableRowColumn><TextField value = {redAlliance[0]}/></TableRowColumn>
-					<TableRowColumn><TextField value = {redAlliance[1]}/></TableRowColumn>
-					<TableRowColumn><TextField value = {redAlliance[2]}/></TableRowColumn>
-					<TableRowColumn>{blueScore}</TableRowColumn>
-					<TableRowColumn>{redScore}</TableRowColumn>
-				</TableRow>
-			</div>
-		)
 	},
 	
 	render(){

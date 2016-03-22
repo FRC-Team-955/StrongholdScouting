@@ -5,6 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import ScheduleComponent from './components/match/ScheduleComponent';
 import ScoringMainComponent from './components/scoring/ScoringMainComponent';
 import TeamListComponent from './components/analysis/TeamListComponent';
+import ScoringControllerComponent from './components/scoring/ScoringControllerComponent';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release

@@ -37,24 +37,27 @@ const autoToggle = {
     fontSize: 20
 }
 
-const DefensesUnitComponent = React.createClass({
-	getInitialState() {
-		return {
+class DefensesUnitComponent extends React.Component{
+	constructor(props){
+		super(props);
+		this.decrement = this.decrement.bind(this);
+		this.increment = this.increment.bind(this);
+		this.state = {
 			value : 0
-		}
-	},
+		};
+	}
 		
 	decrement() {
 		this.setState({
 			value: this.state.value > 0 ? this.state.value -= 1 : this.state.value
 		})
-	},
+	}
 	
 	increment() {
 		this.setState({
 			value : this.state.value += 1
 		})
-	},
+	}
 
 	
 	render() {
@@ -67,6 +70,6 @@ const DefensesUnitComponent = React.createClass({
 			</div>
 		)
 	}
-});
+};
 
 export default DefensesUnitComponent;
