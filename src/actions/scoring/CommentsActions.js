@@ -1,5 +1,3 @@
-var alt = require('../alt');
-
 class CommentsActions {
 	updateTeamComments(teamComments,team,match){
 		this.dispatch(teamComments);
@@ -10,4 +8,4 @@ class CommentsActions {
 	}
 }
 
-export default alt.createActions(CommentsActions);
+export default CommentsActions;

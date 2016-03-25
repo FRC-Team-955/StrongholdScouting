@@ -18,4 +18,4 @@ class MatchAttributesActions {
 	}
 }
 
-export default alt.createActions(MatchAttributesActions);
+export default MatchAttributesActions;

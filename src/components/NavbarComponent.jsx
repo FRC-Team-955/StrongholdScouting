@@ -47,7 +47,7 @@ const selectStyle = {
 	width: "100%"
 }
 
-const teams = (
+var teams = (
     <div style = {tabContainer}>
         <Tabs style = {tabsStyle}>
             <Tab 

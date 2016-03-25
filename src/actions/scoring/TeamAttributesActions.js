@@ -26,4 +26,4 @@ class TeamAttributesActions {
 	}
 }
 
-export default alt.createActions(TeamAttributesActions);
+export default TeamAttributesActions;

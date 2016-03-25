@@ -14,4 +14,4 @@ class PerformanceActions {
 	}
 }
 
-export default alt.createActions(PerformanceActions);
+export default PerformanceActions;

@@ -11,7 +11,7 @@ import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import TextField from 'material-ui/lib/text-field';
 import MatchStore from '../../stores/match/MatchStore';
-import ScheduleActions from '../../actions/match/ScheduleActions';
+import MatchActions from '../../actions/match/MatchActions'
 import TextFieldComponent from './TextFieldComponent';
 
 
@@ -63,19 +63,19 @@ const ScheduleComponent = React.createClass({
         
         matchTable.push(
             <TableRow>
-					<TableRowColumn><TextFieldComponent textValue = {matchNumber}/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b1"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b2"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "b3"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r1"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r2"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "r3"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "bs"/></TableRowColumn>
-					<TableRowColumn><TextFieldComponent textValue = "" matchNum = {matchNumber} key = "rs"/></TableRowColumn>
+					<TableRowColumn><TextField value = {matchNumber}/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "b1"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "b2"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "b3"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "r1"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "r2"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "r3"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "bs"/></TableRowColumn>
+					<TableRowColumn><TextFieldComponent matchNum = {matchNumber} textID = "rs"/></TableRowColumn>
            </TableRow>
          );
         
-        ScheduleActions.updateSchedule();
+        MatchActions.updateSchedule();
         
 		this.setState({
 			table: matchTable

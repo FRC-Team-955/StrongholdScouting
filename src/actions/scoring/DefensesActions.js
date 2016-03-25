@@ -1,5 +1,3 @@
-import alt from '../../alt.js';
-
 class DefensesActions{
 	updateIncrementPortcullis(team,match){
 		this.dispatch(team,match);
@@ -74,4 +72,4 @@ class DefensesActions{
 	}
 }
 
-export default alt.createActions(DefensesActions);
+export default DefensesActions;

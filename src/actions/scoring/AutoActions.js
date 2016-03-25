@@ -1,5 +1,3 @@
-import alt from '../../alt.js';
-
 class AutoActions {
 	updateReachDefense(team,match){
 		this.dispatch(team,match);
@@ -26,4 +24,4 @@ class AutoActions {
 	}
 }
 
-export default alt.createActions(AutoActions);
+export default AutoActions;

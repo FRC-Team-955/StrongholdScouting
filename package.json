@@ -66,6 +66,7 @@
     "alt": "^0.18.2",
     "alt-container": "^1.0.2",
     "core-js": "^2.0.0",
+    "flux": "^2.1.1",
     "material-ui": "^0.14.4",
     "normalize.css": "^3.0.3",
     "react": "^0.14.0",

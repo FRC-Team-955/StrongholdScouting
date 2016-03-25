@@ -34,4 +34,4 @@ class TeleopActions {
 	}
 }
 
-export default alt.createActions(TeleopActions);
+export default TeleopActions;
