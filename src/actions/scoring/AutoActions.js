@@ -1,26 +1,54 @@
-class AutoActions {
-	updateReachDefense(team,match){
-		this.dispatch(team,match);
-	}
+var ScoringConstants = require('../../constants/ScoringConstants');
+var AppDispatcher = require('../../components/AppDispatcher');
+
+var AutoActions = {
+	updateReachDefense: function(team,match,value){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.ReachedDefense,
+			team: team,
+			match: match,
+			value: value
+		});
+	},
 	
-	updateCrossDefense(isCrossDefense,team,match){
-		this.dispatch(isCrossDefense,team,match);
-	}
+	updateCrossDefense: function(value,team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.CrossDefense,
+			isCrossDefense: value,
+			match: match
+		})
+	},
 	
-	updateIncrementHighGoals(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementHighGoals: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementHighAutoGoals,
+			team: team,
+			match: match
+		})
+	},
 	
 	updateDecrementHighGoals(team,match){
-		this.dispatch(team,match);
-	}
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementHighAutoGoals,
+			team: team,
+			match: match
+		})
+	},
 	
-	updateIncrementLowGoals(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementLowGoals: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementLowAutoGoals,
+			team: team,
+			match: match
+		})
+	},
 	
 	updateDecrementLowGoals(team,match){
-		this.dispatch(team,match);
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementLowAutoGoals,
+			team: team,
+			match: match
+		})
 	}
 }
 

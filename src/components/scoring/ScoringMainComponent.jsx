@@ -13,26 +13,27 @@ import CommentsComponent from './CommentsComponent';
 
 require('styles//scoring/ScoringMain.css');
 
-const ScoringMainComponent = () => (
-    <div>
-        <div className = "row">
-            <AutoComponent/>  
-			<DefensesComponent/>   
-			<TeleopComponent/>
-        </div>
-		<div className = "row">
-            <PerformanceComponent/>
-			<CommentsComponent/>
-			<MatchAttributesComponent/>
-			<TeamAttributesComponent/>
-        </div>   
-    </div>
-)
+const ScoringMainComponent = React.createClass({
+	render(){
+		<div>
+			<div className = "row">
+				<AutoComponent/>  
+				<DefensesComponent/>   
+				<TeleopComponent scoringData = {this.props.scoringData}/>
+			</div>
+			<div className = "row">
+				<PerformanceComponent/>
+				<CommentsComponent/>
+				<MatchAttributesComponent/>
+				<TeamAttributesComponent/>
+			</div>   
+		</div>
+	}
+})
 
 export default ScoringMainComponent;
 
 /*
-
  <div className = "row">
             <AutoComponent/>  
 			<DefensesComponent/>   
@@ -44,4 +45,4 @@ export default ScoringMainComponent;
 			<MatchAttributesComponent/>
 			<TeamAttributesComponent/>
         </div>
-		*/
+	*/

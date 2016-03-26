@@ -7,16 +7,20 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var matches = {"totalMatchNumber" : 0};
+var matches = {"totalMatchNumber": 0};
 
 function handleUpdateSchedule(){
 	matches.totalMatchNumber += 1;
-	// console.log(JSON.stringify(matches) + " object");
+	console.log(JSON.stringify(matches) + " object");
 }
 
 function handleUpdateTextField(data){
 	// console.log(JSON.stringify(data));
     matches[data.matchNum+data.textID] = data.value;
+}
+
+function handleUpdateCurrentMatch(currentMatch){
+	matches.currentMatch = currentMatch;
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
@@ -50,6 +54,11 @@ var MatchStore = assign({}, EventEmitter.prototype, {
 
 			case MatchConstants.TextField:
 				handleUpdateTextField(action.data);
+				MatchStore.emitChange();
+				break;
+				
+			case MatchConstants.currentMatch:
+				handleUpdateCurrentMatch(action.currentMatch);
 				MatchStore.emitChange();
 				break;
 		}

@@ -1,20 +1,42 @@
-import alt from '../../alt.js';
+var ScoringConstants = require('../../constants/ScoringConstants');
+var AppDispatcher = require('../../components/AppDispatcher');
 
-class MatchAttributesActions {
-	updateScale(team,match){
-		this.dispatch(team,match);
-	}
+var MatchAttributesActions = {
+	updateScale(team,match,value){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.Scale,
+			team: team,
+			match: match,
+			value: value
+		});
+	},
 	
-	updateScaleHeight(scaleHeight,team,match){
-		this.dispatch(scaleHeight,team,match);
-	}
+	updateScaleHeight(scaleHeight,team,match,value){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.ScaleHeight,
+			team: team,
+			match: match,
+			value: value,
+			scaleHeight: scaleHeight
+		});
+	},
 	
-	updateBreach(team,match){
-		this.dispatch(team,match);
-	}
+	updateBreach(team,match,value){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.Breach,
+			team: team,
+			match: match,
+			value: value
+		});
+	},
 	
-	updateCapture(team,match){
-		this.dispatch(team,match);
+	updateCapture(team,match,value){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.Capture,
+			team: team,
+			match: match,
+			value: value
+		});
 	}
 }
 

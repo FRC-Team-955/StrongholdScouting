@@ -36,7 +36,7 @@ const tabContainer = {
 }
 
 const tabsStyle = {
-    width: "100%"
+    width: "100%",
 }
 
 const teamData = [
@@ -47,35 +47,64 @@ const selectStyle = {
 	width: "100%"
 }
 
-var teams = (
-    <div style = {tabContainer}>
-        <Tabs style = {tabsStyle}>
-            <Tab 
-                label = "Team 1"
-                // style = {tabStyle}
-            />
-            <Tab 
-                label = "Team 2"
-                // style = {tabStyle}
-            />
-            <Tab 
-                label = "Team 3"
-                // style = {tabStyle}
-            />
-            <Tab 
-                selected = {false}
-                label = {<Toggle iconStyle = {toggleStyle} />}
-            />
-            <Tab
-                label = {<MatchSelectComponent/>
-				} 
-            />
-			<SaveButtonComponent/>
-        </Tabs>
-    </div>
-  )
+const tabFont = {
+	fontSize: 18
+}
 
 const NavbarComponent = React.createClass({
+	getDreams: function(teamOne,teamTwo,teamThree){
+		return(
+    		<div style = {tabContainer}>
+				<Tabs style = {tabsStyle}>
+            		<Tab style = {tabFont}
+                		label = {teamOne}
+                			// style = {tabStyle}
+            		/>
+            		<Tab style = {tabFont}
+                		label = {teamTwo}
+                		// style = {tabStyle}
+            		/>
+					<Tab style = {tabFont}
+						label = {teamThree}
+						// style = {tabStyle}
+					/>
+					<Tab 
+						selected = {false}
+						label = {<Toggle onClick = {this.setToggleState} iconStyle = {toggleStyle}/>}
+					/>
+					<Tab
+						label = {<MatchSelectComponent matches = {this.props.matchData.totalMatchNumber}/>}
+					/>
+					<SaveButtonComponent/>
+				</Tabs>
+			</div>
+		)	
+	},
+	
+	getTeams: function(){
+		if(this.props.matchData.currentMatch != undefined){
+			if(!this.state.isToggleOpen){
+				return this.getDreams(
+					this.props.matchData[this.props.matchData.currentMatch+"b1"],
+					this.props.matchData[this.props.matchData.currentMatch+"b2"],
+					this.props.matchData[this.props.matchData.currentMatch+"b3"]
+				);
+			}
+		
+			else{
+				return this.getDreams(
+					this.props.matchData[this.props.matchData.currentMatch+"r1"],
+					this.props.matchData[this.props.matchData.currentMatch+"r2"],
+					this.props.matchData[this.props.matchData.currentMatch+"r3"]
+				);
+			}
+		}
+		
+		else{
+			return this.getDreams("Team 1","Team 2","Team 3")
+		}
+	},
+	
     switchToMatchScoring: function(){
         document.getElementById('matchScoring').style.display = "block";
         document.getElementById('matchTable').style.display = "none";
@@ -105,17 +134,26 @@ const NavbarComponent = React.createClass({
         })
     },
     handleClose: function(){ this.setState({open: false})},
-    getInitialState: function(){
+    
+	getInitialState: function(){
         return{
-            open: false
+            open: false,
+			isToggleOpen: false		
         }
     },
+	
+	setToggleState: function(){
+		this.setState({
+			isToggleOpen : !this.state.isToggleOpen
+		})	
+	},
+	
     render: function(){
       return (
           <div>
               <AppBar
                   title="Scouting App v1.0"
-                  iconElementRight = {teams}
+                  iconElementRight = {this.getTeams()}
                   onLeftIconButtonTouchTap = {this.toggle}
               />
               <LeftNav

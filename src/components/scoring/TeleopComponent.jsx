@@ -81,10 +81,12 @@ const scoring = (
     </div>
 )
 
-const TeleopComponent = () => (
-    <div className = "col-md-3 spacing">
-        <Paper children = {scoring} style = {scoringContainer}/>
-    </div>
-)
+const TeleopComponent = React.createClass({
+    render(){
+		<div className = "col-md-3 spacing">
+			<Paper children = {scoring} style = {scoringContainer}/>
+		</div>
+	}
+})
 
 export default TeleopComponent;

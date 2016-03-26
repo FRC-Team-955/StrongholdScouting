@@ -1,10 +1,23 @@
-class CommentsActions {
-	updateTeamComments(teamComments,team,match){
-		this.dispatch(teamComments);
-	}
+var ScoringConstants = require('../../constants/ScoringConstants');
+var AppDispatcher = require('../../components/AppDispatcher');
+
+var CommentsActions = {
+	updateTeamComments: function(teamComments,team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.ReachedDefense,
+			team: team,
+			match: match,
+			teamComments: teamComments
+		});
+	},
 	
-	updateMatchComments(matchComments,match){
-		this.dispatch(matchComments);
+	updateMatchComments(matchComments,team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.ReachedDefense,
+			team: team,
+			match: match,
+			matchComments: matchComments
+		});
 	}
 }
 

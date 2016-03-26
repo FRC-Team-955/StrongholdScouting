@@ -16,6 +16,13 @@ var MatchActions = {
       data: {"matchNum" : matchNum,"textID" : textID,"value" : value}
     });
   },
+  
+  updateCurrentMatch: function(value){
+	  AppDispatcher.handleViewAction({
+		  actionType: MatchConstants.currentMatch,
+		  currentMatch: value
+	  })
+  }
 
 };
 

@@ -23,19 +23,26 @@ function getIndexes(team,match){
 				}
 			}
 		}
-	})
-}
-  
-function handleUpdateReachDefense(team,match){
-	!scores[team].matches.auto.reachedDefense?true:false;
-	scores[team].matches.auto.reachedDefense?scores[team].stats.auto.defensesReached += 1:scores[team].stats.auto.defensesReached -= 1;
+	});
 }
 
-function handleUpdateCrossDefense(team,match){
+function increment(currValue){
+	if(currValue === undefined)
+		return 1;
+	else
+		return (currValue+1)
+}
+
+function handleUpdateReachDefense(team,match){
+	scores[team].matches[match].auto.reachedDefense = value;
+	scores[team].matches[match].auto.reachedDefense? increment(scores[team].stats.auto.defensesReached):scores[team].stats.auto.defensesReached -= 1;
+}
+
+function handleUpdateCrossDefense(team,match,value){
 	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1] = !scores[indexes[0]].matchesmatches[indexes[1]].auto.defensesCrossed.isCrossDefense[1];
-		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1]?scores[indexes[0]].stats.auto.defensesCrossed.isCrossDefense[1] += 1:scores[indexes[0]].stats.auto.defensesCrossed.isCrossDefense[1] -= 1;
-		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1]?scores[indexes[0]].stats.match.defensesCrossed.isCrossDefense[1] += 1:scores[indexes[0]].stats.match.defensesCrossed.isCrossDefense[1] -= 1;
+		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1] = value;
+		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1]? increment(scores[indexes[0]].stats.auto.defensesCrossed.isCrossDefense[1]):scores[indexes[0]].stats.auto.defensesCrossed.isCrossDefense[1] -= 1;
+		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1]? increment(scores[indexes[0]].stats.match.defensesCrossed.isCrossDefense[1]):scores[indexes[0]].stats.match.defensesCrossed.isCrossDefense[1] -= 1;
 	},
 		
 	(error) =>{
@@ -44,522 +51,255 @@ function handleUpdateCrossDefense(team,match){
 }
 
 function handleUpdateIncrementHighAutoGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].auto.highGoal += 1;
-		scores[indexes[0]].stats.auto.highGoals += 1
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].auto.highGoal = increment(scores[team].matches[match].auto.highGoal);
+	scores[team].stats.auto.highGoals = increment(scores[team].stats.auto.highGoals);
 }
 
 function handleUpdateDecrementHighAutoGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].auto.highGoal -= 1;
-		scores[indexes[0]].stats.auto.highGoal -= 1 ;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].auto.highGoal -= 1;
+	scores[team].stats.auto.highGoals -= 1;
 }
 
 function handleUpdateIncrementLowAutoGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].auto.lowGoal += 1;
-		scores[indexes[0]].stats.auto.lowGoal += 1 ;
-},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].auto.lowGoal = increment(scores[team].matches[match].auto.lowGoal);
+	scores[team].stats.auto.lowGoals = increment(scores[team].stats.auto.lowGoals);
 }
 
 function handleUpdateDecrementLowAutoGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].auto.lowGoal -= 1;
-		scores[indexes[0]].stats.auto.lowGoal -= 1 ;
-},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].auto.lowGoal -= 1;
+	scores[team].stats.auto.lowGoals -= 1;
 }
 
 function handleUpdateIncrementHighTeleopGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.successes +=1;
-		scores[indexes[0]].stats.teleop.highGoal.successes += 1;
-		scores[indexes[0]].stats.match.highGoal.successes += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.highGoal.successes = increment(scores[team].matches[match].teleop.highGoal.successes);
+	scores[team].stats.teleop.highGoal.successes = increment(scores[team].stats.teleop.highGoal.successes);
+	scores[team].stats.match.highGoal.successes = increment(scores[team].stats.match.highGoal.successes);
 }
 
 function handleUpdateDecrementHighTeleopGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.successes -=1;
-		scores[indexes[0]].stats.teleop.highGoal.successes -= 1;
-		scores[indexes[0]].stats.match.highGoal.successes -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.highGoal.successes -= 1;
+	scores[team].stats.teleop.highGoal.successes -= 1;
+	scores[team].stats.match.highGoal.successes -= 1;
 }
 
 function handleUpdateIncrementLowTeleopGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.successes +=1;
-		scores[indexes[0]].stats.teleop.highGoal.successes += 1;
-		scores[indexes[0]].stats.match.highGoal.successes += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.lowGoal.successes = increment(scores[team].matches[match].teleop.lowGoal.successes);
+	scores[team].stats.teleop.lowGoal.successes = increment(scores[team].stats.teleop.lowGoal.successes);
+	scores[team].stats.match.lowGoal.successes = increment(scores[team].stats.match.lowGoal.successes);
 }
 
 function handleUpdateDecrementLowTeleopGoals(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.successes -=1;
-		scores[indexes[0]].stats.teleop.highGoal.successes -= 1;
-		scores[indexes[0]].stats.match.highGoal.successes -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.lowGoal.successes -= 1;
+	scores[team].stats.teleop.lowGoal.successes -= 1;
+	scores[team].stats.match.lowGoal.successes -= 1;
 }
 
 function handleUpdateIncrementHighGoalsAttempted(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.attempts +=1;
-		scores[indexes[0]].stats.teleop.highGoal.attempts += 1;
-		scores[indexes[0]].stats.match.highGoal.attempts += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.highGoal.attempts = increment(scores[team].matches[match].teleop.highGoal.attempts);
+	scores[team].stats.teleop.highGoal.attempts = increment(scores[team].stats.teleop.highGoal.attempts);
+	scores[team].stats.match.highGoal.attempts = increment(scores[team].stats.match.highGoal.attempts);
 }
 
 function handleUpdateDecrementHighGoalsAttempted(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.attempts -=1;
-		scores[indexes[0]].stats.teleop.highGoal.attempts -= 1;
-		scores[indexes[0]].stats.match.highGoal.attempts -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.highGoal.attempts -= 1;
+	scores[team].stats.teleop.highGoal.attempts -= 1;
+	scores[team].stats.match.highGoal.attempts -= 1;
 }
 
 function handleUpdateIncrementLowGoalsAttempted(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.attempts +=1;
-		scores[indexes[0]].stats.teleop.highGoal.attempts += 1;
-		scores[indexes[0]].stats.match.highGoal.attempts += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.lowGoal.attempts = increment(scores[team].matches[match].teleop.lowGoal.attempts);
+	scores[team].stats.teleop.lowGoal.attempts = increment(scores[team].matches[match].teleop.lowGoal.attempts);
+	scores[team].stats.match.lowGoal.attempts = increment(scores[team].matches[match].teleop.lowGoal.attempts);
 }
 
 function handleUpdateDecrementLowGoalsAttempted(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.highGoal.attempts -=1;
-		scores[indexes[0]].stats.teleop.highGoal.attempts -= 1;
-		scores[indexes[0]].stats.match.highGoal.attempts -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.lowGoal.attempts -= 1;
+	scores[team].stats.teleop.lowGoal.attempts -= 1;
+	scores[team].stats.match.lowGoal.attempts -= 1;
 }
 
 function handleUpdateTeamComments(teamComments,team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teamComments = teamComments;
-		scores[indexes[0]].comments.push(teamComments);
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	//TODO add comment array
+	scores[team].matches[match].teamComments = teamComments;
 }
 
 function handleUpdateMatchComments(matchComments,team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].matchComments = matchComments;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[teams].matches[match].matchComments = matchComments;
 }
 
-function handleUpdateScale(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].scaled = !scores[indexes[0]].matches[indexes[1]].scaled;
-	},
-
-	(error) =>{
-	console.log(error);
-	})
+function handleUpdateScale(team,match,value){
+	scores[team].matches[match].scaled = value;
+	value?scores[team].stats.totalScales = increment(scores[team].matches[match].teleop.lowGoal.attempts):scores[team].stats.totalScales -= 1;
 }
 
 function handleUpdateScaleHeight(scaleHeight,team,match){
-	getIndexes(team,match).then((indexes) =>{
-		if(scaleHeight === "high"){
-			scores[indexes[0]].matches[indexes[1]].scaledHigh = true;
-			scores[indexes[0]].matches[indexes[1]].scaledLow = false;					
-		}
+	if(scaleHeight === "high"){
+		scores[team].matches[match].scaledHigh = true;
+		scores[team].matches[match].scaledLow = false;
+	}
 	
-		else{
-		scores[indexes[0]].matches[indexes[1]].scaledHigh = false;
-		scores[indexes[0]].matches[indexes[1]].scaledLow = true;
-		}
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	else{
+		scores[team].matches[match].scaledHigh = false;
+		scores[team].matches[match].scaledLow = true;
+	}
 }
 
-function handleUpdateBreach(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].breach = !scores[indexes[0]].matches[indexes[1]].breach;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateBreach(team,match,value){
+	scores[team].matches[match].breach = value;
+	value? scores[team].stats.totalBreaches = increment(scores[team].stats.totalBreaches):scores[team].stats.totalBreaches -= 1;
 }
 
 function handleUpdateCapture(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].capture = !scores[indexes[0]].matches[indexes[1]].capture;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].capture = value;
+	value? scores[team].stats.totalCaptures = increment(scores[team].stats.totalCaptures):scores[team].stats.totalCaptures -= 1;
 }
 
 function handleUpdatePerformance(performanceRating,team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].performanceRating = performanceRating;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].performance = performanceRating;
 }
 
 function handleUpdateOffense(offenseRating,team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].offensiveRating = offenseRating;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].offfense = offenseRating;
 }
 
 function handleUpdateDefense(defenseRating,team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].defensiveRating = defenseRating;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].defense = defenseRating;
 }
 
-function handleUpdateAuto(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].performedAuto = !scores[indexes[0]].matches[indexes[1]].performedAuto;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateAuto(team,match,value){
+	scores[team].matches[match].hasAuto = value;
 }
 
-function handleUpdateChallenge(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].challenge = !scores[indexes[0]].matches[indexes[1]].challenge;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateChallenge(team,match,value){
+	scores[team].matches[match].challenge = value;
 }
 
-function handleUpdateSpy(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].spy = !scores[indexes[0]].matches[indexes[1]].spy;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateSpy(team,match,value){
+	scores[team].matches[match].spy = value;
 }
 
-function handleUpdateHumanPlayer(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].humanPlayer = !scores[indexes[0]].matches[indexes[1]].humanPlayer;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateHumanPlayer(team,match,value){
+	scores[team].matches[match].humanPlayer = value;
 }
 
-function handleUpdateVision(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].vision = !scores[indexes[0]].matches[indexes[1]].vision;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateVision(team,match,value){
+	scores[team].matches[match].vision = value;
 }
 
-function handleUpdateBroken(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].broken = !scores[indexes[0]].matches[indexes[1]].broken;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+function handleUpdateBroken(team,match,value){
+	scores[team].matches[match].broken = value;
 }
 
 function handleUpdateIncrementPortcullis(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.portcullis += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.portcullis += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.portcullis += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.portcullis = increment(scores[team].matches[match].teleop.defensesCrossed.portcullis);
+	scores[team].stats.teleop.defensesCrossed.portcullis = increment(scores[team].stats.teleop.defensesCrossed.portcullis);
+	scores[team].stast.match.defensesCrossed.portcullis = increment(scores[team].stast.match.defensesCrossed.portcullis);
 }
 
 function handleUpdateDecrementPortcullis(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.portcullis -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.portcullis -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.portcullis -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.portcullis -= 1;
+	scores[team].stats.teleop.defensesCrossed.portcullis -= 1;
+	scores[team].stast.match.defensesCrossed.portcullis -= 1;
 }
 
 function handleUpdateIncrementChevalDeFrise(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.chevalDeFrise += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.chevalDeFrise += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.chevalDeFrise += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.chevalDeFrise = increment(scores[team].matches[match].teleop.defensesCrossed.chevalDeFrise);
+	scores[team].stats.teleop.defensesCrossed.chevalDeFrise = increment(scores[team].stats.teleop.defensesCrossed.chevalDeFrise);
+	scores[team].stast.match.defensesCrossed.chevalDeFrise = increment(scores[team].stast.match.defensesCrossed.chevalDeFrise);
 }
 
 function handleUpdateDecrementChevalDeFrise(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.chevalDeFrise -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.chevalDeFrise -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.chevalDeFrise -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.chevalDeFrise -= 1;
+	scores[team].stats.teleop.defensesCrossed.chevalDeFrise -= 1;
+	scores[team].stast.match.defensesCrossed.chevalDeFrise -= 1;
 }
 
 function handleUpdateIncrementMoat(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.moat += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.moat += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.moat += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.moat = increment(scores[team].matches[match].teleop.defensesCrossed.moat);
+	scores[team].stats.teleop.defensesCrossed.moat = increment(scores[team].stats.teleop.defensesCrossed.moat);
+	scores[team].stast.match.defensesCrossed.moat = increment(scores[team].stast.match.defensesCrossed.moat);
 }
 
 function handleUpdateDecrementMoat(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.moat -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.moat -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.moat -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.moat -= 1;
+	scores[team].stats.teleop.defensesCrossed.moat -= 1;
+	scores[team].stast.match.defensesCrossed.moat -= 1;
 }
 
 function handleUpdateIncrementRamparts(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.ramparts += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.ramparts += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.ramparts += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.ramparts = increment(scores[team].matches[match].teleop.defensesCrossed.ramparts);
+	scores[team].stats.teleop.defensesCrossed.ramparts = increment(scores[team].stats.teleop.defensesCrossed.ramparts);
+	scores[team].stast.match.defensesCrossed.ramparts = increment(scores[team].stast.match.defensesCrossed.ramparts);
 }
 
 function handleUpdateDecrementRamparts(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.ramparts -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.ramparts -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.ramparts -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.ramparts -= 1;
+	scores[team].stats.teleop.defensesCrossed.ramparts -= 1;
+	scores[team].stast.match.defensesCrossed.ramparts -= 1;
 }
 
 function handleUpdateIncrementDrawbridge(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.drawbridge += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.drawbridge += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.drawbridge += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.drawbridge = increment(scores[team].matches[match].teleop.defensesCrossed.drawbridge);
+	scores[team].stats.teleop.defensesCrossed.drawbridge = increment(scores[team].stats.teleop.defensesCrossed.drawbridge);
+	scores[team].stast.match.defensesCrossed.drawbridge = increment(scores[team].stast.match.defensesCrossed.drawbridge);
 }
 
 function handleUpdateDecrementDrawbridge(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.drawbridge -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.drawbridge -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.drawbridge -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.drawbridge -= 1;
+	scores[team].stats.teleop.defensesCrossed.drawbridge -= 1;
+	scores[team].stast.match.defensesCrossed.drawbridge -= 1;
 }
 
 function handleUpdateIncrementSallyPort(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.sallyPort += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.sallyPort += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.sallyPort += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.sallyPort = increment(scores[team].matches[match].teleop.defensesCrossed.sallyPort);
+	scores[team].stats.teleop.defensesCrossed.sallyPort = increment(scores[team].stats.teleop.defensesCrossed.sallyPort);
+	scores[team].stast.match.defensesCrossed.sallyPort = increment(scores[team].stast.match.defensesCrossed.sallyPort);
 }
 
 function handleUpdateDecrementSallyPort(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.sallyPort -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.sallyPort -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.sallyPort -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.portcullis -= 1;
+	scores[team].stats.teleop.defensesCrossed.portcullis -= 1;
+	scores[team].stast.match.defensesCrossed.portcullis -= 1;
 }
 
 function handleUpdateIncrementRockWall(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.rockWall += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.rockWall += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.rockWall += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.rockWall = increment(scores[team].matches[match].teleop.defensesCrossed.rockWall);
+	scores[team].stats.teleop.defensesCrossed.rockWall = increment(scores[team].stats.teleop.defensesCrossed.rockWall);
+	scores[team].stast.match.defensesCrossed.rockWall = increment(scores[team].stast.match.defensesCrossed.rockWall);
 }
 
 function handleUpdateDecrementRockWall(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.rockWall -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.rockWall -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.rockWall -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.rockWall -= 1;
+	scores[team].stats.teleop.defensesCrossed.rockWall -= 1;
+	scores[team].stast.match.defensesCrossed.rockWall -= 1;
 }
 
 function handleUpdateIncrementRoughTerrain(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.roughTerrain += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.roughTerrain += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.roughTerrain += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.roughTerrain = increment(scores[team].matches[match].teleop.defensesCrossed.portcullis);
+	scores[team].stats.teleop.defensesCrossed.roughTerrain = increment(scores[team].stats.teleop.defensesCrossed.portcullis);
+	scores[team].stast.match.defensesCrossed.roughTerrain = increment(scores[team].stast.match.defensesCrossed.portcullis);
 }
 
 function handleUpdateDecrementRoughTerrain(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.roughTerrain -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.roughTerrain -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.roughTerrain -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.roughTerrain -= 1;
+	scores[team].stats.teleop.defensesCrossed.roughTerrain -= 1;
+	scores[team].stast.match.defensesCrossed.roughTerrain -= 1;
 }
 
 function handleUpdateIncrementLowBar(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.lowBar += 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.lowBar += 1;
-		scores[indexes[0]].stats.match.defensesCrossed.lowBar += 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.lowBar = increment(scores[team].matches[match].teleop.defensesCrossed.lowBar);
+	scores[team].stats.teleop.defensesCrossed.lowBar = increment(scores[team].stats.teleop.defensesCrossed.lowBar);
+	scores[team].stast.match.defensesCrossed.lowBar = increment(scores[team].stast.match.defensesCrossed.lowBar);
 }
 
 function handleUpdateDecrementLowBar(team,match){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].teleop.defensesCrossed.lowBar -= 1;
-		scores[indexes[0]].stats.teleop.defensesCrossed.lowBar -= 1;
-		scores[indexes[0]].stats.match.defensesCrossed.lowBar -= 1;
-	},
-
-	(error) =>{
-		console.log(error);
-	})
+	scores[team].matches[match].teleop.defensesCrossed.lowBar -= 1;
+	scores[team].stats.teleop.defensesCrossed.lowBar -= 1;
+	scores[team].stast.match.defensesCrossed.lowBar -= 1;
 }
 
 var ScoresStore = assign({}, EventEmitter.protorype, {
-	getStoreData : function(){
+	getScoresData : function(){
 		return(scores);
 	},
 	
@@ -814,7 +554,10 @@ var ScoresStore = assign({}, EventEmitter.protorype, {
 				this.emitChange();
 				break;
         }
+		
+		return true;
 	})
+	
 });
 
 export default ScoresStore;

@@ -1,75 +1,151 @@
-class DefensesActions{
-	updateIncrementPortcullis(team,match){
-		this.dispatch(team,match);
-	}
+var ScoringConstants = require('../../constants/ScoringConstants');
+var AppDispatcher = require('../../components/AppDispatcher');
+
+
+var DefensesActions = {
+	updateIncrementPortcullis: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementPortcullis,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementPortcullis(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementPortcullis: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementPortcullis,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementChevalDeFrise(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementChevalDeFrise: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementChevalDeFrise,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementChevalDeFrise(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementChevalDeFrise: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementChevalDeFrise,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementMoat(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementMoat: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementMoat,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementMoat(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementMoat: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementMoat,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementRamparts(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementRamparts: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementRamparts,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementRamparts(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementRamparts: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementRamparts,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementDrawbridge(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementDrawbridge: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementDrawbridge,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementDrawbridge(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementDrawbridge: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementDrawbridge,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementSallyPort(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementSallyPort: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementSallyPort,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementSallyPort(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementSallyPort: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementSallyPort,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementRockWall(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementRockWall: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementRockWall,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementRockWall(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementRockWall: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementRockWall,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementRoughTerrain(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementRoughTerrain: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementRoughTerrain,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementRoughTerrain(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementRoughTerrain: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementRoughTerrain,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateIncrementLowBar(team,match){
-		this.dispatch(team,match);
-	}
+	updateIncrementLowBar: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.IncrementLowBar,
+			team: team,
+			match: match,
+		});
+	},
 	
-	updateDecrementLowBar(team,match){
-		this.dispatch(team,match);
-	}
+	updateDecrementLowBar: function(team,match){
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.DecrementLowBar,
+			team: team,
+			match: match,
+		});
+	},
 }
 
 export default DefensesActions;

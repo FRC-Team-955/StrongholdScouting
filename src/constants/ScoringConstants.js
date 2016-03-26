@@ -16,7 +16,7 @@ var ScoringConstants = {
     "TeamComments" : 14,
     "MatchComments" : 15,
     "Scale" : 16,
-    "ScaleHight" : 17,
+    "ScaleHeight" : 17,
     "Breach" : 18,
     "Capture" : 19,
     "Performance" : 20,

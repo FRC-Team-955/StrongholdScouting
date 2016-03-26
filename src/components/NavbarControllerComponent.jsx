@@ -7,7 +7,7 @@ import MatchStore from '../stores/match/MatchStore';
 require('styles//NavbarController.css');
 
 function getMatchStore(){
-	return {matchData : MatchStore.getMatchStore};
+	return {matchData : MatchStore.getData()};
 }
 
 var NavbarControllerComponent = React.createClass({
@@ -30,7 +30,7 @@ var NavbarControllerComponent = React.createClass({
 	  
   	render() {
     	return (
-      	<NavbarComponent/>
+      	<NavbarComponent matchData = {this.state.matchData}/>
     	);
   	}
 });
