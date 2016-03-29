@@ -1,5 +1,4 @@
-import ScoringConstants from'../../constants/ScoringConstants'
-
+var ScoringConstants = require('../../constants/ScoringConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');

@@ -22,6 +22,13 @@ var MatchActions = {
 		  actionType: MatchConstants.currentMatch,
 		  currentMatch: value
 	  })
+  },
+  
+  updateCurrentTeam: function(value){
+	  AppDispatcher.handleViewAction({
+		  actionType: MatchConstants.currentTeam,
+		  currentMatch: value
+	  })
   }
 
 };

@@ -64,18 +64,22 @@ const scoring = (
     <div>
         <ScoreUnitComponent
 			floatingLabelText="High Goal"
+			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.currentMatch].teleop.highGoal.successes}
 		/>
 		
         <ScoreUnitComponent
 			floatingLabelText="High Failed"
+			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.matchNum].teleop.highGoal.attempted}
 		/>
 		
         <ScoreUnitComponent
 			floatingLabelText="Low Goal"
+			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.matchNum].teleop.lowGoal.successes}
 		/>
 		
         <ScoreUnitComponent
 			floatingLabelText="Low Failed"
+			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.matchNum].teleop.lowGoals.attempted}
 		/>
 		
     </div>

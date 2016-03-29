@@ -17,9 +17,14 @@ const ScoringMainComponent = React.createClass({
 	render(){
 		<div>
 			<div className = "row">
-				<AutoComponent/>  
+				  
 				<DefensesComponent/>   
-				<TeleopComponent scoringData = {this.props.scoringData}/>
+				<TeleopComponent
+					 scoringData = {this.props.scoringData}
+					 currentTeam =  {this.props.matchData.currentTeam}
+					 currentMatch = {this.props.currentMatch}
+					 
+				/>
 			</div>
 			<div className = "row">
 				<PerformanceComponent/>

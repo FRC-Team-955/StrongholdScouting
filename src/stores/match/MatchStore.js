@@ -23,6 +23,10 @@ function handleUpdateCurrentMatch(currentMatch){
 	matches.currentMatch = currentMatch;
 }
 
+function handleUpdateCurrentTeam(currentTeam){
+	matches.currentTeam = currentTeam;
+}
+
 var MatchStore = assign({}, EventEmitter.prototype, {
 	getData: function() {
 		return matches;
@@ -59,6 +63,11 @@ var MatchStore = assign({}, EventEmitter.prototype, {
 				
 			case MatchConstants.currentMatch:
 				handleUpdateCurrentMatch(action.currentMatch);
+				MatchStore.emitChange();
+				break;
+			
+			case MatchConstants.currentTeam:
+				handleUpdateCurrentTeam(action.currentTeam);
 				MatchStore.emitChange();
 				break;
 		}

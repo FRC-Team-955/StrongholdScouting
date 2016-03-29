@@ -48,4 +48,4 @@ var ScoringConstants = {
     "DecrementLowBar" : 46,
 };
 
-export default ScoringConstants;
+module.exports =  ScoringConstants;

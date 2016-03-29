@@ -18,6 +18,7 @@ import ScheduleComponent from './match/ScheduleComponent';
 import ScoringMainComponent from './scoring/ScoringMainComponent';
 import MatchSelectComponent from './scoring/MatchSelectComponent';
 import SaveButtonComponent from './SaveButtonComponent';
+import MatchActions from '../actions/match/MatchActions';
 
 require('styles//Navbar.css');
 
@@ -58,14 +59,17 @@ const NavbarComponent = React.createClass({
 				<Tabs style = {tabsStyle}>
             		<Tab style = {tabFont}
                 		label = {teamOne}
+						onTouchTap = {MatchActions.updateCurrentTeam(teamOne)}
                 			// style = {tabStyle}
             		/>
             		<Tab style = {tabFont}
                 		label = {teamTwo}
+						onTouchTap = {MatchActions.updateCurrentTeam(teamOne)}
                 		// style = {tabStyle}
             		/>
 					<Tab style = {tabFont}
 						label = {teamThree}
+						onTouchTap = {MatchActions.updateCurrentTeam(teamOne)}
 						// style = {tabStyle}
 					/>
 					<Tab 
