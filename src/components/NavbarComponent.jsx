@@ -22,6 +22,21 @@ import MatchActions from '../actions/match/MatchActions';
 
 require('styles//Navbar.css');
 
+import Slider from 'material-ui/lib/slider';
+
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+};
+
+function handleActiveTeam(tab) {
+	MatchActions.updateCurrentTeam(tab.props.label);
+}
+
 const toggleStyle = {
     marginLeft: 100,
     marginRight: 175,
@@ -52,26 +67,52 @@ const tabFont = {
 	fontSize: 18
 }
 
+const teams = (
+    <div style = {tabContainer}>
+        <Tabs style = {tabsStyle}>
+            <Tab 
+                label = "Team 1"
+                // style = {tabStyle}
+            />
+            <Tab 
+                label = "Team 2"
+                // style = {tabStyle}
+            />
+            <Tab 
+                label = "Team 3"
+                // style = {tabStyle}
+            />
+            <Tab 
+                selected = {false}
+                label = {<Toggle iconStyle = {toggleStyle} />}
+            />
+            <Tab
+                label = {<MatchSelectComponent/>
+				} 
+            />
+			<SaveButtonComponent/>
+        </Tabs>
+    </div>
+  )
+
 const NavbarComponent = React.createClass({
 	getDreams: function(teamOne,teamTwo,teamThree){
 		return(
     		<div style = {tabContainer}>
-				<Tabs style = {tabsStyle}>
-            		<Tab style = {tabFont}
-                		label = {teamOne}
-						onTouchTap = {MatchActions.updateCurrentTeam(teamOne)}
-                			// style = {tabStyle}
-            		/>
-            		<Tab style = {tabFont}
-                		label = {teamTwo}
-						onTouchTap = {MatchActions.updateCurrentTeam(teamOne)}
-                		// style = {tabStyle}
-            		/>
-					<Tab style = {tabFont}
-						label = {teamThree}
-						onTouchTap = {MatchActions.updateCurrentTeam(teamOne)}
-						// style = {tabStyle}
-					/>
+				<Tabs>
+					<Tab label={teamOne} 
+					onActive={handleActiveTeam}
+					>
+					</Tab>
+					<Tab label={teamTwo} 
+					onActive={handleActiveTeam}
+					>
+					</Tab>
+					<Tab
+					label={teamThree}
+					onActive={handleActiveTeam}
+					>
+					</Tab>
 					<Tab 
 						selected = {false}
 						label = {<Toggle onClick = {this.setToggleState} iconStyle = {toggleStyle}/>}
@@ -79,6 +120,7 @@ const NavbarComponent = React.createClass({
 					<Tab
 						label = {<MatchSelectComponent matches = {this.props.matchData.totalMatchNumber}/>}
 					/>
+					
 					<SaveButtonComponent/>
 				</Tabs>
 			</div>
@@ -86,8 +128,8 @@ const NavbarComponent = React.createClass({
 	},
 	
 	getTeams: function(){
-		if(this.props.matchData.currentMatch != undefined){
-			if(!this.state.isToggleOpen){
+		if(this.props.matchData.currentMatch != 0){
+			if(1 === 1){
 				return this.getDreams(
 					this.props.matchData[this.props.matchData.currentMatch+"b1"],
 					this.props.matchData[this.props.matchData.currentMatch+"b2"],
@@ -138,7 +180,6 @@ const NavbarComponent = React.createClass({
         })
     },
     handleClose: function(){ this.setState({open: false})},
-    
 	getInitialState: function(){
         return{
             open: false,
@@ -164,7 +205,7 @@ const NavbarComponent = React.createClass({
                   docked={false}
                   width={300}
                   open={this.state.open} 
-                  onRequestChange={ this.toggle }>
+                  >
                   <MenuItem onTouchTap = {this.switchToMatchScoring}>Home</MenuItem>
                   <MenuItem onTouchTap = {this.switchToMatchTable}>Match List</MenuItem>
                   <MenuItem onTouchTap = {this.switchToAnalysisPreview}>Team Archive</MenuItem>

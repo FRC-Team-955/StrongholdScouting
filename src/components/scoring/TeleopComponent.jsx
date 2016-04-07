@@ -60,36 +60,47 @@ const labelStyle = {
     width: 100
 } 
 
-const scoring = (
-    <div>
+function scoring(value){
+    return (
+		<div>
         <ScoreUnitComponent
 			floatingLabelText="High Goal"
-			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.currentMatch].teleop.highGoal.successes}
+			value = {value[0]}
 		/>
 		
         <ScoreUnitComponent
 			floatingLabelText="High Failed"
-			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.matchNum].teleop.highGoal.attempted}
+			value = {value[1]}
 		/>
 		
         <ScoreUnitComponent
 			floatingLabelText="Low Goal"
-			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.matchNum].teleop.lowGoal.successes}
+			value = {value[2]}
 		/>
 		
         <ScoreUnitComponent
 			floatingLabelText="Low Failed"
-			value = {this.props.scoringData[this.props.currentTeam].matches[this.props.matchNum].teleop.lowGoals.attempted}
+			value = {value[3]}
 		/>
 		
-    </div>
-)
+    </div>)
+}
 
 const TeleopComponent = React.createClass({
     render(){
-		<div className = "col-md-3 spacing">
-			<Paper children = {scoring} style = {scoringContainer}/>
-		</div>
+		return(
+			<div className = "col-md-3 spacing">
+				<Paper 
+					children = {scoring([
+						this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].teleop.highGoal.successes,
+						this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].teleop.highGoal.attempted,
+						this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].teleop.lowGoal.successes,
+						this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].teleop.lowGoal.attempted
+					])} 
+				
+					style = {scoringContainer}/>
+			</div>
+		)
 	}
 })
 

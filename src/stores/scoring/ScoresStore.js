@@ -5,7 +5,24 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var scores = {};
+var scores = {"Team 1" : {
+				"matches" : {
+					"0" : {
+						"teleop" : {
+							"highGoal" : {
+								"successes" : 0,
+								"attempted" : 0
+							},
+							
+							"lowGoal" : {
+								"successes" : 0,
+								"attempted" : 0
+							}
+						}
+					}
+				}
+			}
+		};
 
 function getIndexes(team,match){
 	return new Promise((resolve,reject) => {
@@ -297,260 +314,261 @@ function handleUpdateDecrementLowBar(team,match){
 	scores[team].stast.match.defensesCrossed.lowBar -= 1;
 }
 
-var ScoresStore = assign({}, EventEmitter.protorype, {
-	getScoresData : function(){
+var ScoresStore = assign({}, EventEmitter.prototype, {
+	getScoresData: function(){
 		return(scores);
 	},
 	
-	emitChange : function(){
+	emitChange: function(){
 		this.emit(CHANGE_EVENT)
 	},
 	
-	addChangeListener : function(callback){
+	addChangeListener: function(callback){
 		this.on(CHANGE_EVENT, callback);
 	},
 	
-	removeChangeListner : function(callback){
+	removeChangeListner: function(callback){
 		this.removeListner(CHANGE_EVENT, callback);
 	},
 	
-	dispatcherIndex : AppDispatcher.register(function(payload) {
+	dispatcherIndex: AppDispatcher.register(function(payload) {
     	var action = payload.action;
 		
 		switch(action.actionType){
             case ScoringConstants.ReachedDefense:
                 handleUpdateReachDefense(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange();
                 break;
 			
 			case ScoringConstants.CrossDefense:
 				handleUpdateCrossDefense(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.IncrementHighAutoGoals:
 				handleUpdateIncrementHighAutoGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.DecrementHighAutoGoals:
-				handleUpdateDecrementHighAutoGoals(action.team,action.match);
-				this.emitChange();
+				// handleUpdateDecrementHighAutoGoals(action.team,action.match);
+				console.log("what the fuck " + ScoringConstants.DecrementHighAutoGoals);
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.IncrementLowAutoGoals:
 				handleUpdateIncrementLowAutoGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.DecrementLowAutoGoals:
 				handleUpdateDecrementLowAutoGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.IncrementHighTeleopGoals:
 				handleUpdateIncrementHighTeleopGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.DecrementHighTeleopGoals:
 				handleUpdateDecrementHighTeleopGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.IncrementLowTeleopGoals:
 				handleUpdateIncrementLowTeleopGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.DecrementLowTeleopGoals:
 				handleUpdateDecrementLowTeleopGoals(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.IncrementHighGoalsAttempted:
 				handleUpdateIncrementHighGoalsAttemptedcase(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.DecrementHighGoalsAttempted:
 				handleUpdateDecrementHighGoalsAttempted(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.IncrementLowGoalsAttempted:
 				handleUpdateIncrementLowGoalsAttempted(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.DecrementLowGoalsAttempted:
 				handleUpdateIncrementLowGoalsAttempted(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.TeamComments:
 				handleUpdateTeamComments(action.teamComments,action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.MatchComments:
 				handleUpdateMatchComments(action.matchComments,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Scale:
 				handleUpdateScale(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.ScaleHight:
 				handleUpdateScaleHeight(action.scaleHeight,action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.Breach:
 				handleUpdateBreach(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Capture:
 				handleUpdateCapture(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Performance:
 				handleUpdatePerformance(action.performanceRating,action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.offenseRating:
 				handleUpdateOffense(action.offenseRating,action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.defenseRating:
 				handleUpdateDefense(action.defenseRating,action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Auto:
 				handleUpdateAuto(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Challenge:
 				handleUpdateChallenge(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Spy:
 				handleUpdateSpy(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.HumanPlayer:
 				handleUpdateHumanPlayer(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.Vision:
 				handleUpdateVision(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case handleUpdateBroken:
 				handleUpdateBroken(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementPortcullis:
 				handleUpdateIncrementPortcullis(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementPortcullis:
 				handleUpdateDecrementPortcullis(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementChevalDeFrise:
 				handleUpdateIncrementChevalDeFrise(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementChevalDeFrise:
 				handleUpdateDecrementChevalDeFrise(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementMoat:
 				handleUpdateIncrementMoat(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementMoat:
 				handleUpdateDecrementMoat(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.handleUpdateIncrementRamparts:
 				handleUpdateIncrementRamparts(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementRamparts:
 				handleUpdateDecrementRamparts(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 				
 			case ScoringConstants.handleUpdateIncrementDrawbridge:
 				handleUpdateIncrementDrawbridge(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementDrawbridge:
 				handleUpdateDecrementDrawbridge(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementSallyPort:
 				handleUpdateIncrementSallyPort(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementSallyPort:
 				handleUpdateDecrementSallyPort(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementRockWall:
 				handleUpdateIncrementRockWall(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementRockWall:
 				handleUpdateDecrementRockWall(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementRoughTerrain:
 				handleUpdateIncrementRoughTerrain(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementRoughTerrain:
 				handleUpdateDecrementRoughTerrain(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateIncrementRoughTerrain:
 				handleUpdateIncrementLowBar(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
 			
 			case ScoringConstants.handleUpdateDecrementLowBar:
 				handleUpdateDecrementLowBar(action.team,action.match);
-				this.emitChange();
+				ScoresStore.emitChange;
 				break;
         }
 		

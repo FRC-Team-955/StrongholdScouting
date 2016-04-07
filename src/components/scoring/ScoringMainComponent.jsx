@@ -15,24 +15,22 @@ require('styles//scoring/ScoringMain.css');
 
 const ScoringMainComponent = React.createClass({
 	render(){
-		<div>
-			<div className = "row">
-				  
-				<DefensesComponent/>   
-				<TeleopComponent
-					 scoringData = {this.props.scoringData}
-					 currentTeam =  {this.props.matchData.currentTeam}
-					 currentMatch = {this.props.currentMatch}
-					 
-				/>
+		return(
+			<div>
+				<div className = "row">
+					<DefensesComponent/>   
+					<TeleopComponent
+						scoringData = {this.props.scoringData}	matchData = {this.props.matchData}
+					/>
+				</div>
+				<div className = "row">
+					<PerformanceComponent/>
+					<CommentsComponent/>
+					<MatchAttributesComponent/>
+					<TeamAttributesComponent/>
+				</div>   
 			</div>
-			<div className = "row">
-				<PerformanceComponent/>
-				<CommentsComponent/>
-				<MatchAttributesComponent/>
-				<TeamAttributesComponent/>
-			</div>   
-		</div>
+		)
 	}
 })
 

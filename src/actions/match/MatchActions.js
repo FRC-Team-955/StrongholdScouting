@@ -27,7 +27,7 @@ var MatchActions = {
   updateCurrentTeam: function(value){
 	  AppDispatcher.handleViewAction({
 		  actionType: MatchConstants.currentTeam,
-		  currentMatch: value
+		  currentTeam: value
 	  })
   }
 

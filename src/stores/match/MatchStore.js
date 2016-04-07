@@ -7,7 +7,7 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var matches = {"totalMatchNumber": 0};
+var matches = {"totalMatchNumber": 0, "currentTeam" : "Team 1", "currentMatch" : 0};
 
 function handleUpdateSchedule(){
 	matches.totalMatchNumber += 1;
