@@ -107,6 +107,7 @@ const NavbarComponent = React.createClass({
 					<Tab label={teamTwo} 
 					onActive={handleActiveTeam}
 					>
+					<ScoringControllerComponent/>
 					</Tab>
 					<Tab
 					label={teamThree}

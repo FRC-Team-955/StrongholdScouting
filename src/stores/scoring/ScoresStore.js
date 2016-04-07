@@ -10,7 +10,7 @@ var scores = {"Team 1" : {
 					"0" : {
 						"teleop" : {
 							"highGoal" : {
-								"successes" : 0,
+								"successes" : 10,
 								"attempted" : 0
 							},
 							
@@ -43,6 +43,7 @@ function getIndexes(team,match){
 }
 
 function increment(currValue){
+	console.log(currValue);
 	if(currValue === undefined)
 		return 1;
 	else
@@ -88,8 +89,6 @@ function handleUpdateDecrementLowAutoGoals(team,match){
 
 function handleUpdateIncrementHighTeleopGoals(team,match){
 	scores[team].matches[match].teleop.highGoal.successes = increment(scores[team].matches[match].teleop.highGoal.successes);
-	scores[team].stats.teleop.highGoal.successes = increment(scores[team].stats.teleop.highGoal.successes);
-	scores[team].stats.match.highGoal.successes = increment(scores[team].stats.match.highGoal.successes);
 }
 
 function handleUpdateDecrementHighTeleopGoals(team,match){
@@ -387,7 +386,7 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				break;
 				
 			case ScoringConstants.IncrementHighGoalsAttempted:
-				handleUpdateIncrementHighGoalsAttemptedcase(action.team,action.match);
+				handleUpdateIncrementHighGoalsAttempted(action.team,action.match);
 				ScoresStore.emitChange;
 				break;
 			

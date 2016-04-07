@@ -33,7 +33,7 @@ var ScoringControllerComponent = React.createClass({
 	  
   	render() {
     	return (
-      	<ScoringMainComponent matchData = {this.state.matchData} scoringData = {this.state.scoringData}/>
+      		<ScoringMainComponent matchData = {this.state.matchData} scoringData = {this.state.scoringData}/>
     	);
   	}
 });

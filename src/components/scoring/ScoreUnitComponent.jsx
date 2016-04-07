@@ -39,15 +39,11 @@ const ScoreUnitComponent = React.createClass({
 	},
 		
 	decrement() {
-		this.setState({
-			value: this.state.value > 0 ? this.state.value -= 1 : this.state.value
-		})
+		this.props.decrement(this.props.currentTeam,this.props.currentMatch);
 	},
 	
 	increment() {
-		this.setState({
-			value : this.state.value += 1
-		})
+		this.props.increment(this.props.currentTeam,this.props.currentMatch);
 	},
 
 	
@@ -55,7 +51,7 @@ const ScoreUnitComponent = React.createClass({
 		return (
 			<div>
 				<RaisedButton children = {<ChevronLeft/>} style = {leftStyle} onTouchTap = {this.decrement}/>
-				<TextField style = {textStyle} floatingLabelText = {this.props.floatingLabelText} floatingLabelStyle = {floatingLabelStyle} value = {this.state.value}/>
+				<TextField style = {textStyle} floatingLabelText = {this.props.floatingLabelText} floatingLabelStyle = {floatingLabelStyle} value = {this.props.value}/>
 				<RaisedButton children = {<ChevronRight/>} style = {rightStyle} onTouchTap = {this.increment}/>
 			</div>
 		)

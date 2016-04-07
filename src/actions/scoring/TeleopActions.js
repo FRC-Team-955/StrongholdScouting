@@ -10,7 +10,7 @@ var TeleopActions = {
 		});
 	},
 	
-	updateIncrementHighGoalsAttempted(team,match){
+	updateIncrementHighGoalsAttempted: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.IncrementHighGoalsAttempted,
 			team: team,
@@ -34,7 +34,7 @@ var TeleopActions = {
 		});
 	},
 	
-	updateDecrementHighGoalsMade(team,match){
+	updateDecrementHighGoalsMade: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.DecrementHighTeleopGoals,
 			team: team,
@@ -42,7 +42,7 @@ var TeleopActions = {
 		});
 	},
 	
-	updateDecrementHighGoalsAttempted(team,match){
+	updateDecrementHighGoalsAttempted: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.DecrementHighGoalsAttempted,
 			team: team,
@@ -50,7 +50,7 @@ var TeleopActions = {
 		});
 	},
 	
-	updateDecrementLowGoalsMade(team,match){
+	updateDecrementLowGoalsMade: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.DecrementLowTeleopGoals,
 			team: team,
@@ -58,7 +58,7 @@ var TeleopActions = {
 		});
 	},
 	
-	updateDecrementLowGoalsAttempted(team,match){
+	updateDecrementLowGoalsAttempted: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.DecrementLowGoalsAttempted,
 			team: team,
