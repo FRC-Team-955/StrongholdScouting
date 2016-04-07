@@ -129,7 +129,7 @@ const NavbarComponent = React.createClass({
 	
 	getTeams: function(){
 		if(this.props.matchData.currentMatch != 0){
-			if(1 === 1){
+			if(!this.state.isToggleOpen){
 				return this.getDreams(
 					this.props.matchData[this.props.matchData.currentMatch+"b1"],
 					this.props.matchData[this.props.matchData.currentMatch+"b2"],
