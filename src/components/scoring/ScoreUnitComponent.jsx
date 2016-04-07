@@ -55,7 +55,7 @@ const ScoreUnitComponent = React.createClass({
 		return (
 			<div>
 				<RaisedButton children = {<ChevronLeft/>} style = {leftStyle} onTouchTap = {this.decrement}/>
-				<TextField style = {textStyle} floatingLabelText = {this.props.floatingLabelText} floatingLabelStyle = {floatingLabelStyle} value = {this.props.value}/>
+				<TextField style = {textStyle} floatingLabelText = {this.props.floatingLabelText} floatingLabelStyle = {floatingLabelStyle} value = {this.state.value}/>
 				<RaisedButton children = {<ChevronRight/>} style = {rightStyle} onTouchTap = {this.increment}/>
 			</div>
 		)
