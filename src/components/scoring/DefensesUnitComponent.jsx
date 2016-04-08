@@ -45,15 +45,11 @@ const DefensesUnitComponent = React.createClass({
 	},
 		
 	decrement() {
-		this.setState({
-			value: this.state.value > 0 ? this.state.value -= 1 : this.state.value
-		})
+		this.props.decrement(this.props.currentTeam,this.props.currentMatch)
 	},
 	
 	increment() {
-		this.setState({
-			value : this.state.value += 1
-		})
+		this.props.increment(this.props.currentTeam,this.props.currentMatch)
 	},
 
 	
@@ -61,7 +57,7 @@ const DefensesUnitComponent = React.createClass({
 		return (
 			<div>
 				<div style = {titleStyle}> {this.props.label}</div>
-				<TextField style = {textStyle} errorText = {this.props.floatingLabelText} value = {this.state.value}/>
+				<TextField style = {textStyle} errorText = {this.props.floatingLabelText} value = {this.props.value}/>
 				<RaisedButton children = {<ChevronLeft/>} style = {buttonStyle} onTouchTap = {this.decrement}/>
 				<RaisedButton children = {<ChevronRight/>} style = {buttonStyle} onTouchTap = {this.increment}/>
 			</div>

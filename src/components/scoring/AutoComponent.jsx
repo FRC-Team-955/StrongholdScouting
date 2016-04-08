@@ -10,6 +10,7 @@ import Checkbox from 'material-ui/lib/checkbox';
 import ScoreUnitComponent from './ScoreUnitComponent';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import AutoActions from '../../actions/scoring/AutoActions';
 
 require('styles//scoring/Auto.css');
 
@@ -79,6 +80,34 @@ const AutoComponent = React.createClass ({
         }
     }, 
    
+   getAutoScore: function(values,increments,decrements){
+	   return(
+			<div>
+				<ScoreUnitComponent
+					floatingLabelText="Auto High"
+					value = {values[0]}
+					increment = {increments[0]}
+					decrement = {decrements[0]}
+					currentMatch = {this.props.matchData.currentMatch}
+					currentTeam = {this.props.matchData.currentTeam}
+				/>
+					
+				<ScoreUnitComponent
+					floatingLabelText="Auto Low"
+					value = {values[1]}
+					increment = {increments[1]}
+					decrement = {decrements[1]}
+					currentMatch = {this.props.matchData.currentMatch}
+					currentTeam = {this.props.matchData.currentTeam}
+				/>
+				
+				<div>
+					<Checkbox label = "Reach Defense" style = {autoToggle}/>
+				</div>
+			</div>
+	   )
+   },
+   
    change: function(event, index, value) {
 	   this.setState({value})
    },
@@ -93,7 +122,20 @@ const AutoComponent = React.createClass ({
 			<div className = "col-md-3 spacing">
 				<Paper style = {scoringContainer} children = {
 					<div>
-						{autoScore}
+						{this.getAutoScore(
+							[
+								this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.highGoal,
+								this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.lowGoal
+							],
+							[
+								AutoActions.updateIncrementHighGoals,
+								AutoActions.updateIncrementLowGoals
+							],
+							[
+								AutoActions.updateDecrementHighGoals,
+								AutoActions.updateDecrementLowGoals
+							]
+						)}
 						<Checkbox label = "Defense Crossed" checked = {this.state.checked} onCheck = {this.disableToggle} style = {autoToggle}/>
 							<SelectField maxHeight = {75} style = {autoDrop} value = {this.state.value} onChange = {this.change} disabled = {this.state.enable}>
        							<MenuItem value={1} primaryText="A1"/>

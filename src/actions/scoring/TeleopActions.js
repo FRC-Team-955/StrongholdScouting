@@ -2,11 +2,11 @@ var ScoringConstants = require('../../constants/ScoringConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 
 var TeleopActions = {
-	updateIncrementHighGoalsMade: function(team,match){
+	updateIncrementHighGoalsMade: function(team,match,callback){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.IncrementHighTeleopGoals,
 			team: team,
-			match: match
+			match: match,
 		});
 	},
 	

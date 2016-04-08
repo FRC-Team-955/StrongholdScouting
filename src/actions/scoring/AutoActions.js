@@ -27,7 +27,7 @@ var AutoActions = {
 		})
 	},
 	
-	updateDecrementHighGoals(team,match){
+	updateDecrementHighGoals: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.DecrementHighAutoGoals,
 			team: team,
@@ -43,7 +43,7 @@ var AutoActions = {
 		})
 	},
 	
-	updateDecrementLowGoals(team,match){
+	updateDecrementLowGoals: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.DecrementLowAutoGoals,
 			team: team,

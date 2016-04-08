@@ -19,6 +19,7 @@ import ScoringMainComponent from './scoring/ScoringMainComponent';
 import MatchSelectComponent from './scoring/MatchSelectComponent';
 import SaveButtonComponent from './SaveButtonComponent';
 import MatchActions from '../actions/match/MatchActions';
+import TabActions from '../actions/scoring/TabActions';
 
 require('styles//Navbar.css');
 
@@ -32,10 +33,6 @@ const styles = {
     fontWeight: 400,
   },
 };
-
-function handleActiveTeam(tab) {
-	MatchActions.updateCurrentTeam(tab.props.label);
-}
 
 const toggleStyle = {
     marginLeft: 100,
@@ -96,22 +93,26 @@ const teams = (
   )
 
 const NavbarComponent = React.createClass({
+	handleActiveTeam: function(tab) {
+		MatchActions.updateCurrentTeam(tab.props.label);
+		TabActions.updateAddTeam(tab.props.label,this.props.matchData.currentMatch);
+	},
+	
 	getDreams: function(teamOne,teamTwo,teamThree){
 		return(
     		<div style = {tabContainer}>
 				<Tabs>
 					<Tab label={teamOne} 
-					onActive={handleActiveTeam}
+					onActive={this.handleActiveTeam}
 					>
 					</Tab>
 					<Tab label={teamTwo} 
-					onActive={handleActiveTeam}
+					onActive={this.handleActiveTeam}
 					>
-					<ScoringControllerComponent/>
 					</Tab>
 					<Tab
 					label={teamThree}
-					onActive={handleActiveTeam}
+					onActive={this.handleActiveTeam}
 					>
 					</Tab>
 					<Tab 

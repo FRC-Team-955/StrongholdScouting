@@ -108,7 +108,7 @@ const TeleopComponent = React.createClass({
 	
 	scoring: function(values,increments,decrements,currentMatch,currentTeam){
 		console.log(currentTeam);
-		this.forceUpdate();
+		setTimeout(TeleopComponent.forceUpdate(),2000);
 		return (
 			<div>
 			<ScoreUnitComponent

@@ -28,12 +28,13 @@ var ScoringControllerComponent = React.createClass({
 	 
 	_onChange: function() {
 		this.setState(getStores());
+		this.forceUpdate();
 		// console.log(JSON.stringify(this.state.scoresData));
   	},
 	  
   	render() {
     	return (
-      		<ScoringMainComponent matchData = {this.state.matchData} scoringData = {this.state.scoringData}/>
+      		<ScoringMainComponent matchData = {this.state.matchData} scoringData = {this.state.scoringData} needsUpdate = {this.state.scoringData.needsUpdate}/>
     	);
   	}
 });

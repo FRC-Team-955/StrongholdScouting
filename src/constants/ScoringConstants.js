@@ -46,6 +46,7 @@ var ScoringConstants = {
     "DecrementRoughTerrain" : 48,
     "IncrementLowBar" : 49,
     "DecrementLowBar" : 50,
+	"AddTeam": 51
 };
 
 module.exports =  ScoringConstants;

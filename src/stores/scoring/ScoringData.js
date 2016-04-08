@@ -1,72 +1,72 @@
-module.exports = {
-			"team": 0,
-			"matches": [
+module.exports = {addTeam: function(team,match){
+			return ({
+				"matches": 
 				{
-					"match": 1,
-					"allianceMembers" : [0,0],
-					"isWin" : false,
-					"blocks" : 0,
-					"auto" : {
-						"highGoal" : 0,
-						"lowGoal" : 0,
-						"defensesCrossed" : {
-							"portcullis" : false,
-							"chevalDeFrise" : false,
-							"rockWall" : false,
-							"moat" : false,
-							"drawBridge" : false,
-							"sallyPort" : false,
-							"roughTerrain" : false,
-							"ramparts" : false,
-							"lowBar" : false
-						},
-						
-						"reachedDefense" : false
-					},
-					
-					"teleop" : {
-						"highGoal" : {
-							"successes" : 0,
-							"attempts" : 0
-						},
-
-						"lowGoal" : {
-							"successes" : 0,
-							"attempts" : 0
-						},
-						
+					[match]: {
+						"allianceMembers" : [0,0],
+						"isWin" : false,
 						"blocks" : 0,
-						"defensesCrossed" : {
-							"portcullis" : 0,
-							"chevalDeFrise" : 0,
-							"rockWall" : 0,
-							"moat" : 0,
-							"drawBridge" : 0,
-							"sallyPort" : 0,
-							"roughTerrain" : 0,
-							"ramparts" : 0,
-							"lowBar" : 0
-						}
+						"auto" : {
+							"highGoal" : 0,
+							"lowGoal" : 0,
+							"defensesCrossed" : {
+								"portcullis" : false,
+								"chevalDeFrise" : false,
+								"rockWall" : false,
+								"moat" : false,
+								"drawbridge" : false,
+								"sallyPort" : false,
+								"roughTerrain" : false,
+								"ramparts" : false,
+								"lowBar" : false
+							},
+							
+							"reachedDefense" : false
+						},
+						
+						"teleop" : {
+							"highGoal" : {
+								"successes" : 0,
+								"attempted" : 0
+							},
+
+							"lowGoal" : {
+								"successes" : 0,
+								"attempted" : 0
+							},
+							
+							"blocks" : 0,
+							"defensesCrossed" : {
+								"portcullis" : 0,
+								"chevalDeFrise" : 0,
+								"rockWall" : 0,
+								"moat" : 0,
+								"drawbridge" : 0,
+								"sallyPort" : 0,
+								"roughTerrain" : 0,
+								"ramparts" : 0,
+								"lowBar" : 0
+							}
+						},
+						
+						"breach" : false,
+						"capture" : false,
+						"spy" : false,
+						"challenge" : false,
+						"scaled" : false,
+						"scaledHigh" : false,
+						"scaledLow" : false,
+						"performedAuto" : false,
+						"broken" : false,
+						"humanPlayer" : false,
+						"vision" : false,
+						"performanceRating" : "",
+						"offensiveRating" : "",
+						"defensiveRating" : "",
+						"teamComments" : "",
+						"matchComments" : ""
 					},
-					
-					"breach" : false,
-					"capture" : false,
-					"spy" : false,
-					"challenge" : false,
-					"scaled" : false,
-					"scaledHigh" : false,
-					"scaledLow" : false,
-					"performedAuto" : false,
-					"broken" : false,
-					"humanPlayer" : false,
-					"vision" : false,
-					"performanceRating" : "",
-					"offensiveRating" : "",
-					"defensiveRating" : "",
-					"teamComments" : "",
-					"matchComments" : ""
 				},
-			],
 			
 			"stats": {
 				"teleop": {
@@ -74,13 +74,13 @@ module.exports = {
 					
 					"highGoal" : {
 						"successes" : 0,
-						"attempts" : 0,
+						"attempted" : 0,
 						"shotPercentage" : 0
 					},
 					
 					"lowGoal" : {
 						"successes" : 0,
-						"attempts" : 0,
+						"attempted" : 0,
 						"shotPercentage" : 0
 					},
 					
@@ -130,14 +130,14 @@ module.exports = {
 					"highGoal" : 
 					{
 						"successes" : 0,
-						"attempts" : 0,
+						"attempted" : 0,
 						"shotPercentage" : 0
 					},
 					
 					"lowGoal" : 
 					{
 						"successes" : 0,
-						"attempts" : 0,
+						"attempted" : 0,
 						"shotPercentage" : 0
 					},
 					
@@ -186,4 +186,5 @@ module.exports = {
 			},
 			
 			"comments" : [""]
-		};
+		}
+	)}};

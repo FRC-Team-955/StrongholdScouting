@@ -1,28 +1,12 @@
 var ScoringConstants = require('../../constants/ScoringConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
+var ScoringData = require('./ScoringData');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var scores = {"Team 1" : {
-				"matches" : {
-					"0" : {
-						"teleop" : {
-							"highGoal" : {
-								"successes" : 10,
-								"attempted" : 0
-							},
-							
-							"lowGoal" : {
-								"successes" : 0,
-								"attempted" : 0
-							}
-						}
-					}
-				}
-			}
-		};
+var scores = {"Team 1": ScoringData.addTeam("Team 1", 0)};
 
 function getIndexes(team,match){
 	return new Promise((resolve,reject) => {
@@ -48,6 +32,14 @@ function increment(currValue){
 		return 1;
 	else
 		return (currValue+1)
+}
+
+function handleUpdateAddTeam(team,match){
+	if(scores[team] === undefined){
+		scores[team] = ScoringData.addTeam(team,match);
+	}
+	
+	console.log(scores);
 }
 
 function handleUpdateReachDefense(team,match){
@@ -87,8 +79,9 @@ function handleUpdateDecrementLowAutoGoals(team,match){
 	scores[team].stats.auto.lowGoals -= 1;
 }
 
-function handleUpdateIncrementHighTeleopGoals(team,match){
+function handleUpdateIncrementHighTeleopGoals(team,match,callback){
 	scores[team].matches[match].teleop.highGoal.successes = increment(scores[team].matches[match].teleop.highGoal.successes);
+	scores.needsUpdate?false:true;
 }
 
 function handleUpdateDecrementHighTeleopGoals(team,match){
@@ -110,27 +103,27 @@ function handleUpdateDecrementLowTeleopGoals(team,match){
 }
 
 function handleUpdateIncrementHighGoalsAttempted(team,match){
-	scores[team].matches[match].teleop.highGoal.attempts = increment(scores[team].matches[match].teleop.highGoal.attempts);
-	scores[team].stats.teleop.highGoal.attempts = increment(scores[team].stats.teleop.highGoal.attempts);
-	scores[team].stats.match.highGoal.attempts = increment(scores[team].stats.match.highGoal.attempts);
+	scores[team].matches[match].teleop.highGoal.attempted = increment(scores[team].matches[match].teleop.highGoal.attempted);
+	scores[team].stats.teleop.highGoal.attempted = increment(scores[team].stats.teleop.highGoal.attempted);
+	scores[team].stats.match.highGoal.attempted = increment(scores[team].stats.match.highGoal.attempted);
 }
 
 function handleUpdateDecrementHighGoalsAttempted(team,match){
-	scores[team].matches[match].teleop.highGoal.attempts -= 1;
-	scores[team].stats.teleop.highGoal.attempts -= 1;
-	scores[team].stats.match.highGoal.attempts -= 1;
+	scores[team].matches[match].teleop.highGoal.attempted -= 1;
+	scores[team].stats.teleop.highGoal.attempted -= 1;
+	scores[team].stats.match.highGoal.attempted -= 1;
 }
 
 function handleUpdateIncrementLowGoalsAttempted(team,match){
-	scores[team].matches[match].teleop.lowGoal.attempts = increment(scores[team].matches[match].teleop.lowGoal.attempts);
-	scores[team].stats.teleop.lowGoal.attempts = increment(scores[team].matches[match].teleop.lowGoal.attempts);
-	scores[team].stats.match.lowGoal.attempts = increment(scores[team].matches[match].teleop.lowGoal.attempts);
+	scores[team].matches[match].teleop.lowGoal.attempted = increment(scores[team].matches[match].teleop.lowGoal.attempted);
+	scores[team].stats.teleop.lowGoal.attempted = increment(scores[team].matches[match].teleop.lowGoal.attempted);
+	scores[team].stats.match.lowGoal.attempted = increment(scores[team].matches[match].teleop.lowGoal.attempted);
 }
 
 function handleUpdateDecrementLowGoalsAttempted(team,match){
-	scores[team].matches[match].teleop.lowGoal.attempts -= 1;
-	scores[team].stats.teleop.lowGoal.attempts -= 1;
-	scores[team].stats.match.lowGoal.attempts -= 1;
+	scores[team].matches[match].teleop.lowGoal.attempted -= 1;
+	scores[team].stats.teleop.lowGoal.attempted -= 1;
+	scores[team].stats.match.lowGoal.attempted -= 1;
 }
 
 function handleUpdateTeamComments(teamComments,team,match){
@@ -144,7 +137,7 @@ function handleUpdateMatchComments(matchComments,team,match){
 
 function handleUpdateScale(team,match,value){
 	scores[team].matches[match].scaled = value;
-	value?scores[team].stats.totalScales = increment(scores[team].matches[match].teleop.lowGoal.attempts):scores[team].stats.totalScales -= 1;
+	value?scores[team].stats.totalScales = increment(scores[team].matches[match].teleop.lowGoal.attempted):scores[team].stats.totalScales -= 1;
 }
 
 function handleUpdateScaleHeight(scaleHeight,team,match){
@@ -208,109 +201,109 @@ function handleUpdateBroken(team,match,value){
 function handleUpdateIncrementPortcullis(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.portcullis = increment(scores[team].matches[match].teleop.defensesCrossed.portcullis);
 	scores[team].stats.teleop.defensesCrossed.portcullis = increment(scores[team].stats.teleop.defensesCrossed.portcullis);
-	scores[team].stast.match.defensesCrossed.portcullis = increment(scores[team].stast.match.defensesCrossed.portcullis);
+	scores[team].stats.match.defensesCrossed.portcullis = increment(scores[team].stats.match.defensesCrossed.portcullis);
 }
 
 function handleUpdateDecrementPortcullis(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.portcullis -= 1;
 	scores[team].stats.teleop.defensesCrossed.portcullis -= 1;
-	scores[team].stast.match.defensesCrossed.portcullis -= 1;
+	scores[team].stats.match.defensesCrossed.portcullis -= 1;
 }
 
 function handleUpdateIncrementChevalDeFrise(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.chevalDeFrise = increment(scores[team].matches[match].teleop.defensesCrossed.chevalDeFrise);
 	scores[team].stats.teleop.defensesCrossed.chevalDeFrise = increment(scores[team].stats.teleop.defensesCrossed.chevalDeFrise);
-	scores[team].stast.match.defensesCrossed.chevalDeFrise = increment(scores[team].stast.match.defensesCrossed.chevalDeFrise);
+	scores[team].stats.match.defensesCrossed.chevalDeFrise = increment(scores[team].stats.match.defensesCrossed.chevalDeFrise);
 }
 
 function handleUpdateDecrementChevalDeFrise(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.chevalDeFrise -= 1;
 	scores[team].stats.teleop.defensesCrossed.chevalDeFrise -= 1;
-	scores[team].stast.match.defensesCrossed.chevalDeFrise -= 1;
+	scores[team].stats.match.defensesCrossed.chevalDeFrise -= 1;
 }
 
 function handleUpdateIncrementMoat(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.moat = increment(scores[team].matches[match].teleop.defensesCrossed.moat);
 	scores[team].stats.teleop.defensesCrossed.moat = increment(scores[team].stats.teleop.defensesCrossed.moat);
-	scores[team].stast.match.defensesCrossed.moat = increment(scores[team].stast.match.defensesCrossed.moat);
+	scores[team].stats.match.defensesCrossed.moat = increment(scores[team].stats.match.defensesCrossed.moat);
 }
 
 function handleUpdateDecrementMoat(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.moat -= 1;
 	scores[team].stats.teleop.defensesCrossed.moat -= 1;
-	scores[team].stast.match.defensesCrossed.moat -= 1;
+	scores[team].stats.match.defensesCrossed.moat -= 1;
 }
 
 function handleUpdateIncrementRamparts(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.ramparts = increment(scores[team].matches[match].teleop.defensesCrossed.ramparts);
 	scores[team].stats.teleop.defensesCrossed.ramparts = increment(scores[team].stats.teleop.defensesCrossed.ramparts);
-	scores[team].stast.match.defensesCrossed.ramparts = increment(scores[team].stast.match.defensesCrossed.ramparts);
+	scores[team].stats.match.defensesCrossed.ramparts = increment(scores[team].stats.match.defensesCrossed.ramparts);
 }
 
 function handleUpdateDecrementRamparts(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.ramparts -= 1;
 	scores[team].stats.teleop.defensesCrossed.ramparts -= 1;
-	scores[team].stast.match.defensesCrossed.ramparts -= 1;
+	scores[team].stats.match.defensesCrossed.ramparts -= 1;
 }
 
 function handleUpdateIncrementDrawbridge(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.drawbridge = increment(scores[team].matches[match].teleop.defensesCrossed.drawbridge);
 	scores[team].stats.teleop.defensesCrossed.drawbridge = increment(scores[team].stats.teleop.defensesCrossed.drawbridge);
-	scores[team].stast.match.defensesCrossed.drawbridge = increment(scores[team].stast.match.defensesCrossed.drawbridge);
+	scores[team].stats.match.defensesCrossed.drawbridge = increment(scores[team].stats.match.defensesCrossed.drawbridge);
 }
 
 function handleUpdateDecrementDrawbridge(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.drawbridge -= 1;
 	scores[team].stats.teleop.defensesCrossed.drawbridge -= 1;
-	scores[team].stast.match.defensesCrossed.drawbridge -= 1;
+	scores[team].stats.match.defensesCrossed.drawbridge -= 1;
 }
 
 function handleUpdateIncrementSallyPort(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.sallyPort = increment(scores[team].matches[match].teleop.defensesCrossed.sallyPort);
 	scores[team].stats.teleop.defensesCrossed.sallyPort = increment(scores[team].stats.teleop.defensesCrossed.sallyPort);
-	scores[team].stast.match.defensesCrossed.sallyPort = increment(scores[team].stast.match.defensesCrossed.sallyPort);
+	scores[team].stats.match.defensesCrossed.sallyPort = increment(scores[team].stats.match.defensesCrossed.sallyPort);
 }
 
 function handleUpdateDecrementSallyPort(team,match){
-	scores[team].matches[match].teleop.defensesCrossed.portcullis -= 1;
-	scores[team].stats.teleop.defensesCrossed.portcullis -= 1;
-	scores[team].stast.match.defensesCrossed.portcullis -= 1;
+	scores[team].matches[match].teleop.defensesCrossed.sallyPort -= 1;
+	scores[team].stats.teleop.defensesCrossed.sallyPort -= 1;
+	scores[team].stats.match.defensesCrossed.sallyPort -= 1;
 }
 
 function handleUpdateIncrementRockWall(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.rockWall = increment(scores[team].matches[match].teleop.defensesCrossed.rockWall);
 	scores[team].stats.teleop.defensesCrossed.rockWall = increment(scores[team].stats.teleop.defensesCrossed.rockWall);
-	scores[team].stast.match.defensesCrossed.rockWall = increment(scores[team].stast.match.defensesCrossed.rockWall);
+	scores[team].stats.match.defensesCrossed.rockWall = increment(scores[team].stats.match.defensesCrossed.rockWall);
 }
 
 function handleUpdateDecrementRockWall(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.rockWall -= 1;
 	scores[team].stats.teleop.defensesCrossed.rockWall -= 1;
-	scores[team].stast.match.defensesCrossed.rockWall -= 1;
+	scores[team].stats.match.defensesCrossed.rockWall -= 1;
 }
 
 function handleUpdateIncrementRoughTerrain(team,match){
-	scores[team].matches[match].teleop.defensesCrossed.roughTerrain = increment(scores[team].matches[match].teleop.defensesCrossed.portcullis);
-	scores[team].stats.teleop.defensesCrossed.roughTerrain = increment(scores[team].stats.teleop.defensesCrossed.portcullis);
-	scores[team].stast.match.defensesCrossed.roughTerrain = increment(scores[team].stast.match.defensesCrossed.portcullis);
+	scores[team].matches[match].teleop.defensesCrossed.roughTerrain = increment(scores[team].matches[match].teleop.defensesCrossed.roughTerrain);
+	scores[team].stats.teleop.defensesCrossed.roughTerrain = increment(scores[team].stats.teleop.defensesCrossed.roughTerrain);
+	scores[team].stats.match.defensesCrossed.roughTerrain = increment(scores[team].stats.match.defensesCrossed.roughTerrain);
 }
 
 function handleUpdateDecrementRoughTerrain(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.roughTerrain -= 1;
 	scores[team].stats.teleop.defensesCrossed.roughTerrain -= 1;
-	scores[team].stast.match.defensesCrossed.roughTerrain -= 1;
+	scores[team].stats.match.defensesCrossed.roughTerrain -= 1;
 }
 
 function handleUpdateIncrementLowBar(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.lowBar = increment(scores[team].matches[match].teleop.defensesCrossed.lowBar);
 	scores[team].stats.teleop.defensesCrossed.lowBar = increment(scores[team].stats.teleop.defensesCrossed.lowBar);
-	scores[team].stast.match.defensesCrossed.lowBar = increment(scores[team].stast.match.defensesCrossed.lowBar);
+	scores[team].stats.match.defensesCrossed.lowBar = increment(scores[team].stats.match.defensesCrossed.lowBar);
 }
 
 function handleUpdateDecrementLowBar(team,match){
 	scores[team].matches[match].teleop.defensesCrossed.lowBar -= 1;
 	scores[team].stats.teleop.defensesCrossed.lowBar -= 1;
-	scores[team].stast.match.defensesCrossed.lowBar -= 1;
+	scores[team].stats.match.defensesCrossed.lowBar -= 1;
 }
 
 var ScoresStore = assign({}, EventEmitter.prototype, {
@@ -350,225 +343,235 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				break;
 			
 			case ScoringConstants.DecrementHighAutoGoals:
-				// handleUpdateDecrementHighAutoGoals(action.team,action.match);
-				console.log("what the fuck " + ScoringConstants.DecrementHighAutoGoals);
-				ScoresStore.emitChange;
+				handleUpdateDecrementHighAutoGoals(action.team,action.match);
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.IncrementLowAutoGoals:
 				handleUpdateIncrementLowAutoGoals(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.DecrementLowAutoGoals:
 				handleUpdateDecrementLowAutoGoals(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.IncrementHighTeleopGoals:
 				handleUpdateIncrementHighTeleopGoals(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.DecrementHighTeleopGoals:
 				handleUpdateDecrementHighTeleopGoals(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
 			case ScoringConstants.IncrementLowTeleopGoals:
 				handleUpdateIncrementLowTeleopGoals(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.DecrementLowTeleopGoals:
 				handleUpdateDecrementLowTeleopGoals(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
 			case ScoringConstants.IncrementHighGoalsAttempted:
 				handleUpdateIncrementHighGoalsAttempted(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.DecrementHighGoalsAttempted:
 				handleUpdateDecrementHighGoalsAttempted(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
 			case ScoringConstants.IncrementLowGoalsAttempted:
 				handleUpdateIncrementLowGoalsAttempted(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.DecrementLowGoalsAttempted:
 				handleUpdateIncrementLowGoalsAttempted(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.TeamComments:
 				handleUpdateTeamComments(action.teamComments,action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.MatchComments:
 				handleUpdateMatchComments(action.matchComments,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Scale:
 				handleUpdateScale(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.ScaleHight:
 				handleUpdateScaleHeight(action.scaleHeight,action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
 			case ScoringConstants.Breach:
 				handleUpdateBreach(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Capture:
 				handleUpdateCapture(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Performance:
 				handleUpdatePerformance(action.performanceRating,action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
 			case ScoringConstants.offenseRating:
 				handleUpdateOffense(action.offenseRating,action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.defenseRating:
 				handleUpdateDefense(action.defenseRating,action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Auto:
 				handleUpdateAuto(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Challenge:
 				handleUpdateChallenge(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Spy:
 				handleUpdateSpy(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.HumanPlayer:
 				handleUpdateHumanPlayer(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case ScoringConstants.Vision:
 				handleUpdateVision(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
 			case handleUpdateBroken:
 				handleUpdateBroken(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementPortcullis:
+			case ScoringConstants.IncrementPortcullis:
 				handleUpdateIncrementPortcullis(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementPortcullis:
+			case ScoringConstants.DecrementPortcullis:
 				handleUpdateDecrementPortcullis(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementChevalDeFrise:
+			case ScoringConstants.IncrementChevalDeFrise:
 				handleUpdateIncrementChevalDeFrise(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementChevalDeFrise:
+			case ScoringConstants.DecrementChevalDeFrise:
 				handleUpdateDecrementChevalDeFrise(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementMoat:
+			case ScoringConstants.IncrementMoat:
 				handleUpdateIncrementMoat(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementMoat:
+			case ScoringConstants.DecrementMoat:
 				handleUpdateDecrementMoat(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
-			case ScoringConstants.handleUpdateIncrementRamparts:
+			case ScoringConstants.IncrementRamparts:
 				handleUpdateIncrementRamparts(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementRamparts:
+			case ScoringConstants.DecrementRamparts:
 				handleUpdateDecrementRamparts(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 				
-			case ScoringConstants.handleUpdateIncrementDrawbridge:
+			case ScoringConstants.IncrementDrawbridge:
 				handleUpdateIncrementDrawbridge(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementDrawbridge:
+			case ScoringConstants.DecrementDrawbridge:
 				handleUpdateDecrementDrawbridge(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementSallyPort:
+			case ScoringConstants.IncrementSallyPort:
 				handleUpdateIncrementSallyPort(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementSallyPort:
+			case ScoringConstants.DecrementSallyPort:
 				handleUpdateDecrementSallyPort(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementRockWall:
+			case ScoringConstants.IncrementRockWall:
 				handleUpdateIncrementRockWall(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementRockWall:
+			case ScoringConstants.DecrementRockWall:
 				handleUpdateDecrementRockWall(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementRoughTerrain:
+			case ScoringConstants.IncrementRoughTerrain:
 				handleUpdateIncrementRoughTerrain(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementRoughTerrain:
+			case ScoringConstants.DecrementRoughTerrain:
 				handleUpdateDecrementRoughTerrain(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateIncrementRoughTerrain:
+			case ScoringConstants.IncrementRoughTerrain:
 				handleUpdateIncrementLowBar(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
+				break;
+				
+			case ScoringConstants.IncrementLowBar:
+				handleUpdateIncrementLowBar(action.team,action.match);
+				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.handleUpdateDecrementLowBar:
+			case ScoringConstants.DecrementLowBar:
 				handleUpdateDecrementLowBar(action.team,action.match);
-				ScoresStore.emitChange;
+				ScoresStore.emitChange();
 				break;
+				
+			case ScoringConstants.AddTeam:
+				handleUpdateAddTeam(action.team,action.match);
+				ScoresStore.emitChange();
+				break;
+				
         }
 		
 		return true;
