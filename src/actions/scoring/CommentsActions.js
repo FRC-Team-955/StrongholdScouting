@@ -4,16 +4,16 @@ var AppDispatcher = require('../../components/AppDispatcher');
 var CommentsActions = {
 	updateTeamComments: function(teamComments,team,match){
 		AppDispatcher.handleViewAction({
-			actionType: ScoringConstants.ReachedDefense,
+			actionType: ScoringConstants.TeamComments,
 			team: team,
 			match: match,
 			teamComments: teamComments
 		});
 	},
 	
-	updateMatchComments(matchComments,team,match){
+	updateMatchComments: function(matchComments,team,match){
 		AppDispatcher.handleViewAction({
-			actionType: ScoringConstants.ReachedDefense,
+			actionType: ScoringConstants.MatchComments,
 			team: team,
 			match: match,
 			matchComments: matchComments

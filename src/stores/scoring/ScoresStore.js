@@ -43,20 +43,123 @@ function handleUpdateAddTeam(team,match){
 }
 
 function handleUpdateReachDefense(team,match){
-	scores[team].matches[match].auto.reachedDefense = value;
+	scores[team].matches[match].auto.reachedDefense = !scores[team].matches[match].auto.reachedDefense;
 	scores[team].matches[match].auto.reachedDefense? increment(scores[team].stats.auto.defensesReached):scores[team].stats.auto.defensesReached -= 1;
 }
 
+function handleUpdateCrossedDefense(team,match){
+	scores[team].matches[match].auto.crossedDefense = !scores[team].matches[match].auto.crossedDefense;
+}
+
 function handleUpdateCrossDefense(team,match,value){
-	getIndexes(team,match).then((indexes) =>{
-		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1] = value;
-		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1]? increment(scores[indexes[0]].stats.auto.defensesCrossed.isCrossDefense[1]):scores[indexes[0]].stats.auto.defensesCrossed.isCrossDefense[1] -= 1;
-		scores[indexes[0]].matches[indexes[1]].auto.defensesCrossed.isCrossDefense[1]? increment(scores[indexes[0]].stats.match.defensesCrossed.isCrossDefense[1]):scores[indexes[0]].stats.match.defensesCrossed.isCrossDefense[1] -= 1;
-	},
+	console.log(value);
+	if(value === 1){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = true;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 2){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = true;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 3){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = true;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 4){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = true;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 5){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = true;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 6){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = true;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
 		
-	(error) =>{
-		console.log(error);
-	})
+	else if(value === 7){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = true;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 8){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = true;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = false;
+	}
+	
+	else if(value === 9){
+		scores[team].matches[match].auto.defensesCrossed.portcullis = false;
+		scores[team].matches[match].auto.defensesCrossed.chevalDeFrise = false;
+		scores[team].matches[match].auto.defensesCrossed.rockWall = false;
+		scores[team].matches[match].auto.defensesCrossed.moat = false;
+		scores[team].matches[match].auto.defensesCrossed.drawbridge = false;
+		scores[team].matches[match].auto.defensesCrossed.sallyPort = false;
+		scores[team].matches[match].auto.defensesCrossed.roughTerrain = false;
+		scores[team].matches[match].auto.defensesCrossed.ramparts = false;
+		scores[team].matches[match].auto.defensesCrossed.lowBar = true;
+	}
 }
 
 function handleUpdateIncrementHighAutoGoals(team,match){
@@ -135,9 +238,9 @@ function handleUpdateMatchComments(matchComments,team,match){
 	scores[teams].matches[match].matchComments = matchComments;
 }
 
-function handleUpdateScale(team,match,value){
-	scores[team].matches[match].scaled = value;
-	value?scores[team].stats.totalScales = increment(scores[team].matches[match].teleop.lowGoal.attempted):scores[team].stats.totalScales -= 1;
+function handleUpdateScale(team,match){
+	scores[team].matches[match].scaled = !scores[team].matches[match].scaled;
+	scores[team].matches[match].scaled?scores[team].stats.totalScales = increment(scores[team].matches[match].teleop.lowGoal.attempted):scores[team].stats.totalScales -= 1;
 }
 
 function handleUpdateScaleHeight(scaleHeight,team,match){
@@ -152,14 +255,15 @@ function handleUpdateScaleHeight(scaleHeight,team,match){
 	}
 }
 
-function handleUpdateBreach(team,match,value){
-	scores[team].matches[match].breach = value;
-	value? scores[team].stats.totalBreaches = increment(scores[team].stats.totalBreaches):scores[team].stats.totalBreaches -= 1;
+function handleUpdateBreach(team,match){
+	// console.log("called");
+	scores[team].matches[match].breach = !scores[team].matches[match].breach;
+	scores[team].matches[match].breach? scores[team].stats.totalBreaches = increment(scores[team].stats.totalBreaches):scores[team].stats.totalBreaches -= 1;
 }
 
 function handleUpdateCapture(team,match){
-	scores[team].matches[match].capture = value;
-	value? scores[team].stats.totalCaptures = increment(scores[team].stats.totalCaptures):scores[team].stats.totalCaptures -= 1;
+	scores[team].matches[match].capture = !scores[team].matches[match].capture;
+	scores[team].matches[match].capture? scores[team].stats.totalCaptures = increment(scores[team].stats.totalCaptures):scores[team].stats.totalCaptures -= 1;
 }
 
 function handleUpdatePerformance(performanceRating,team,match){
@@ -174,28 +278,28 @@ function handleUpdateDefense(defenseRating,team,match){
 	scores[team].matches[match].defense = defenseRating;
 }
 
-function handleUpdateAuto(team,match,value){
-	scores[team].matches[match].hasAuto = value;
+function handleUpdateAuto(team,match){
+	scores[team].matches[match].hasAuto = !scores[team].matches[match].hasAuto;
 }
 
-function handleUpdateChallenge(team,match,value){
-	scores[team].matches[match].challenge = value;
+function handleUpdateChallenge(team,match){
+	scores[team].matches[match].challenge = !scores[team].matches[match].challenge;
 }
 
-function handleUpdateSpy(team,match,value){
-	scores[team].matches[match].spy = value;
+function handleUpdateSpy(team,match){
+	scores[team].matches[match].spy = !scores[team].matches[match].spy;
 }
 
-function handleUpdateHumanPlayer(team,match,value){
-	scores[team].matches[match].humanPlayer = value;
+function handleUpdateHumanPlayer(team,match){
+	scores[team].matches[match].humanPlayer = !scores[team].matches[match].humanPlayer;
 }
 
-function handleUpdateVision(team,match,value){
-	scores[team].matches[match].vision = value;
+function handleUpdateVision(team,match){
+	scores[team].matches[match].vision = !scores[team].matches[match].vision;
 }
 
-function handleUpdateBroken(team,match,value){
-	scores[team].matches[match].broken = value;
+function handleUpdateBroken(team,match){
+	scores[team].matches[match].broken = !scores[team].matches[match].broken;
 }
 
 function handleUpdateIncrementPortcullis(team,match){
@@ -333,7 +437,7 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
                 break;
 			
 			case ScoringConstants.CrossDefense:
-				handleUpdateCrossDefense(action.team,action.match);
+				handleUpdateCrossDefense(action.team,action.match,action.value);
 				ScoresStore.emitChange();
 				break;
 			
@@ -569,6 +673,11 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				
 			case ScoringConstants.AddTeam:
 				handleUpdateAddTeam(action.team,action.match);
+				ScoresStore.emitChange();
+				break;
+			
+			case ScoringConstants.CrossedDefense:
+				handleUpdateCrossedDefense(action.team,action.match);
 				ScoresStore.emitChange();
 				break;
 				

@@ -2,16 +2,15 @@ var ScoringConstants = require('../../constants/ScoringConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 
 var MatchAttributesActions = {
-	updateScale(team,match,value){
+	updateScale: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Scale,
 			team: team,
 			match: match,
-			value: value
 		});
 	},
 	
-	updateScaleHeight(scaleHeight,team,match,value){
+	updateScaleHeight: function(scaleHeight,team,match,value){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.ScaleHeight,
 			team: team,
@@ -21,21 +20,20 @@ var MatchAttributesActions = {
 		});
 	},
 	
-	updateBreach(team,match,value){
+	updateBreach: function(team,match){
+		console.log("called");
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Breach,
 			team: team,
 			match: match,
-			value: value
 		});
 	},
 	
-	updateCapture(team,match,value){
+	updateCapture: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Capture,
 			team: team,
 			match: match,
-			value: value
 		});
 	}
 }

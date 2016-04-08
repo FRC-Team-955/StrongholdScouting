@@ -102,19 +102,56 @@ const AutoComponent = React.createClass ({
 				/>
 				
 				<div>
-					<Checkbox label = "Reach Defense" style = {autoToggle}/>
+					<Checkbox label = "Reach Defense" style = {autoToggle} checked = {this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.reachedDefense} onTouchTap = {this.onReachTap}/>
 				</div>
 			</div>
 	   )
+   },
+   
+   onReachTap: function(){
+	   AutoActions.updateReachDefense(this.props.matchData.currentTeam,this.props.matchData.currentMatch);
+   },
+   
+   crossDefense: function(event,index,value){
+	   AutoActions.updateCrossDefense(value,this.props.matchData.currentTeam,this.props.matchData.currentMatch);
+	   console.log(value);
+   },
+   
+   onCrossTap: function(){
+	   AutoActions.updateCrossedDefense(this.props.matchData.currentTeam,this.props.matchData.currentMatch);	   
    },
    
    change: function(event, index, value) {
 	   this.setState({value})
    },
    
+	getSelectFieldValue: function(){
+		if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.portcullis)
+	   		return 1
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.chevalDeFrise)
+			return 2
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.rockWall)
+			return 3
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.moat)
+			return 4
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.drawbridge)
+			return 5
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.sallyPort)
+			return 6
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.roughTerrain)
+			return 7
+		else if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.defensesCrossed.ramparts)
+			return 8
+		else
+			return 9
+	
+   },
+   
    disableToggle: function(){
-	   this.setState({checked: !this.state.checked})
-	   this.setState({enable: !this.state.enable})
+	   if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.crossedDefense)
+	   		this.setState({enable: true})
+		else
+			this.setState({enable: false})
    },
    
 	render(){
@@ -136,8 +173,8 @@ const AutoComponent = React.createClass ({
 								AutoActions.updateDecrementLowGoals
 							]
 						)}
-						<Checkbox label = "Defense Crossed" checked = {this.state.checked} onCheck = {this.disableToggle} style = {autoToggle}/>
-							<SelectField maxHeight = {75} style = {autoDrop} value = {this.state.value} onChange = {this.change} disabled = {this.state.enable}>
+						<Checkbox label = "Defense Crossed" checked = {this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.crossedDefense} onCheck = {this.disableToggle} style = {autoToggle} onTouchTap = {this.onCrossTap}/>
+							<SelectField maxHeight = {75} style = {autoDrop} value = {this.getSelectFieldValue()} onChange = {this.crossDefense} disabled = {!this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].auto.crossedDefense}>
        							<MenuItem value={1} primaryText="A1"/>
         						<MenuItem value={2} primaryText="A2"/>
 								<MenuItem value={3} primaryText="B1"/>

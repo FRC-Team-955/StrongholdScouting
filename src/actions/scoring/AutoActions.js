@@ -2,19 +2,28 @@ var ScoringConstants = require('../../constants/ScoringConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 
 var AutoActions = {
-	updateReachDefense: function(team,match,value){
+	updateReachDefense: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.ReachedDefense,
 			team: team,
 			match: match,
-			value: value
 		});
 	},
 	
 	updateCrossDefense: function(value,team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.CrossDefense,
-			isCrossDefense: value,
+			team: team,
+			value: value,
+			match: match
+		})
+	},
+	
+	updateCrossedDefense: function(team,match){
+		console.log("action called");
+		AppDispatcher.handleViewAction({
+			actionType: ScoringConstants.CrossedDefense,
+			team: team,
 			match: match
 		})
 	},

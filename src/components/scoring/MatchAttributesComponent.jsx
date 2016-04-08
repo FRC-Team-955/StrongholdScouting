@@ -5,6 +5,7 @@ import Paper from 'material-ui/lib/paper';
 import Checkbox from 'material-ui/lib/checkbox'; 
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import MatchAttributesActions from '../../actions/scoring/MatchAttributesActions';
 
 require('styles//scoring/MatchAttributes.css');
 
@@ -30,21 +31,6 @@ const style = {
 	}
 }
 
-
-
-const toggle = (
-    <div>
-	<div style = {style.match}>
-        <Checkbox label = "Capture" style = {style.cap}/>
-    </div>
-	<div style = {style.match}>
-        <Checkbox label = "Breach" style = {style.text}/>
-    </div>
-	</div>
-)
-
-
-
 const MatchAttributesComponent = React.createClass ({
    
    getInitialState: function(){
@@ -55,8 +41,29 @@ const MatchAttributesComponent = React.createClass ({
         }
     }, 
    
+   getToggles: function(){
+	   return(
+			<div>
+			<div style = {style.match}>
+				<Checkbox label = "Capture" style = {style.cap} checked = {this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].capture} onTouchTap = {this.onCapTap}/>
+			</div>
+			<div style = {style.match}>
+				<Checkbox label = "Breach" style = {style.text} checked ={this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].breach} onTouchTap = {this.onBreachTap}/>
+			</div>
+			</div>
+		)
+   },
+   
    change: function(event, index, value) {
 	   this.setState({value})
+   },
+   
+   onBreachTap: function(){
+	   MatchAttributesActions.updateBreach(this.props.matchData.currentTeam,this.props.matchData.currentMatch);
+   },
+   
+   onCapTap: function(){
+	   MatchAttributesActions.updateCapture(this.props.matchData.currentTeam,this.props.matchData.currentMatch);
    },
    
    disableToggle: function(){
@@ -76,7 +83,7 @@ const MatchAttributesComponent = React.createClass ({
       						</SelectField>
 					</div>
 				}/>
-				<Paper style = {matchToggleContainer} children = {toggle}/>
+				<Paper style = {matchToggleContainer} children = {this.getToggles()}/>
     		</div>
 		)
 	}

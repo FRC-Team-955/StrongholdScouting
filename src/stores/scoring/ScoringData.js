@@ -21,7 +21,8 @@ module.exports = {addTeam: function(team,match){
 								"lowBar" : false
 							},
 							
-							"reachedDefense" : false
+							"reachedDefense" : false,
+							"crossedDefense": false
 						},
 						
 						"teleop" : {
@@ -89,7 +90,7 @@ module.exports = {addTeam: function(team,match){
 						"chevalDeFrise" : 0,
 						"rockWall" : 0,
 						"moat" : 0,
-						"drawBridge" : 0,
+						"drawbridge" : 0,
 						"sallyPort" : 0,
 						"roughTerrain" : 0,
 						"ramparts" : 0,
@@ -99,14 +100,14 @@ module.exports = {addTeam: function(team,match){
 				
 				"auto" : {
 					"blocks" : 0,		
-					"highGoal" : 0,
-					"lowGoal" : 0,
+					"highGoals" : 0,
+					"lowGoals" : 0,
 					"defensesCrossed" : {
 						"portcullis" : 0,
 						"chevalDeFrise" : 0,
 						"rockWall" : 0,
 						"moat" : 0,
-						"drawBridge" : 0,
+						"drawbridge" : 0,
 						"sallyPort" : 0,
 						"roughTerrain" : 0,
 						"ramparts" : 0,
