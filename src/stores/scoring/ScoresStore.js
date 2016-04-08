@@ -352,7 +352,6 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 			
 			case ScoringConstants.DecrementHighAutoGoals:
 				// handleUpdateDecrementHighAutoGoals(action.team,action.match);
-				console.log("what the fuck " + ScoringConstants.DecrementHighAutoGoals);
 				ScoresStore.emitChange;
 				break;
 			
