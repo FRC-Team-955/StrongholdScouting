@@ -165,21 +165,25 @@ function handleUpdateCrossDefense(team,match,value){
 function handleUpdateIncrementHighAutoGoals(team,match){
 	scores[team].matches[match].auto.highGoal = increment(scores[team].matches[match].auto.highGoal);
 	scores[team].stats.auto.highGoals = increment(scores[team].stats.auto.highGoals);
+	scores[team].stats.match.highGoal.successes = increment(scores[team].stats.match.highGoal.successes);
 }
 
 function handleUpdateDecrementHighAutoGoals(team,match){
 	scores[team].matches[match].auto.highGoal -= 1;
 	scores[team].stats.auto.highGoals -= 1;
+	scores[team].stats.match.highGoal.successes -= 1;
 }
 
 function handleUpdateIncrementLowAutoGoals(team,match){
 	scores[team].matches[match].auto.lowGoal = increment(scores[team].matches[match].auto.lowGoal);
 	scores[team].stats.auto.lowGoals = increment(scores[team].stats.auto.lowGoals);
+	scores[team].stats.match.lowGoal.successes = increment(scores[team].stats.match.lowGoal.successes);
 }
 
 function handleUpdateDecrementLowAutoGoals(team,match){
 	scores[team].matches[match].auto.lowGoal -= 1;
 	scores[team].stats.auto.lowGoals -= 1;
+	scores[team].stats.match.lowGoal.successes -= 1;
 }
 
 function handleUpdateIncrementHighTeleopGoals(team,match,callback){
