@@ -14,7 +14,6 @@ var ScoringConstants = {
     "IncrementLowGoalsAttempted" : 16,
     "DecrementLowGoalsAttempted" : 17,
     "TeamComments" : 18,
-    "MatchComments" : 19,
     "Scale" : 20,
     "ScaleHeight" : 21,
     "Breach" : 22,

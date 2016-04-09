@@ -10,13 +10,13 @@ var MatchAttributesActions = {
 		});
 	},
 	
-	updateScaleHeight: function(scaleHeight,team,match,value){
+	updateScaleHeight: function(value,team,match){
+		console.log(value)
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.ScaleHeight,
 			team: team,
 			match: match,
 			value: value,
-			scaleHeight: scaleHeight
 		});
 	},
 	

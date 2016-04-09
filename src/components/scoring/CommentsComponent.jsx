@@ -43,13 +43,13 @@ const CommentsComponent = React.createClass({
 	},
 	
 	handleMatchChange(event){
-    	CommentsActions.updateMatchComments(event.target.value,this.props.matchData.currentTeam,this.props.matchData.currentMatch);
+    	CommentsActions.updateMatchComments(event.target.value,this.props.matchData.currentMatch);
 	},
 	
 	render(){
 		return(<div className = "col-md-3 spacing">
 			<Paper children = {<TextField floatingLabelText = "Team Comments" rows = {9} rowsMax = {9} style = {teamTextStyle} multiLine = {true} onChange = {this.handleTeamChange} value = {this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].teamComments}/>} style = {teamContainer}/>
-			<Paper children = {<TextField floatingLabelText = "Match Comments" rows = {9} rowsMax = {9} style = {matchTextStyle} multiLine = {true} onChange = {this.handleMatchChange} value = {this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].matchComments}/>} style = {matchContainer}/>
+			<Paper children = {<TextField floatingLabelText = "Match Comments" rows = {9} rowsMax = {9} style = {matchTextStyle} multiLine = {true} onChange = {this.handleMatchChange} value = {this.props.matchData[this.props.matchData.currentMatch + "comments"]}/>} style = {matchContainer}/>
 		</div>
 		)
 	}

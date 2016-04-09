@@ -29,14 +29,18 @@ const ScoringMainComponent = React.createClass({
 					/>
 				</div>
 				<div className = "row">
-					<PerformanceComponent/>
+					<PerformanceComponent
+						scoringData = {this.props.scoringData}	matchData = {this.props.matchData} needsUpdate = {this.props.needsUpdate}
+					/>
 					<CommentsComponent
 						scoringData = {this.props.scoringData}	matchData = {this.props.matchData} needsUpdate = {this.props.needsUpdate}
 					/>
 					<MatchAttributesComponent
 						scoringData = {this.props.scoringData}	matchData = {this.props.matchData} needsUpdate = {this.props.needsUpdate}
 					/>
-					<TeamAttributesComponent/>
+					<TeamAttributesComponent
+						scoringData = {this.props.scoringData}	matchData = {this.props.matchData} needsUpdate = {this.props.needsUpdate}
+					/>
 				</div>   
 			</div>
 		)

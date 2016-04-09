@@ -234,17 +234,16 @@ function handleUpdateTeamComments(teamComments,team,match){
 	scores[team].matches[match].teamComments = teamComments;
 }
 
-function handleUpdateMatchComments(matchComments,team,match){
-	scores[teams].matches[match].matchComments = matchComments;
-}
+
 
 function handleUpdateScale(team,match){
 	scores[team].matches[match].scaled = !scores[team].matches[match].scaled;
 	scores[team].matches[match].scaled?scores[team].stats.totalScales = increment(scores[team].matches[match].teleop.lowGoal.attempted):scores[team].stats.totalScales -= 1;
 }
 
-function handleUpdateScaleHeight(scaleHeight,team,match){
-	if(scaleHeight === "high"){
+function handleUpdateScaleHeight(value,team,match){
+	console.log(value);
+	if(value){
 		scores[team].matches[match].scaledHigh = true;
 		scores[team].matches[match].scaledLow = false;
 	}
@@ -267,19 +266,40 @@ function handleUpdateCapture(team,match){
 }
 
 function handleUpdatePerformance(performanceRating,team,match){
-	scores[team].matches[match].performance = performanceRating;
+	if(performanceRating === 1)
+		scores[team].matches[match].performanceRating = "good";
+	
+	else if(performanceRating === .5)
+		scores[team].matches[match].performanceRating = "meh";
+	
+	else
+		scores[team].matches[match].performanceRating = "bad";
 }
 
 function handleUpdateOffense(offenseRating,team,match){
-	scores[team].matches[match].offfense = offenseRating;
+	if(offenseRating === 1)
+		scores[team].matches[match].offenseRating = "good";
+	
+	else if(offenseRating === .5)
+		scores[team].matches[match].offenseRating = "meh";
+	
+	else
+		scores[team].matches[match].offenseRating = "bad";
 }
 
 function handleUpdateDefense(defenseRating,team,match){
-	scores[team].matches[match].defense = defenseRating;
+	if(defenseRating === 1)
+		scores[team].matches[match].defenseRating = "good";
+	
+	else if(defenseRating === .5)
+		scores[team].matches[match].defenseRating = "meh";
+	
+	else
+		scores[team].matches[match].defenseRating = "bad";
 }
 
 function handleUpdateAuto(team,match){
-	scores[team].matches[match].hasAuto = !scores[team].matches[match].hasAuto;
+	scores[team].matches[match].performedAuto = !scores[team].matches[match].performedAuto;
 }
 
 function handleUpdateChallenge(team,match){
@@ -506,18 +526,13 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.MatchComments:
-				handleUpdateMatchComments(action.matchComments,action.match);
-				ScoresStore.emitChange();
-				break;
-			
 			case ScoringConstants.Scale:
 				handleUpdateScale(action.team,action.match);
 				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.ScaleHight:
-				handleUpdateScaleHeight(action.scaleHeight,action.team,action.match);
+			case ScoringConstants.ScaleHeight:
+				handleUpdateScaleHeight(action.value,action.team,action.match);
 				ScoresStore.emitChange();
 				break;
 				
@@ -536,12 +551,12 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				ScoresStore.emitChange();
 				break;
 				
-			case ScoringConstants.offenseRating:
+			case ScoringConstants.Offense:
 				handleUpdateOffense(action.offenseRating,action.team,action.match);
 				ScoresStore.emitChange();
 				break;
 			
-			case ScoringConstants.defenseRating:
+			case ScoringConstants.Defense:
 				handleUpdateDefense(action.defenseRating,action.team,action.match);
 				ScoresStore.emitChange();
 				break;
@@ -571,7 +586,7 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				ScoresStore.emitChange();
 				break;
 			
-			case handleUpdateBroken:
+			case ScoringConstants.Broken:
 				handleUpdateBroken(action.team,action.match);
 				ScoresStore.emitChange();
 				break;

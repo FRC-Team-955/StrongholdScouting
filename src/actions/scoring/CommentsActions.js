@@ -1,4 +1,5 @@
 var ScoringConstants = require('../../constants/ScoringConstants');
+var MatchConstants = require('../../constants/MatchConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 
 var CommentsActions = {
@@ -11,10 +12,10 @@ var CommentsActions = {
 		});
 	},
 	
-	updateMatchComments: function(matchComments,team,match){
+	updateMatchComments: function(matchComments,match){
+		console.log("callederino")
 		AppDispatcher.handleViewAction({
-			actionType: ScoringConstants.MatchComments,
-			team: team,
+			actionType: MatchConstants.MatchComments,
 			match: match,
 			matchComments: matchComments
 		});

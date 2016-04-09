@@ -2,7 +2,7 @@ var ScoringConstants = require('../../constants/ScoringConstants');
 var AppDispatcher = require('../../components/AppDispatcher');
 
 var TeamAttributesActions = {
-	updateAuto(team,match){
+	updateAuto: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Auto,
 			team: team,
@@ -10,7 +10,7 @@ var TeamAttributesActions = {
 		})
 	},
 	
-	updateChallenge(team,match){
+	updateChallenge: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Challenge,
 			team: team,
@@ -18,7 +18,7 @@ var TeamAttributesActions = {
 		})
 	},
 	
-	updateSpy(team,match){
+	updateSpy: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Spy,
 			team: team,
@@ -26,7 +26,7 @@ var TeamAttributesActions = {
 		})
 	},
 	
-	updateHumanPlayer(team,match){
+	updateHumanPlayer: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.HumanPlayer,
 			team: team,
@@ -34,7 +34,7 @@ var TeamAttributesActions = {
 		})
 	},
 	
-	updateVision(team,match){
+	updateVision: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Vision,
 			team: team,
@@ -42,7 +42,7 @@ var TeamAttributesActions = {
 		})
 	},
 	
-	updateBroken(team,match){
+	updateBroken: function(team,match){
 		AppDispatcher.handleViewAction({
 			actionType: ScoringConstants.Broken,
 			team: team,

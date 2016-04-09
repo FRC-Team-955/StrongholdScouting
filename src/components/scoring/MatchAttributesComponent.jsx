@@ -58,6 +58,10 @@ const MatchAttributesComponent = React.createClass ({
 	   this.setState({value})
    },
    
+   onScaleTap: function(){
+	   MatchAttributesActions.updateScale(this.props.matchData.currentTeam,this.props.matchData.currentMatch);
+   },
+   
    onBreachTap: function(){
 	   MatchAttributesActions.updateBreach(this.props.matchData.currentTeam,this.props.matchData.currentMatch);
    },
@@ -71,13 +75,26 @@ const MatchAttributesComponent = React.createClass ({
 	   this.setState({enable: !this.state.enable})
    },
    
+   setScaleHeight: function(event, index, value){
+	   console.log(value);
+	   MatchAttributesActions.updateScaleHeight(value,this.props.matchData.currentTeam,this.props.matchData.currentMatch)
+   },
+   
+   getScaleHeight: function(){
+		if(this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].scaledHigh)
+			return true;
+		
+		else
+			return false;
+   },
+   
 	render(){
 		return(
 			<div className = "col-md-3 spacing">
         		<Paper style = {matchToggleContainer} children = {
 					<div>
-						<Checkbox label = "Scale Success?" checked = {this.state.checked} onCheck = {this.disableToggle}/>
-							<SelectField style = {style.scaleSelect} value = {this.state.value} onChange = {this.change} disabled = {this.state.enable}>
+						<Checkbox label = "Scale Success?" onCheck = {this.disableToggle} onTouchTap = {this.onScaleTap} checked = {this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].scaled}/>
+							<SelectField style = {style.scaleSelect} value = {this.getScaleHeight()} onChange = {this.setScaleHeight} disabled = {!this.props.scoringData[this.props.matchData.currentTeam].matches[this.props.matchData.currentMatch].scaled}>
        							<MenuItem value={true} primaryText="High"/>
         						<MenuItem value={false} primaryText="Low"/>
       						</SelectField>

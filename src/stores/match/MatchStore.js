@@ -7,10 +7,11 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var matches = {"totalMatchNumber": 0, "currentTeam" : "Team 1", "currentMatch" : 0};
+var matches = {"totalMatchNumber": 0, "currentTeam" : "Team 1", "currentMatch" : 0, "0comments" : ""};
 
 function handleUpdateSchedule(){
 	matches.totalMatchNumber += 1;
+	matches[matches.totalMatchNumber + "comments"] = "";
 	console.log(JSON.stringify(matches) + " object");
 }
 
@@ -25,6 +26,10 @@ function handleUpdateCurrentMatch(currentMatch){
 
 function handleUpdateCurrentTeam(currentTeam){
 	matches.currentTeam = currentTeam;
+}
+
+function handleUpdateMatchComments(matchComments,match){
+	matches[match+"comments"] = matchComments;
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
@@ -68,6 +73,11 @@ var MatchStore = assign({}, EventEmitter.prototype, {
 			
 			case MatchConstants.currentTeam:
 				handleUpdateCurrentTeam(action.currentTeam);
+				MatchStore.emitChange();
+				break;
+				
+			case MatchConstants.MatchComments:
+				handleUpdateMatchComments(action.matchComments,action.match);
 				MatchStore.emitChange();
 				break;
 		}

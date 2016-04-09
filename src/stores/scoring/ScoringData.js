@@ -62,8 +62,8 @@ module.exports = {addTeam: function(team,match){
 						"humanPlayer" : false,
 						"vision" : false,
 						"performanceRating" : "",
-						"offensiveRating" : "",
-						"defensiveRating" : "",
+						"offenseRating" : "",
+						"defenseeRating" : "",
 						"teamComments" : "",
 						"matchComments" : ""
 					},
