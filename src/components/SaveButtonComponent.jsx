@@ -5,6 +5,7 @@ import Tab from 'material-ui/lib/tabs/tab';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import SuccessfulSaveComponent from './SuccessfulSaveComponent';
+import SaveButtonActions from '../actions/scoring/SaveButtonActions';
 
 require('styles//SaveButton.css');
 
@@ -29,6 +30,18 @@ const SaveButtonComponent = React.createClass({
 	handleClose: function(){
 		this.setState({open: false});
 	},
+	
+	save: function(){
+		var teams = [];
+		for(var i = 0; i <= 3; i++){
+			teams.push(this.props.matchData[this.props.matchData.currentMatch+"b"+i]);
+			teams.push(this.props.matchData[this.props.matchData.currentMatch+"r"+i]);
+		}	
+		
+		SaveButtonActions.updateTotalMatches(teams);
+		this.setState({open: false});
+	},
+	
 	render() {
     	const actions = [
     	  <FlatButton
@@ -40,7 +53,7 @@ const SaveButtonComponent = React.createClass({
     	    label="Save"
     	    primary={true}
     	    keyboardFocused={true}
-    	    onTouchTap={this.handleClose}
+    	    onTouchTap={this.save}
     	  />,
     	];
     	return(

@@ -4,6 +4,7 @@ import NavbarControllerComponent from './components/NavbarControllerComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ScheduleComponent from './components/match/ScheduleComponent';
 import ScoringControllerComponent from './components/ScoringControllerComponent';
+import AnalysisControllerComponent from './components/AnalysisControllerComponent';
 import TeamListComponent from './components/analysis/TeamListComponent';
 
 //Needed for onTouchTap
@@ -20,4 +21,4 @@ require("styles/App.css");
 ReactDOM.render(<NavbarControllerComponent/>, document.getElementById('navbarController'));
 ReactDOM.render(<ScoringControllerComponent/>, document.getElementById('matchScoring'));
 ReactDOM.render(<ScheduleComponent/>, document.getElementById('matchTable'));
-ReactDOM.render(<TeamListComponent/>, document.getElementById('analysisPreview'));
+ReactDOM.render(<AnalysisControllerComponent/>, document.getElementById('analysisPreview'));

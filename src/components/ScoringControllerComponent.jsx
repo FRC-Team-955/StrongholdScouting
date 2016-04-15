@@ -28,7 +28,6 @@ var ScoringControllerComponent = React.createClass({
 	 
 	_onChange: function() {
 		this.setState(getStores());
-		this.forceUpdate();
 		// console.log(JSON.stringify(this.state.scoresData));
   	},
 	  

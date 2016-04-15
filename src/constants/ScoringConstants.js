@@ -46,7 +46,8 @@ var ScoringConstants = {
     "IncrementLowBar" : 49,
     "DecrementLowBar" : 50,
 	"AddTeam": 51,
-	"CrossedDefense": 52
+	"CrossedDefense": 52,
+	"TotalMatches" : 53
 };
 
 module.exports =  ScoringConstants;

@@ -43,295 +43,6 @@ const modal = {
 	overflow: "scroll"
 }
 
-const stats = (
-	<Tabs>
-		<Tab label = "General">
-			<div className = "container-fluid">
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Performance Rating Average:
-					</div>
-					<div className = "col-md-4">
-						2.2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Offense Rating Average:
-					</div>
-					<div className = "col-md-4">
-						2.2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Defense Rating Average:
-					</div>
-					<div className = "col-md-4">
-						2.2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Offense Rank:
-					</div>
-					<div className = "col-md-4">
-						#4
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Defense Rank:
-					</div>
-					<div className = "col-md-4">
-						#1
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						W/L:
-					</div>
-					<div className = "col-md-4">
-						0/88
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Breach Percentage:
-					</div>
-					<div className = "col-md-4">
-						2%
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Capture Percentage:
-					</div>
-					<div className = "col-md-4">
-						99%
-					</div>
-				</div>
-			</div>
-		</Tab>
-		<Tab label = "Auto">
-			<div className = "container-fluid">
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Defense Crossed:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total High Goals:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Low Goals:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Defense Reached:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Best Auto Defense:
-					</div>
-					<div className = "col-md-4">
-						Portcullis
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						How Many Defenses:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-			</div>
-		</Tab>
-		<Tab label = "Goals">
-			<div className = "container-fluid">
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						High Goal Ratio:
-					</div>
-					<div className = "col-md-4">
-						6:100
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						High Goal Percentage:
-					</div>
-					<div className = "col-md-4">
-						6%
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Low Goal Ratio:
-					</div>
-					<div className = "col-md-4">
-						2:100
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Low Goal Percentage:
-					</div>
-					<div className = "col-md-4">
-						2%
-					</div>
-				</div>
-			</div>
-		</Tab>
-		<Tab label = "Defense">
-			<div className = "container-fluid">
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Portcullis:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Chival De Frise:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Moat:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Ramparts:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Drawbridge:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Sally Port:
-					</div>
-					<div className = "col-md-4">
-						0
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Rock Wall:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Rough Terrain:
-					</div>
-					<div className = "col-md-4">
-						99
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Low Wall:
-					</div>
-					<div className = "col-md-4">
-						99
-					</div>
-				</div>
-			</div>
-		</Tab>
-		<Tab label = "Attributes">
-			<div className = "container-fluid">
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Vision:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Broken:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Spy:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Human Player:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Challenge:
-					</div>
-					<div className = "col-md-4">
-						2
-					</div>
-				</div>
-				<div className = "row" style = {textRow}>
-					<div className = "col-md-8">
-						Total Auto:
-					</div>
-					<div className = "col-md-4">
-						0
-					</div>
-				</div>
-			</div>
-		</Tab>
-	</Tabs>
-)
-
 const image = (
 	<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 )
@@ -353,19 +64,311 @@ const pad = {
 	padding: 0
 }
 
-const teamList = [955];
+const teamList = ["Team 1"];
 var numbRows = (teamList.length-(teamList.length % 3))/3;
-const TeamListComponent = React.createClass({
-childContextTypes: {
-    	muiTheme: React.PropTypes.object
-  	},
 
-  getChildContext: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(ModalThemeComponent),
-    };
-  },
-getInitialState: function(){
+const TeamListComponent = React.createClass({
+	getStats(team){
+		return(
+			<Tabs>
+				<Tab label = "General">
+					<div className = "container-fluid">
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Performance Rating Average:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Offense Rating Average:
+							</div>
+							<div className = "col-md-4">
+								2.2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Defense Rating Average:
+							</div>
+							<div className = "col-md-4">
+								2.2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Offense Rank:
+							</div>
+							<div className = "col-md-4">
+								#4
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Defense Rank:
+							</div>
+							<div className = "col-md-4">
+								#1
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								W/L:
+							</div>
+							<div className = "col-md-4">
+								0/88
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Breach Percentage:
+							</div>
+							<div className = "col-md-4">
+								2%
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Capture Percentage:
+							</div>
+							<div className = "col-md-4">
+								99%
+							</div>
+						</div>
+					</div>
+				</Tab>
+				<Tab label = "Auto">
+					<div className = "container-fluid">
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Defense Crossed:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.auto.defensesCrossed.total}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total High Goals:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.auto.highGoals}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Low Goals:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.auto.lowGoals}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Defense Reached:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.auto.defensesReached}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Best Auto Defense:
+							</div>
+							<div className = "col-md-4">
+								Portcullis
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								How Many Defenses:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+					</div>
+				</Tab>
+				<Tab label = "Goals">
+					<div className = "container-fluid">
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								High Goal Ratio:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.highGoal.successes}:{this.props.scoringData[team].stats.match.highGoal.successes+this.props.scoringData[team].stats.match.highGoal.attempted}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								High Goal Percentage:
+							</div>
+							<div className = "col-md-4">
+								{(this.props.scoringData[team].stats.match.highGoal.successes/(this.props.scoringData[team].stats.match.highGoal.successes+this.props.scoringData[team].stats.match.highGoal.attempted)*100)}%
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Low Goal Ratio:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.lowGoal.successes}:{this.props.scoringData[team].stats.match.lowGoal.successes+this.props.scoringData[team].stats.match.lowGoal.attempted}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Low Goal Percentage:
+							</div>
+							<div className = "col-md-4">
+								{(this.props.scoringData[team].stats.match.lowGoal.successes/(this.props.scoringData[team].stats.match.lowGoal.successes+this.props.scoringData[team].stats.match.lowGoal.attempted)*100)}%
+							</div>
+						</div>
+					</div>
+				</Tab>
+				<Tab label = "Defense">
+					<div className = "container-fluid">
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Portcullis:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.portcullis}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Chival De Frise:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.chevalDeFrise}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Moat:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.moat}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Ramparts:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.ramparts}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Drawbridge:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.drawbridge}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Sally Port:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.sallyPort}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Rock Wall:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.rockWall}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Rough Terrain:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.roughTerrain}
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Low bar:
+							</div>
+							<div className = "col-md-4">
+								{this.props.scoringData[team].stats.match.defensesCrossed.lowBar}
+							</div>
+						</div>
+					</div>
+				</Tab>
+				<Tab label = "Attributes">
+					<div className = "container-fluid">
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Vision:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Broken:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Spy:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Human Player:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Challenge:
+							</div>
+							<div className = "col-md-4">
+								2
+							</div>
+						</div>
+						<div className = "row" style = {textRow}>
+							<div className = "col-md-8">
+								Total Auto:
+							</div>
+							<div className = "col-md-4">
+								0
+							</div>
+						</div>
+					</div>
+				</Tab>
+			</Tabs>
+		)
+	},
+
+	childContextTypes: {
+			muiTheme: React.PropTypes.object
+		},
+
+	getChildContext: function() {
+		return {
+		muiTheme: ThemeManager.getMuiTheme(ModalThemeComponent),
+		};
+	},
+	getInitialState: function(){
 		return {
 			open: false,
 			
@@ -377,6 +380,7 @@ getInitialState: function(){
 	handleClose: function(){
 		this.setState({open: false});
 	},
+	
 render(){
 	var teamArchive = [];
 	if(teamList.length < 3){
@@ -401,7 +405,7 @@ render(){
 						  children = {
 								<div style = {statText}>
 											<Card>
-												<CardMedia overlay={<CardTitle children={stats} style = {pad}/>} style = {pad} overlayContentStyle = {overlayHeight}>
+												<CardMedia overlay={<CardTitle children={this.getStats(teamList[0])} style = {pad}/>} style = {pad} overlayContentStyle = {overlayHeight}>
 													<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 												</CardMedia>
 											</Card>
@@ -444,7 +448,7 @@ render(){
 						  children = {
 								<div style = {statText}>
 											<Card>
-												<CardMedia style = {modal} overlay={<CardTitle title = {teamList[0+(3 *team)]} children={stats} />} overlayContentStyle = {overlayHeight}>
+												<CardMedia style = {modal} overlay={<CardTitle title = {teamList[0+(3 *team)]} children={this.getStats(teamList[0+(3 *team)])} />} overlayContentStyle = {overlayHeight}>
 													<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 												</CardMedia>
 											</Card>
@@ -501,7 +505,7 @@ render(){
 						  children = {
 								<div style = {statText}>
 											<Card>
-												<CardMedia overlay={<CardTitle title = {teamList[0+(3 *team)]} children={stats} />} overlayContentStyle = {overlayHeight}>
+												<CardMedia overlay={<CardTitle title = {teamList[0+(3 *team)]} children={this.getStats()} />} overlayContentStyle = {overlayHeight}>
 													<img src = "http://www.coolwallpapers.org/photo/42181/animal-hd-collection_duck.jpg"/>
 												</CardMedia>
 											</Card>

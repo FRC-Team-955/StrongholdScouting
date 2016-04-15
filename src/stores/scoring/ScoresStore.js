@@ -44,11 +44,12 @@ function handleUpdateAddTeam(team,match){
 
 function handleUpdateReachDefense(team,match){
 	scores[team].matches[match].auto.reachedDefense = !scores[team].matches[match].auto.reachedDefense;
-	scores[team].matches[match].auto.reachedDefense? increment(scores[team].stats.auto.defensesReached):scores[team].stats.auto.defensesReached -= 1;
+	scores[team].matches[match].auto.reachedDefense? scores[team].stats.auto.defensesReached+=1:scores[team].stats.auto.defensesReached -= 1;
 }
 
 function handleUpdateCrossedDefense(team,match){
 	scores[team].matches[match].auto.crossedDefense = !scores[team].matches[match].auto.crossedDefense;
+	scores[team].matches[match].auto.crossedDefense? scores[team].stats.auto.defensesCrossed.total+=1:scores[team].stats.auto.defensesCrossed.total-=1;
 }
 
 function handleUpdateCrossDefense(team,match,value){
@@ -188,7 +189,8 @@ function handleUpdateDecrementLowAutoGoals(team,match){
 
 function handleUpdateIncrementHighTeleopGoals(team,match,callback){
 	scores[team].matches[match].teleop.highGoal.successes = increment(scores[team].matches[match].teleop.highGoal.successes);
-	scores.needsUpdate?false:true;
+	scores[team].stats.teleop.highGoal.successes = increment(scores[team].stats.teleop.highGoal.successes);
+	scores[team].stats.match.highGoal.successes = increment(scores[team].stats.match.highGoal.successes);
 }
 
 function handleUpdateDecrementHighTeleopGoals(team,match){
@@ -223,14 +225,17 @@ function handleUpdateDecrementHighGoalsAttempted(team,match){
 
 function handleUpdateIncrementLowGoalsAttempted(team,match){
 	scores[team].matches[match].teleop.lowGoal.attempted = increment(scores[team].matches[match].teleop.lowGoal.attempted);
-	scores[team].stats.teleop.lowGoal.attempted = increment(scores[team].matches[match].teleop.lowGoal.attempted);
-	scores[team].stats.match.lowGoal.attempted = increment(scores[team].matches[match].teleop.lowGoal.attempted);
+	scores[team].stats.teleop.lowGoal.attempted = increment(scores[team].stats.teleop.lowGoal.attempted);
+	scores[team].stats.match.lowGoal.attempted = increment(scores[team].stats.match.lowGoal.attempted);
 }
 
 function handleUpdateDecrementLowGoalsAttempted(team,match){
 	scores[team].matches[match].teleop.lowGoal.attempted -= 1;
 	scores[team].stats.teleop.lowGoal.attempted -= 1;
 	scores[team].stats.match.lowGoal.attempted -= 1;
+	
+	console.log(scores[team].stats.teleop.lowGoal.attempted);
+	console.log(scores[team].stats.match.lowGoal.attempted);
 }
 
 function handleUpdateTeamComments(teamComments,team,match){
@@ -261,12 +266,12 @@ function handleUpdateScaleHeight(value,team,match){
 function handleUpdateBreach(team,match){
 	// console.log("called");
 	scores[team].matches[match].breach = !scores[team].matches[match].breach;
-	scores[team].matches[match].breach? scores[team].stats.totalBreaches = increment(scores[team].stats.totalBreaches):scores[team].stats.totalBreaches -= 1;
+	scores[team].matches[match].breach? scores[team].stats.totalBroken+=1:scores[team].stats.totalBroken -= 1;
 }
 
 function handleUpdateCapture(team,match){
 	scores[team].matches[match].capture = !scores[team].matches[match].capture;
-	scores[team].matches[match].capture? scores[team].stats.totalCaptures = increment(scores[team].stats.totalCaptures):scores[team].stats.totalCaptures -= 1;
+	scores[team].matches[match].capture? scores[team].stats.totalCaptures+=1:scores[team].stats.totalCaptures -= 1;
 }
 
 function handleUpdatePerformance(performanceRating,team,match){
@@ -434,6 +439,12 @@ function handleUpdateDecrementLowBar(team,match){
 	scores[team].stats.match.defensesCrossed.lowBar -= 1;
 }
 
+function handleUpdateTotalMatches(teams){
+	for(var i = 0; i < teams.length; i++){
+		scores[teams[i]].totalMatches +=1;
+	}
+}
+
 var ScoresStore = assign({}, EventEmitter.prototype, {
 	getScoresData: function(){
 		return(scores);
@@ -521,7 +532,7 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 				break;
 			
 			case ScoringConstants.DecrementLowGoalsAttempted:
-				handleUpdateIncrementLowGoalsAttempted(action.team,action.match);
+				handleUpdateDecrementLowGoalsAttempted(action.team,action.match);
 				ScoresStore.emitChange();
 				break;
 			

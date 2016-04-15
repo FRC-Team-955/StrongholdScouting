@@ -70,6 +70,10 @@ module.exports = {addTeam: function(team,match){
 				},
 			
 			"stats": {
+				
+				"totalBroken" : 0,
+				"totalChallenge" : 0,
+				
 				"teleop": {
 					"blocks" : 0,
 					
@@ -147,7 +151,7 @@ module.exports = {addTeam: function(team,match){
 						"chevalDeFrise" : 0,
 						"rockWall" : 0,
 						"moat" : 0,
-						"drawBridge" : 0,
+						"drawbridge" : 0,
 						"sallyPort" : 0,
 						"roughTerrain" : 0,
 						"ramparts" : 0,
@@ -157,10 +161,8 @@ module.exports = {addTeam: function(team,match){
 				
 				"attributes" : 
 				{
-					"totalBroken" : 0,
 					"totalPreformedAuto" : 0,
 					"totalSpy" : 0,
-					"totalChallenge" : 0,
 					"totalHumanPlayer" : 0
 				}
 			},
@@ -186,6 +188,7 @@ module.exports = {addTeam: function(team,match){
 				"tall" : false
 			},
 			
-			"comments" : [""]
+			"comments" : [""],
+			"totalMatches": 0
 		}
 	)}};
