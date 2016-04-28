@@ -47,7 +47,9 @@ var ScoringConstants = {
     "DecrementLowBar" : 50,
 	"AddTeam": 51,
 	"CrossedDefense": 52,
-	"TotalMatches" : 53
+	"TotalMatches" : 53,
+	"ScoringSave": 54,
+	"ScoresLoad": 57
 };
 
 module.exports =  ScoringConstants;

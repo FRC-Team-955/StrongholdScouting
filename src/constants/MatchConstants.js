@@ -3,7 +3,9 @@ var MatchConstants = {
 	"Schedule" : 1,
 	"currentMatch" : 2,
 	"currentTeam" : 3,
-	"MatchComments" : 19 
+	"MatchComments" : 19 ,
+	"MatchSave": 55,
+	"MatchLoad": 56
 	
 }
 

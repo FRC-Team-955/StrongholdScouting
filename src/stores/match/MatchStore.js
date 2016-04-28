@@ -4,6 +4,7 @@ var AppDispatcher = require('../../components/AppDispatcher');
 var MatchData = require('./MatchData');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var lockr = require('lockr');
 
 var CHANGE_EVENT = 'change';
 
@@ -30,6 +31,16 @@ function handleUpdateCurrentTeam(currentTeam){
 
 function handleUpdateMatchComments(matchComments,match){
 	matches[match+"comments"] = matchComments;
+}
+
+function handleUpdateSave(data){
+	console.log(data);
+	lockr.set('matchData',data)
+}
+
+function handleUpdateLoad(){
+	console.log(lockr.get('matchData') + " lockr")
+	matches = lockr.get('matchData');
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
@@ -78,6 +89,17 @@ var MatchStore = assign({}, EventEmitter.prototype, {
 				
 			case MatchConstants.MatchComments:
 				handleUpdateMatchComments(action.matchComments,action.match);
+				MatchStore.emitChange();
+				break;
+				
+			case MatchConstants.MatchSave:
+				var data = MatchStore.getData();
+				handleUpdateSave(data);
+				MatchStore.emitChange();
+				break;
+				
+			case MatchConstants.MatchLoad:
+				handleUpdateLoad();
 				MatchStore.emitChange();
 				break;
 		}

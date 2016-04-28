@@ -64,10 +64,11 @@ const pad = {
 	padding: 0
 }
 
-const teamList = ["Team 1"];
+var teamList = [25,166,191,287,321,339,379,639,694,836,858,876,955,1073,1089,1123,1261,1389,1511,1662,1868,1885,1983,1991,2080,2168,2175,2220,2557,2848,2974,2980,3005,3147,3230,3234,3310,3339,3374,3506,3546,3618,3641,3656,3770,3925,3932,3990,4010,4061,4087,4180,4188,4329,4335,4455,4469,4646,4910,5199,5279,5406,5679,5803,5834,5837,5892,5933,5940,5976,6010,6034];
 var numbRows = (teamList.length-(teamList.length % 3))/3;
 
 const TeamListComponent = React.createClass({
+
 	getStats(team){
 		return(
 			<Tabs>
@@ -78,7 +79,7 @@ const TeamListComponent = React.createClass({
 								Performance Rating Average:
 							</div>
 							<div className = "col-md-4">
-								2
+								{this.props.scoringData[team].totalMatches}
 							</div>
 						</div>
 						<div className = "row" style = {textRow}>

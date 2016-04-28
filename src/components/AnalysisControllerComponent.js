@@ -28,6 +28,14 @@ var AnalysisControllerComponent = React.createClass({
 		// console.log(JSON.stringify(this.state.scoresData));
   	},
 	  
+	getTeamList: function(){
+		var teams = [];
+		for(var team in this.state.scoringData){
+			teams.push(team);
+			console.log(teams);
+		}
+	},
+	  
   	render() {
     	return (
       		<TeamListComponent scoringData = {this.state.scoringData} needsUpdate = {this.state.scoringData.needsUpdate}/>

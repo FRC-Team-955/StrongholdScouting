@@ -33,12 +33,27 @@ const SaveButtonComponent = React.createClass({
 	
 	save: function(){
 		var teams = [];
-		for(var i = 0; i <= 3; i++){
-			teams.push(this.props.matchData[this.props.matchData.currentMatch+"b"+i]);
-			teams.push(this.props.matchData[this.props.matchData.currentMatch+"r"+i]);
-		}	
+		if(this.props.isBlue){
+			for(var i = 1; i <= 3; i++){
+				teams.push(this.props.matchData[this.props.matchData.currentMatch+"b"+i]);
+			}
+		}
 		
+		else{
+			for(var i = 1; i <= 3; i++){
+				teams.push(this.props.matchData[this.props.matchData.currentMatch+"r"+i]);
+			}	
+		}
+		
+		SaveButtonActions.updateMatchSave();
+		SaveButtonActions.updateScoringSave();
 		SaveButtonActions.updateTotalMatches(teams);
+		this.setState({open: false});
+	},
+	
+	load: function(){
+		SaveButtonActions.updateMatchData();
+		SaveButtonActions.updateScoringData();
 		this.setState({open: false});
 	},
 	
@@ -54,6 +69,12 @@ const SaveButtonComponent = React.createClass({
     	    primary={true}
     	    keyboardFocused={true}
     	    onTouchTap={this.save}
+    	  />,
+		  <FlatButton
+    	    label="Load"
+    	    secondary={true}
+    	    keyboardFocused={true}
+    	    onTouchTap={this.load}
     	  />,
     	];
     	return(

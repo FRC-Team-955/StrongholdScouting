@@ -3,6 +3,7 @@ var AppDispatcher = require('../../components/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var ScoringData = require('./ScoringData');
 var assign = require('object-assign');
+var lockr = require('lockr');
 
 var CHANGE_EVENT = 'change';
 
@@ -445,6 +446,16 @@ function handleUpdateTotalMatches(teams){
 	}
 }
 
+function handleUpdateSave(data){
+	console.log(data);
+	lockr.set('scoringData',data)
+}
+
+function handleUpdateLoad(){
+	if(lockr.get('scoringData') != undefined)
+		scores = lockr.get('scoringData');
+}
+
 var ScoresStore = assign({}, EventEmitter.prototype, {
 	getScoresData: function(){
 		return(scores);
@@ -708,6 +719,17 @@ var ScoresStore = assign({}, EventEmitter.prototype, {
 			
 			case ScoringConstants.CrossedDefense:
 				handleUpdateCrossedDefense(action.team,action.match);
+				ScoresStore.emitChange();
+				break;
+			
+			case ScoringConstants.ScoringSave:
+				var data = ScoresStore.getScoresData();
+				handleUpdateSave(data);
+				ScoresStore.emitChange();
+				break;
+				
+			case ScoringConstants.ScoresLoad:
+				handleUpdateLoad();
 				ScoresStore.emitChange();
 				break;
 				

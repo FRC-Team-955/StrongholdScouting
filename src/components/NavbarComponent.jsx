@@ -123,7 +123,7 @@ const NavbarComponent = React.createClass({
 						label = {<MatchSelectComponent matches = {this.props.matchData.totalMatchNumber}/>}
 					/>
 					
-					<SaveButtonComponent/>
+					<SaveButtonComponent  matchData = {this.props.matchData}/>
 				</Tabs>
 			</div>
 		)	
